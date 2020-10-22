@@ -1,0 +1,1 @@
+"D:\Programs\Matlab\bin\win64\gmake" -f OpenLoopTestsAGV.mk  GENERATE_ASAP2=0 MCHP_AUTO_FLASH=1 MCHP_MULTITHREAD_COMPILATION=1 LinkWithMaster=0 ISPROTECTINGMODEL=NOTPROTECTING OPTS="-mdfp=D:\Programs\Microchip\mplabx\packs\Microchip\dsPIC33E-GM-GP-MC-GU-MU_DFP\1.2.58\xc16" -j 9 -l 9

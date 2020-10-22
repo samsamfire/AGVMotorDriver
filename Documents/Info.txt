@@ -1,0 +1,17 @@
+RPINR14 = 0x2627 : low QEA --> RP39 || high : 100 1100 ???
+
+RPINR18 = 0x25 : low UART --> RP37
+
+
+RPOR1 = 0x01;  RP37 connected to U1TX
+
+RPOR4 = 0x1011;
+
+
+
+
+RP42,RP43 : OC1 & OC2 can also use PWM3H & PWM3L
+
+
+RP36 : TX
+RP37 : RX
