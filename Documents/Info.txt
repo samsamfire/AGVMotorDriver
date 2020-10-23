@@ -15,3 +15,9 @@ RP42,RP43 : OC1 & OC2 can also use PWM3H & PWM3L
 
 RP36 : TX
 RP37 : RX
+RP38 : 
+RP39 :
+RP40 : CANRX
+RP41 : CANTX
+
+

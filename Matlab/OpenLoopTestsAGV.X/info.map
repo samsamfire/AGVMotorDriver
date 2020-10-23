@@ -63,23 +63,23 @@ Default Scalar Model: Small
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x200               0x29c           0x3ea  (1002)
-.const                       0x49c                 0xc            0x12  (18)
-.text                        0x4a8               0x85e           0xc8d  (3213)
-.dinit                       0xd06                0x2e            0x45  (69)
+.const                       0x49c                 0xa             0xf  (15)
+.text                        0x4a6               0x79c           0xb6a  (2922)
+.dinit                       0xc42                0x2e            0x45  (69)
 
-                 Total "program" memory used (bytes):         0x10ce  (4302) 1%
+                 Total "program" memory used (bytes):          0xfa8  (4008) 1%
 
 
 "data" Memory  [Origin = 0x1000, Length = 0x8000]
 
 section                    address      alignment gaps    total length  (dec)
 -------                    -------      --------------    -------------------
-_0000000005E843205f915e8b    0x1000                   0           0x200  (512)
-.nbss                       0x1200                   0           0x154  (340)
-.ndata                      0x1354                   0             0xa  (10)
-.nbss                       0x135e                   0             0x6  (6)
+_00000000056493205f9354d3    0x1000                   0           0x200  (512)
+.nbss                       0x1200                   0           0x146  (326)
+.ndata                      0x1346                   0             0xa  (10)
+.nbss                       0x1350                   0             0x6  (6)
 
-                 Total "data" memory used (bytes):          0x364  (868) 2%
+                 Total "data" memory used (bytes):          0x356  (854) 2%
 
 
 Dynamic Memory Usage
@@ -87,9 +87,9 @@ Dynamic Memory Usage
 region                     address                      maximum length  (dec)
 ------                     -------                      ---------------------
 heap                             0                                   0  (0)
-stack                       0x1364                              0x6c9c  (27804)
+stack                       0x1356                              0x6caa  (27818)
 
-                 Maximum dynamic memory (bytes):         0x6c9c  (27804)
+                 Maximum dynamic memory (bytes):         0x6caa  (27818)
 
 
 External Symbols in Data Memory (by address):
@@ -97,106 +97,104 @@ External Symbols in Data Memory (by address):
                     0x1200                  _MCHP_UART1_Rx
                     0x1284                  _MCHP_UART1_Tx
                     0x1308                  _OpenLoopTestsAGV_DW
-                    0x133c                  _OpenLoopTestsAGV_M_
-                    0x135e                  _ADC1BuffChannelA
+                    0x132e                  _OpenLoopTestsAGV_M_
+                    0x1350                  _ADC1BuffChannelA
 
 External Symbols in Data Memory (by name):
 
-                    0x135e                  _ADC1BuffChannelA
+                    0x1350                  _ADC1BuffChannelA
                     0x1200                  _MCHP_UART1_Rx
                     0x1284                  _MCHP_UART1_Tx
                     0x1308                  _OpenLoopTestsAGV_DW
-                    0x133c                  _OpenLoopTestsAGV_M_
+                    0x132e                  _OpenLoopTestsAGV_M_
 
 External Symbols in Program Memory (by address):
 
                   0x000200                  __resetPRI
                   0x00023c                  __psv_init
-                  0x000248                  __data_init
                   0x000248                  __data_init_extended
+                  0x000248                  __data_init
                   0x0002fa                  __AD1Interrupt
                   0x0003d6                  __U1RXInterrupt
                   0x000438                  __U1TXInterrupt
                   0x00047c                  __DMA0Interrupt
                   0x000496                  __DefaultInterrupt
                   0x00049c                  _OpenLoopTestsAGV_ConstP
-                  0x0004a4                  _OpenLoopTestsAGV_U16GND
-                  0x0004a6                  _OpenLoopTestsAGV_M
-                  0x00063e                  _CAN1_Initialize
-                  0x0006fe                  _CAN1_TransmitEnable
-                  0x000710                  _CAN1_ReceiveEnable
-                  0x000722                  _CAN1_transmit
-                  0x00075a                  _CAN1_receive
-                  0x0007a8                  _CAN1_isBusOff
-                  0x0007b0                  _CAN1_isRXErrorPassive
-                  0x0007b8                  _CAN1_isTXErrorPassive
-                  0x0007c0                  _CAN1_messagesInBuffer
-                  0x0007f2                  _CAN1_sleep
-                  0x00080e                  _OpenLoopTestsAGV_step0
+                  0x0004a4                  _OpenLoopTestsAGV_M
+                  0x00063c                  _CAN1_Initialize
+                  0x0006fc                  _CAN1_TransmitEnable
+                  0x00070e                  _CAN1_ReceiveEnable
+                  0x000720                  _CAN1_transmit
+                  0x000758                  _CAN1_receive
+                  0x0007a6                  _CAN1_isBusOff
+                  0x0007ae                  _CAN1_isRXErrorPassive
+                  0x0007b6                  _CAN1_isTXErrorPassive
+                  0x0007be                  _CAN1_messagesInBuffer
+                  0x0007f0                  _CAN1_sleep
+                  0x00080c                  _OpenLoopTestsAGV_step0
                   0x000844                  _OpenLoopTestsAGV_step1
-                  0x0009d8                  _OpenLoopTestsAGV_step2
-                  0x000a20                  _OpenLoopTestsAGV_step3
-                  0x000a3e                  _OpenLoopTestsAGV_step4
-                  0x000a5a                  _OpenLoopTestsAGV_step5
-                  0x000a78                  _OpenLoopTestsAGV_initialize
-                  0x000ae8                  _ECAN1_Simulink_Init
-                  0x000b3c                  _ECAN1_Simulink_Transmit
-                  0x000b86                  _ECAN1_Simulink_Receive
-                  0x000bce                  _main
-                  0x000c56                  _DMA_Initialize
-                  0x000cb2                  _DMA_Channel1_Tasks
-                  0x000cbe                  _DMA_Channel2_Tasks
-                  0x000cca                  _DMA_Channel3_Tasks
-                  0x000cde                  _ECAN1_Initialize
-                  0x000ce2                  _ECAN1_TransmitEnable
-                  0x000ce6                  _ECAN1_ReceiveEnable
-                  0x000cea                  _ECAN1_transmit
-                  0x000cee                  _ECAN1_receive
-                  0x000cf2                  _ECAN1_isBusOff
-                  0x000cf6                  _ECAN1_isRXErrorPassive
-                  0x000cfa                  _ECAN1_isTXErrorPassive
-                  0x000cfe                  _ECAN1_messagesInBuffer
-                  0x000d02                  _ECAN1_sleep
+                  0x00092c                  _OpenLoopTestsAGV_step2
+                  0x00095c                  _OpenLoopTestsAGV_step3
+                  0x00097a                  _OpenLoopTestsAGV_step4
+                  0x000996                  _OpenLoopTestsAGV_step5
+                  0x0009b4                  _OpenLoopTestsAGV_initialize
+                  0x000a24                  _ECAN1_Simulink_Init
+                  0x000a78                  _ECAN1_Simulink_Transmit
+                  0x000ac2                  _ECAN1_Simulink_Receive
+                  0x000b0a                  _main
+                  0x000b92                  _DMA_Initialize
+                  0x000bee                  _DMA_Channel1_Tasks
+                  0x000bfa                  _DMA_Channel2_Tasks
+                  0x000c06                  _DMA_Channel3_Tasks
+                  0x000c1a                  _ECAN1_Initialize
+                  0x000c1e                  _ECAN1_TransmitEnable
+                  0x000c22                  _ECAN1_ReceiveEnable
+                  0x000c26                  _ECAN1_transmit
+                  0x000c2a                  _ECAN1_receive
+                  0x000c2e                  _ECAN1_isBusOff
+                  0x000c32                  _ECAN1_isRXErrorPassive
+                  0x000c36                  _ECAN1_isTXErrorPassive
+                  0x000c3a                  _ECAN1_messagesInBuffer
+                  0x000c3e                  _ECAN1_sleep
 
 External Symbols in Program Memory (by name):
 
-                  0x00063e                  _CAN1_Initialize
-                  0x000710                  _CAN1_ReceiveEnable
-                  0x0006fe                  _CAN1_TransmitEnable
-                  0x0007a8                  _CAN1_isBusOff
-                  0x0007b0                  _CAN1_isRXErrorPassive
-                  0x0007b8                  _CAN1_isTXErrorPassive
-                  0x0007c0                  _CAN1_messagesInBuffer
-                  0x00075a                  _CAN1_receive
-                  0x0007f2                  _CAN1_sleep
-                  0x000722                  _CAN1_transmit
-                  0x000cb2                  _DMA_Channel1_Tasks
-                  0x000cbe                  _DMA_Channel2_Tasks
-                  0x000cca                  _DMA_Channel3_Tasks
-                  0x000c56                  _DMA_Initialize
-                  0x000cde                  _ECAN1_Initialize
-                  0x000ce6                  _ECAN1_ReceiveEnable
-                  0x000ae8                  _ECAN1_Simulink_Init
-                  0x000b86                  _ECAN1_Simulink_Receive
-                  0x000b3c                  _ECAN1_Simulink_Transmit
-                  0x000ce2                  _ECAN1_TransmitEnable
-                  0x000cf2                  _ECAN1_isBusOff
-                  0x000cf6                  _ECAN1_isRXErrorPassive
-                  0x000cfa                  _ECAN1_isTXErrorPassive
-                  0x000cfe                  _ECAN1_messagesInBuffer
-                  0x000cee                  _ECAN1_receive
-                  0x000d02                  _ECAN1_sleep
-                  0x000cea                  _ECAN1_transmit
+                  0x00063c                  _CAN1_Initialize
+                  0x00070e                  _CAN1_ReceiveEnable
+                  0x0006fc                  _CAN1_TransmitEnable
+                  0x0007a6                  _CAN1_isBusOff
+                  0x0007ae                  _CAN1_isRXErrorPassive
+                  0x0007b6                  _CAN1_isTXErrorPassive
+                  0x0007be                  _CAN1_messagesInBuffer
+                  0x000758                  _CAN1_receive
+                  0x0007f0                  _CAN1_sleep
+                  0x000720                  _CAN1_transmit
+                  0x000bee                  _DMA_Channel1_Tasks
+                  0x000bfa                  _DMA_Channel2_Tasks
+                  0x000c06                  _DMA_Channel3_Tasks
+                  0x000b92                  _DMA_Initialize
+                  0x000c1a                  _ECAN1_Initialize
+                  0x000c22                  _ECAN1_ReceiveEnable
+                  0x000a24                  _ECAN1_Simulink_Init
+                  0x000ac2                  _ECAN1_Simulink_Receive
+                  0x000a78                  _ECAN1_Simulink_Transmit
+                  0x000c1e                  _ECAN1_TransmitEnable
+                  0x000c2e                  _ECAN1_isBusOff
+                  0x000c32                  _ECAN1_isRXErrorPassive
+                  0x000c36                  _ECAN1_isTXErrorPassive
+                  0x000c3a                  _ECAN1_messagesInBuffer
+                  0x000c2a                  _ECAN1_receive
+                  0x000c3e                  _ECAN1_sleep
+                  0x000c26                  _ECAN1_transmit
                   0x00049c                  _OpenLoopTestsAGV_ConstP
-                  0x0004a6                  _OpenLoopTestsAGV_M
-                  0x0004a4                  _OpenLoopTestsAGV_U16GND
-                  0x000a78                  _OpenLoopTestsAGV_initialize
-                  0x00080e                  _OpenLoopTestsAGV_step0
+                  0x0004a4                  _OpenLoopTestsAGV_M
+                  0x0009b4                  _OpenLoopTestsAGV_initialize
+                  0x00080c                  _OpenLoopTestsAGV_step0
                   0x000844                  _OpenLoopTestsAGV_step1
-                  0x0009d8                  _OpenLoopTestsAGV_step2
-                  0x000a20                  _OpenLoopTestsAGV_step3
-                  0x000a3e                  _OpenLoopTestsAGV_step4
-                  0x000a5a                  _OpenLoopTestsAGV_step5
+                  0x00092c                  _OpenLoopTestsAGV_step2
+                  0x00095c                  _OpenLoopTestsAGV_step3
+                  0x00097a                  _OpenLoopTestsAGV_step4
+                  0x000996                  _OpenLoopTestsAGV_step5
                   0x0002fa                  __AD1Interrupt
                   0x00047c                  __DMA0Interrupt
                   0x000496                  __DefaultInterrupt
@@ -206,7 +204,7 @@ External Symbols in Program Memory (by name):
                   0x000248                  __data_init_extended
                   0x00023c                  __psv_init
                   0x000200                  __resetPRI
-                  0x000bce                  _main
+                  0x000b0a                  _main
 
 Memory Configuration
 
@@ -1688,26 +1686,26 @@ __c30_signature
  __c30_signature
                   0x000042          0x6 c:/progra~1/microc~1/xc16/v1.60/bin/bin/../../lib\liblega-pic30-elf.a(data_init_extended.o)
 
-_0000000005E843205f915e8b
+_00000000056493205f9354d3
                     0x1000        0x200
- _0000000005E843205f915e8b
+ _00000000056493205f9354d3
                     0x1000        0x200 can1.o
 
-.nbss               0x1200        0x154
+.nbss               0x1200        0x146
  .nbss              0x1200         0x84 MCHP_UART1_Rx_Interrupt.o
                     0x1200                  _MCHP_UART1_Rx
  .nbss              0x1284         0x84 MCHP_UART1_Tx.Interrupt.o
                     0x1284                  _MCHP_UART1_Tx
- .nbss              0x1308         0x4c OpenLoopTestsAGV.o
+ .nbss              0x1308         0x3e OpenLoopTestsAGV.o
                     0x1308                  _OpenLoopTestsAGV_DW
-                    0x133c                  _OpenLoopTestsAGV_M_
+                    0x132e                  _OpenLoopTestsAGV_M_
 
-.ndata              0x1354          0xa
- .ndata             0x1354          0xa MCHP_ADC1_Interrupt.o
+.ndata              0x1346          0xa
+ .ndata             0x1346          0xa MCHP_ADC1_Interrupt.o
 
-.nbss               0x135e          0x6
- .nbss              0x135e          0x6 MCHP_ADC1_Interrupt.o
-                    0x135e                  _ADC1BuffChannelA
+.nbss               0x1350          0x6
+ .nbss              0x1350          0x6 MCHP_ADC1_Interrupt.o
+                    0x1350                  _ADC1BuffChannelA
 
 .ivt._AD1Interrupt
                   0x00002e          0x2
@@ -1743,67 +1741,66 @@ _0000000005E843205f915e8b
  .ivt._DMA0Interrupt
                   0x00001c          0x2 dma.o
 
-.const              0x849c          0xc load address 0x00049c  
+.const              0x849c          0xa load address 0x00049c  
  .const             0x849c          0x8 OpenLoopTestsAGV_data.o
                     0x849c                  _OpenLoopTestsAGV_ConstP
- .const             0x84a4          0x4 OpenLoopTestsAGV.o
-                    0x84a4                  _OpenLoopTestsAGV_U16GND
-                    0x84a6                  _OpenLoopTestsAGV_M
+ .const             0x84a4          0x2 OpenLoopTestsAGV.o
+                    0x84a4                  _OpenLoopTestsAGV_M
 
-.text             0x0004a8        0x85e
- .text            0x0004a8        0x366 can1.o
-                  0x00063e                  _CAN1_Initialize
-                  0x0006fe                  _CAN1_TransmitEnable
-                  0x000710                  _CAN1_ReceiveEnable
-                  0x000722                  _CAN1_transmit
-                  0x00075a                  _CAN1_receive
-                  0x0007a8                  _CAN1_isBusOff
-                  0x0007b0                  _CAN1_isRXErrorPassive
-                  0x0007b8                  _CAN1_isTXErrorPassive
-                  0x0007c0                  _CAN1_messagesInBuffer
-                  0x0007f2                  _CAN1_sleep
- .text            0x00080e        0x2da OpenLoopTestsAGV.o
-                  0x00080e                  _OpenLoopTestsAGV_step0
+.text             0x0004a6        0x79c
+ .text            0x0004a6        0x366 can1.o
+                  0x00063c                  _CAN1_Initialize
+                  0x0006fc                  _CAN1_TransmitEnable
+                  0x00070e                  _CAN1_ReceiveEnable
+                  0x000720                  _CAN1_transmit
+                  0x000758                  _CAN1_receive
+                  0x0007a6                  _CAN1_isBusOff
+                  0x0007ae                  _CAN1_isRXErrorPassive
+                  0x0007b6                  _CAN1_isTXErrorPassive
+                  0x0007be                  _CAN1_messagesInBuffer
+                  0x0007f0                  _CAN1_sleep
+ .text            0x00080c        0x218 OpenLoopTestsAGV.o
+                  0x00080c                  _OpenLoopTestsAGV_step0
                   0x000844                  _OpenLoopTestsAGV_step1
-                  0x0009d8                  _OpenLoopTestsAGV_step2
-                  0x000a20                  _OpenLoopTestsAGV_step3
-                  0x000a3e                  _OpenLoopTestsAGV_step4
-                  0x000a5a                  _OpenLoopTestsAGV_step5
-                  0x000a78                  _OpenLoopTestsAGV_initialize
- .text            0x000ae8         0xe6 fonctionsAGV.o
-                  0x000ae8                  _ECAN1_Simulink_Init
-                  0x000b3c                  _ECAN1_Simulink_Transmit
-                  0x000b86                  _ECAN1_Simulink_Receive
- .text            0x000bce         0x88 OpenLoopTestsAGV_main.o
-                  0x000bce                  _main
- .text            0x000c56         0x7e dma.o
-                  0x000c56                  _DMA_Initialize
-                  0x000cae                  _DMA_Channel0_CallBack
-                  0x000cb0                  _DMA_Channel1_CallBack
-                  0x000cb2                  _DMA_Channel1_Tasks
-                  0x000cbc                  _DMA_Channel2_CallBack
-                  0x000cbe                  _DMA_Channel2_Tasks
-                  0x000cc8                  _DMA_Channel3_CallBack
-                  0x000cca                  _DMA_Channel3_Tasks
- .text            0x000cd4         0x32 ecan1.o
-                  0x000cd4                  _ECAN1_CallbackBusOff
-                  0x000cd6                  _ECAN1_CallbackTxErrorPassive
-                  0x000cd8                  _ECAN1_CallbackRxErrorPassive
-                  0x000cda                  _ECAN1_CallbackMessageReceived
-                  0x000cdc                  _ECAN1_CallbackRxBufferOverflow
-                  0x000cde                  _ECAN1_Initialize
-                  0x000ce2                  _ECAN1_TransmitEnable
-                  0x000ce6                  _ECAN1_ReceiveEnable
-                  0x000cea                  _ECAN1_transmit
-                  0x000cee                  _ECAN1_receive
-                  0x000cf2                  _ECAN1_isBusOff
-                  0x000cf6                  _ECAN1_isRXErrorPassive
-                  0x000cfa                  _ECAN1_isTXErrorPassive
-                  0x000cfe                  _ECAN1_messagesInBuffer
-                  0x000d02                  _ECAN1_sleep
+                  0x00092c                  _OpenLoopTestsAGV_step2
+                  0x00095c                  _OpenLoopTestsAGV_step3
+                  0x00097a                  _OpenLoopTestsAGV_step4
+                  0x000996                  _OpenLoopTestsAGV_step5
+                  0x0009b4                  _OpenLoopTestsAGV_initialize
+ .text            0x000a24         0xe6 fonctionsAGV.o
+                  0x000a24                  _ECAN1_Simulink_Init
+                  0x000a78                  _ECAN1_Simulink_Transmit
+                  0x000ac2                  _ECAN1_Simulink_Receive
+ .text            0x000b0a         0x88 OpenLoopTestsAGV_main.o
+                  0x000b0a                  _main
+ .text            0x000b92         0x7e dma.o
+                  0x000b92                  _DMA_Initialize
+                  0x000bea                  _DMA_Channel0_CallBack
+                  0x000bec                  _DMA_Channel1_CallBack
+                  0x000bee                  _DMA_Channel1_Tasks
+                  0x000bf8                  _DMA_Channel2_CallBack
+                  0x000bfa                  _DMA_Channel2_Tasks
+                  0x000c04                  _DMA_Channel3_CallBack
+                  0x000c06                  _DMA_Channel3_Tasks
+ .text            0x000c10         0x32 ecan1.o
+                  0x000c10                  _ECAN1_CallbackBusOff
+                  0x000c12                  _ECAN1_CallbackTxErrorPassive
+                  0x000c14                  _ECAN1_CallbackRxErrorPassive
+                  0x000c16                  _ECAN1_CallbackMessageReceived
+                  0x000c18                  _ECAN1_CallbackRxBufferOverflow
+                  0x000c1a                  _ECAN1_Initialize
+                  0x000c1e                  _ECAN1_TransmitEnable
+                  0x000c22                  _ECAN1_ReceiveEnable
+                  0x000c26                  _ECAN1_transmit
+                  0x000c2a                  _ECAN1_receive
+                  0x000c2e                  _ECAN1_isBusOff
+                  0x000c32                  _ECAN1_isRXErrorPassive
+                  0x000c36                  _ECAN1_isTXErrorPassive
+                  0x000c3a                  _ECAN1_messagesInBuffer
+                  0x000c3e                  _ECAN1_sleep
 
-.dinit            0x000d06         0x2e
- .dinit           0x000d06         0x2e data_init
+.dinit            0x000c42         0x2e
+ .dinit           0x000c42         0x2e data_init
 
 Cross Reference Table
 
@@ -2000,7 +1997,6 @@ _OpenLoopTestsAGV_ConstP                          OpenLoopTestsAGV_data.o
 _OpenLoopTestsAGV_DW                              OpenLoopTestsAGV.o
 _OpenLoopTestsAGV_M                               OpenLoopTestsAGV.o
 _OpenLoopTestsAGV_M_                              OpenLoopTestsAGV.o
-_OpenLoopTestsAGV_U16GND                          OpenLoopTestsAGV.o
 _OpenLoopTestsAGV_initialize                      OpenLoopTestsAGV.o
                                                   OpenLoopTestsAGV_main.o
 _OpenLoopTestsAGV_step0                           OpenLoopTestsAGV.o
@@ -2018,6 +2014,7 @@ _OpenLoopTestsAGV_step5                           OpenLoopTestsAGV.o
 _PLLFBD                                           OpenLoopTestsAGV_main.o
 _PORTAbits                                        OpenLoopTestsAGV.o
 _PORTB                                            OpenLoopTestsAGV.o
+_PORTBbits                                        OpenLoopTestsAGV.o
 _POS1CNTL                                         OpenLoopTestsAGV.o
 _QEI1CON                                          OpenLoopTestsAGV.o
 _QEI1GECH                                         OpenLoopTestsAGV.o
@@ -2252,7 +2249,7 @@ __linked_.nbss                                    OpenLoopTestsAGV.elf
 __linked_.ndata                                   OpenLoopTestsAGV.elf
 __linked_.reset                                   OpenLoopTestsAGV.elf
 __linked_.text                                    OpenLoopTestsAGV.elf
-__linked__0000000005E843205f915e8b                OpenLoopTestsAGV.elf
+__linked__00000000056493205f9354d3                OpenLoopTestsAGV.elf
 __linked___c30_signature                          OpenLoopTestsAGV.elf
 __psv_init                                        c:/progra~1/microc~1/xc16/v1.60/bin/bin/../../lib\liblega-pic30-elf.a(crt0_extendedep.o)
 __reset                                           c:/progra~1/microc~1/xc16/v1.60/bin/bin/../../lib\liblega-pic30-elf.a(crt0_extendedep.o)

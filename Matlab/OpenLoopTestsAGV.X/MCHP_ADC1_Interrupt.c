@@ -1,7 +1,7 @@
 #include "OpenLoopTestsAGV.h"
 #include "OpenLoopTestsAGV_private.h"
 
-/* ADC - Interrupt: <Root>/ADC */
+/* ADC - Interrupt: <S1>/ADC */
 volatile uint16_T ADC1BuffChannelA[1];
 void __attribute__((__interrupt__,__auto_psv__)) _AD1Interrupt(void)
 {

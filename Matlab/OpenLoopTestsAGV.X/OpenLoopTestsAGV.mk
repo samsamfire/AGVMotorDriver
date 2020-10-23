@@ -205,7 +205,7 @@ MATLAB_INCLUDES = \
 ADD_INCLUDES = \
 	-I"$(START_DIR)" \
 	-I"$(START_DIR)/OpenLoopTestsAGV.X" \
-	-I"$(START_DIR)/Mplab_generated_code/ECAN1" \
+	-I"D:/Matlab/MicrochipDCMotorControl/MicrochipDCMotorControl/ECAN/ECAN1" \
 	-I"$(MATLAB_ROOT)/extern/include" \
 	-I"$(MATLAB_ROOT)/simulink/include" \
 	-I"$(MATLAB_ROOT)/rtw/c/src" \
@@ -293,7 +293,7 @@ endif
 #
 #ASM_OPTIM_SRCS += $(wildcard $(START_DIR)/*.s) 
 #ASM_OPTIM_SRCS += $(wildcard $(START_DIR)/OpenLoopTestsAGV.X/*.s) 
-#ASM_OPTIM_SRCS += $(wildcard $(START_DIR)/Mplab_generated_code/ECAN1/*.s) 
+#ASM_OPTIM_SRCS += $(wildcard D:/Matlab/MicrochipDCMotorControl/MicrochipDCMotorControl/ECAN/ECAN1/*.s) 
 #ASM_OPTIM_SRCS += $(wildcard $(MATLAB_ROOT)/extern/include/*.s) 
 #ASM_OPTIM_SRCS += $(wildcard $(MATLAB_ROOT)/simulink/include/*.s) 
 #ASM_OPTIM_SRCS += $(wildcard $(MATLAB_ROOT)/rtw/c/src/*.s) 
@@ -483,7 +483,7 @@ mem_mgr.o : $(MATLAB_ROOT)/rtw/c/src/ext_mode/common/mem_mgr.c
 	-@echo Compiling: $<
 	$(CC) -c -mcpu=$(PIC_REF) $< -Wa,-g $(CCOUTPUTFLAG) $@
 
-%$(OBJ_EXT) : $(START_DIR)/Mplab_generated_code/ECAN1/%.c
+%$(OBJ_EXT) : D:/Matlab/MicrochipDCMotorControl/MicrochipDCMotorControl/ECAN/ECAN1/%.c
 	-@echo Compiling: $<
 	$(CC) -c $(CFLAGS) $< $(CCOUTPUTFLAG) $@
 
@@ -497,7 +497,7 @@ mem_mgr.o : $(MATLAB_ROOT)/rtw/c/src/ext_mode/common/mem_mgr.c
 
 
 
-%$(OBJ_EXT) : $(START_DIR)/Mplab_generated_code/ECAN1/%.cpp
+%$(OBJ_EXT) : D:/Matlab/MicrochipDCMotorControl/MicrochipDCMotorControl/ECAN/ECAN1/%.cpp
 	-@echo Compiling: $<
 	$(CC) -c $(CPPFLAGS) $< $(CCOUTPUTFLAG) $@
 
@@ -511,7 +511,7 @@ mem_mgr.o : $(MATLAB_ROOT)/rtw/c/src/ext_mode/common/mem_mgr.c
 
 
 
-%$(OBJ_EXT) : $(START_DIR)/Mplab_generated_code/ECAN1/%.s
+%$(OBJ_EXT) : D:/Matlab/MicrochipDCMotorControl/MicrochipDCMotorControl/ECAN/ECAN1/%.s
 	-@echo Compiling: $<
 	$(CC) -c -mcpu=$(PIC_REF) $< -Wa,-g $(CCOUTPUTFLAG) $@
 

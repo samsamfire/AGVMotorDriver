@@ -14,9 +14,9 @@
  *
  * Code generated for Simulink model 'OpenLoopTestsAGV'.
  *
- * Model version                  : 1.30
+ * Model version                  : 1.34
  * Simulink Coder version         : 9.2 (R2019b) 18-Jul-2019
- * C/C++ source code generated on : Thu Oct 22 12:27:14 2020
+ * C/C++ source code generated on : Sat Oct 24 00:10:18 2020
  */
 
 #ifndef RTW_HEADER_OpenLoopTestsAGV_h_
@@ -57,40 +57,36 @@
 
 /* Block signals and states (default storage) for system '<Root>' */
 typedef struct {
-  int16_T U1CH1_e3;                    /* '<Root>/QEI' */
-  uint16_T U1CH1;                      /* '<Root>/ADC' */
-  uint16_T Switch;                     /* '<Root>/Switch' */
-  uint16_T Switch1;                    /* '<Root>/Switch1' */
-  uint16_T U1CH1_e;                    /* '<Root>/Rate Transition3' */
-  uint16_T U1CH1_m;                    /* '<Root>/QEI' */
-  uint16_T U1CH3;                      /* '<Root>/Bitwise Operator2' */
+  int16_T U1CH1_e;                     /* '<S8>/QEI' */
+  uint16_T U1CH1;                      /* '<S1>/ADC' */
+  uint16_T Switch;                     /* '<S7>/Switch' */
+  uint16_T Switch1;                    /* '<S7>/Switch1' */
+  uint16_T U1CH1_m;                    /* '<S8>/QEI' */
   uint16_T U2Rx;                       /* '<Root>/UART Rx' */
-  uint16_T CFunctionCall3_o1;          /* '<Root>/C Function Call3' */
-  uint16_T CFunctionCall3_o2;          /* '<Root>/C Function Call3' */
-  uint16_T DataTypeConversion;         /* '<Root>/Data Type Conversion' */
-  uint16_T Add;                        /* '<Root>/Add' */
+  uint16_T CFunctionCall3_o1;          /* '<S3>/C Function Call3' */
+  uint16_T CFunctionCall3_o2;          /* '<S3>/C Function Call3' */
+  uint16_T DataTypeConversion;         /* '<S3>/Data Type Conversion' */
+  uint16_T Add;                        /* '<S3>/Add' */
   volatile uint16_T RateTransition1_Buffer0;/* '<Root>/Rate Transition1' */
   volatile uint16_T RateTransition2_Buffer0;/* '<Root>/Rate Transition2' */
-  uint8_T CFunctionCall3_o3[8];        /* '<Root>/C Function Call3' */
-  uint8_T In1[8];                      /* '<S9>/In1' */
-  uint8_T U1CH4;                       /* '<Root>/Rate Transition4' */
+  uint8_T CFunctionCall3_o3[8];        /* '<S3>/C Function Call3' */
+  uint8_T BitwiseOperator1;            /* '<S2>/Bitwise Operator1' */
   uint8_T U2Rx_m;                      /* '<Root>/UART Rx' */
-  uint8_T CFunctionCall3_o4;           /* '<Root>/C Function Call3' */
-  uint8_T Output_DSTATE;               /* '<S12>/Output' */
-  uint8_T Output_DSTATE_d;             /* '<S15>/Output' */
-  uint8_T Output_DSTATE_o;             /* '<S2>/Output' */
-  volatile uint8_T RateTransition4_Buffer0;/* '<Root>/Rate Transition4' */
+  uint8_T CFunctionCall3_o4;           /* '<S3>/C Function Call3' */
+  uint8_T Output_DSTATE;               /* '<S22>/Output' */
+  uint8_T Output_DSTATE_d;             /* '<S25>/Output' */
+  uint8_T Output_DSTATE_o;             /* '<S16>/Output' */
 } DW_OpenLoopTestsAGV_T;
 
 /* Constant parameters (default storage) */
 typedef struct {
   /* Computed Parameter: Vector_Value
-   * Referenced by: '<S7>/Vector'
+   * Referenced by: '<S10>/Vector'
    */
   uint16_T Vector_Value[2];
 
   /* Computed Parameter: Vector_Value_g
-   * Referenced by: '<S8>/Vector'
+   * Referenced by: '<S11>/Vector'
    */
   uint16_T Vector_Value_g[2];
 } ConstP_OpenLoopTestsAGV_T;
@@ -113,9 +109,6 @@ struct tag_RTM_OpenLoopTestsAGV_T {
 /* Block signals and states (default storage) */
 extern DW_OpenLoopTestsAGV_T OpenLoopTestsAGV_DW;
 
-/* External data declarations for dependent source files */
-extern const uint16_T OpenLoopTestsAGV_U16GND;/* uint16_T ground */
-
 /* Constant parameters (default storage) */
 extern const ConstP_OpenLoopTestsAGV_T OpenLoopTestsAGV_ConstP;
 
@@ -134,19 +127,22 @@ extern RT_MODEL_OpenLoopTestsAGV_T *const OpenLoopTestsAGV_M;
 /*-
  * These blocks were eliminated from the model due to optimizations:
  *
- * Block '<Root>/Bias' : Unused code path elimination
- * Block '<S2>/FixPt Data Type Propagation' : Unused code path elimination
- * Block '<S10>/FixPt Data Type Duplicate' : Unused code path elimination
- * Block '<S11>/FixPt Data Type Duplicate1' : Unused code path elimination
- * Block '<S12>/Data Type Propagation' : Unused code path elimination
- * Block '<S13>/FixPt Data Type Duplicate' : Unused code path elimination
- * Block '<S14>/FixPt Data Type Duplicate1' : Unused code path elimination
- * Block '<S15>/Data Type Propagation' : Unused code path elimination
- * Block '<S16>/FixPt Data Type Duplicate' : Unused code path elimination
- * Block '<S17>/FixPt Data Type Duplicate1' : Unused code path elimination
- * Block '<Root>/Abs' : Eliminated since data is unsigned
- * Block '<S7>/Out' : Eliminate redundant signal conversion block
- * Block '<S8>/Out' : Eliminate redundant signal conversion block
+ * Block '<S16>/FixPt Data Type Propagation' : Unused code path elimination
+ * Block '<S19>/FixPt Data Type Duplicate' : Unused code path elimination
+ * Block '<S20>/FixPt Data Type Duplicate1' : Unused code path elimination
+ * Block '<S7>/Scope' : Unused code path elimination
+ * Block '<S22>/Data Type Propagation' : Unused code path elimination
+ * Block '<S23>/FixPt Data Type Duplicate' : Unused code path elimination
+ * Block '<S24>/FixPt Data Type Duplicate1' : Unused code path elimination
+ * Block '<S25>/Data Type Propagation' : Unused code path elimination
+ * Block '<S26>/FixPt Data Type Duplicate' : Unused code path elimination
+ * Block '<S27>/FixPt Data Type Duplicate1' : Unused code path elimination
+ * Block '<S12>/Abs' : Unused code path elimination
+ * Block '<S12>/Bitwise Operator2' : Unused code path elimination
+ * Block '<S12>/Rate Transition3' : Unused code path elimination
+ * Block '<S12>/Rate Transition4' : Unused code path elimination
+ * Block '<S10>/Out' : Eliminate redundant signal conversion block
+ * Block '<S11>/Out' : Eliminate redundant signal conversion block
  */
 
 /*-
@@ -164,23 +160,33 @@ extern RT_MODEL_OpenLoopTestsAGV_T *const OpenLoopTestsAGV_M;
  * Here is the system hierarchy for this model
  *
  * '<Root>' : 'OpenLoopTestsAGV'
- * '<S1>'   : 'OpenLoopTestsAGV/Compare To Constant'
- * '<S2>'   : 'OpenLoopTestsAGV/Counter Free-Running'
- * '<S3>'   : 'OpenLoopTestsAGV/Digital Output'
- * '<S4>'   : 'OpenLoopTestsAGV/Digital Output1'
- * '<S5>'   : 'OpenLoopTestsAGV/Digital Output2'
- * '<S6>'   : 'OpenLoopTestsAGV/Digital Output3'
- * '<S7>'   : 'OpenLoopTestsAGV/Repeating Sequence Stair'
- * '<S8>'   : 'OpenLoopTestsAGV/Repeating Sequence Stair1'
- * '<S9>'   : 'OpenLoopTestsAGV/Subsystem'
- * '<S10>'  : 'OpenLoopTestsAGV/Counter Free-Running/Increment Real World'
- * '<S11>'  : 'OpenLoopTestsAGV/Counter Free-Running/Wrap To Zero'
- * '<S12>'  : 'OpenLoopTestsAGV/Repeating Sequence Stair/LimitedCounter'
- * '<S13>'  : 'OpenLoopTestsAGV/Repeating Sequence Stair/LimitedCounter/Increment Real World'
- * '<S14>'  : 'OpenLoopTestsAGV/Repeating Sequence Stair/LimitedCounter/Wrap To Zero'
- * '<S15>'  : 'OpenLoopTestsAGV/Repeating Sequence Stair1/LimitedCounter'
- * '<S16>'  : 'OpenLoopTestsAGV/Repeating Sequence Stair1/LimitedCounter/Increment Real World'
- * '<S17>'  : 'OpenLoopTestsAGV/Repeating Sequence Stair1/LimitedCounter/Wrap To Zero'
+ * '<S1>'   : 'OpenLoopTestsAGV/ADC configuration'
+ * '<S2>'   : 'OpenLoopTestsAGV/CAN Address selection'
+ * '<S3>'   : 'OpenLoopTestsAGV/CAN BUS configuration'
+ * '<S4>'   : 'OpenLoopTestsAGV/Driver inhibit Inhibited if false'
+ * '<S5>'   : 'OpenLoopTestsAGV/Led output'
+ * '<S6>'   : 'OpenLoopTestsAGV/MPLAB Device Blocks configuration'
+ * '<S7>'   : 'OpenLoopTestsAGV/PWM for H bridge'
+ * '<S8>'   : 'OpenLoopTestsAGV/QEI configuration'
+ * '<S9>'   : 'OpenLoopTestsAGV/Relay activation via jumper'
+ * '<S10>'  : 'OpenLoopTestsAGV/Repeating Sequence Stair'
+ * '<S11>'  : 'OpenLoopTestsAGV/Repeating Sequence Stair1'
+ * '<S12>'  : 'OpenLoopTestsAGV/UART output '
+ * '<S13>'  : 'OpenLoopTestsAGV/CAN BUS configuration/Compare To Constant'
+ * '<S14>'  : 'OpenLoopTestsAGV/CAN BUS configuration/Subsystem'
+ * '<S15>'  : 'OpenLoopTestsAGV/Driver inhibit Inhibited if false/Digital Output3'
+ * '<S16>'  : 'OpenLoopTestsAGV/Led output/Counter Free-Running'
+ * '<S17>'  : 'OpenLoopTestsAGV/Led output/Digital Output1'
+ * '<S18>'  : 'OpenLoopTestsAGV/Led output/Digital Output2'
+ * '<S19>'  : 'OpenLoopTestsAGV/Led output/Counter Free-Running/Increment Real World'
+ * '<S20>'  : 'OpenLoopTestsAGV/Led output/Counter Free-Running/Wrap To Zero'
+ * '<S21>'  : 'OpenLoopTestsAGV/Relay activation via jumper/Digital Output'
+ * '<S22>'  : 'OpenLoopTestsAGV/Repeating Sequence Stair/LimitedCounter'
+ * '<S23>'  : 'OpenLoopTestsAGV/Repeating Sequence Stair/LimitedCounter/Increment Real World'
+ * '<S24>'  : 'OpenLoopTestsAGV/Repeating Sequence Stair/LimitedCounter/Wrap To Zero'
+ * '<S25>'  : 'OpenLoopTestsAGV/Repeating Sequence Stair1/LimitedCounter'
+ * '<S26>'  : 'OpenLoopTestsAGV/Repeating Sequence Stair1/LimitedCounter/Increment Real World'
+ * '<S27>'  : 'OpenLoopTestsAGV/Repeating Sequence Stair1/LimitedCounter/Wrap To Zero'
  */
 #endif                                 /* RTW_HEADER_OpenLoopTestsAGV_h_ */
 

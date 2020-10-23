@@ -14,9 +14,9 @@
  *
  * Code generated for Simulink model 'OpenLoopTestsAGV'.
  *
- * Model version                  : 1.30
+ * Model version                  : 1.34
  * Simulink Coder version         : 9.2 (R2019b) 18-Jul-2019
- * C/C++ source code generated on : Thu Oct 22 12:27:14 2020
+ * C/C++ source code generated on : Sat Oct 24 00:10:18 2020
  */
 
 #include "OpenLoopTestsAGV.h"
@@ -25,12 +25,12 @@
 /* Constant parameters (default storage) */
 const ConstP_OpenLoopTestsAGV_T OpenLoopTestsAGV_ConstP = {
   /* Computed Parameter: Vector_Value
-   * Referenced by: '<S7>/Vector'
+   * Referenced by: '<S10>/Vector'
    */
   { 3000U, 0U },
 
   /* Computed Parameter: Vector_Value_g
-   * Referenced by: '<S8>/Vector'
+   * Referenced by: '<S11>/Vector'
    */
   { 1U, 0U }
 };
