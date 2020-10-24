@@ -83,6 +83,8 @@
 #include "oc2.h"
 #include "interrupt_manager.h"
 #include "traps.h"
+#include "dma.h"
+#include "can1.h"
 #include "uart1.h"
 #include "tmr2.h"
 
@@ -94,7 +96,9 @@ void SYSTEM_Initialize(void)
     UART1_Initialize();
     OC1_Initialize();
     OC2_Initialize();
+    CAN1_Initialize();
     TMR2_Initialize();
+    DMA_Initialize();
     INTERRUPT_GlobalEnable();
     SYSTEM_CORCONModeOperatingSet(CORCON_MODE_PORVALUES);
 }

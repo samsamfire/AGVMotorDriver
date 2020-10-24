@@ -45,55 +45,38 @@
 /**
   Section: Included Files
 */
-#include "mcc_generated_files/system.h"
-#include "mcc_generated_files/pin_manager.h"
-#include <stdlib.h>
-#include <stdio.h>
 
-char * test ="Hello World\n";
-void print_word(char * buffer, int length)
-{
-    int i = 0;
-    for(i=0;i<length;i++)
-    {
-        UART1_Write(buffer[i]);
-    }
-}
+#include <stddef.h>                     // Defines NULL
+#include <stdbool.h>                    // Defines true
+#include <stdlib.h>                     // Defines EXIT_FAILURE
+#include "app.h"
 
-uint8_t hex_wheel = 0;
+
+
+
+
+
+
+
+
 
 int main(void)
 {
-    // initialize the device
-    SYSTEM_Initialize();
     
+    APP_Initialize();
     
-    IO_RA4_SetHigh();
     
     while (1)
     {
-        //print_word(test,14);
-        //UART1_Write("\r\n");
-        if(IO_RA1_GetValue() == 1)
-        {
-            IO_RA3_SetHigh();
-        }
+
+    
         
-        else{
-            IO_RA3_SetLow();
-        }
-        
-        hex_wheel =PORTBbits.RB12 + 2*PORTBbits.RB13 + 4*PORTBbits.RB14 + 8*PORTBbits.RB15;
-        hex_wheel =(~hex_wheel)&0x0F;
-        //OC2R = 0x900;
-        //OC2R= 0x1FFF;
-        //OC1R=0x1FFF;
-        //OC2R=0x1FFF;
+        APP_Tasks();
         
         
-        printf("Hex Wheel Value : %i %i %i %i %i\r\n",PORTBbits.RB12,PORTBbits.RB13,PORTBbits.RB14,PORTBbits.RB15,hex_wheel);
     }
-    return 1; 
+
+    return EXIT_FAILURE;
 }
 /**
  End of File

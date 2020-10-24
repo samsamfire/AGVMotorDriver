@@ -57,6 +57,8 @@
 #include "oc2.h"
 #include "interrupt_manager.h"
 #include "traps.h"
+#include "dma.h"
+#include "can1.h"
 #include "watchdog.h"
 #include "uart1.h"
 #include "tmr2.h"
