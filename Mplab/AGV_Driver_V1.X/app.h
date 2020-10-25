@@ -11,6 +11,9 @@
 #include "can_message.h"
 #include <stdlib.h>
 #include <stdio.h>
+#include "interrupts.h"
+#include "mcc_generated_files/tmr3.h"
+#include "mcc_generated_files/adc1.h"
 
 
 
@@ -22,7 +25,10 @@ typedef enum
 	APP_STATE_UPDATE_SENSORS,
 	APP_STATE_UPDATE_MOTOR,
 	APP_STATE_TRANSMIT_CAN,
-	APP_STATE_SEND_UART
+	APP_STATE_SEND_UART,
+	APP_STATE_ERROR,
+	APP_STATE_READ_BATTERY
+           
 
 } APP_STATES;
 
@@ -31,9 +37,15 @@ typedef struct
 {
 	APP_STATES state;
 	uint8_t canAddress;
-	float vel;
-	float pos;
-	float torque;
+	uint8_t sendCanMessages;
+	uint16_t motorPowerVoltage;
+	int16_t vel;
+	int16_t pos;
+	int16_t torque;
+	float reqvel;
+	float reqpos;
+	float reqtorque;
+	CAN_MSG_OBJ canMsg;
 	
 } APP_DATA;
 
@@ -50,7 +62,7 @@ void APP_Tasks(void);
 
 
 
-
+extern APP_DATA appData;
 
 
 

@@ -92,10 +92,10 @@ void DMA_Initialize(void)
     IFS0bits.DMA1IF = false;
     // Enabling Channel 1 Interrupt
 
-    // AMODE Register Indirect with Post-Increment mode; CHEN disabled; SIZE 16 bit; DIR Reads from peripheral address, writes to RAM address; NULLW disabled; HALF Initiates interrupt when all of the data has been moved; MODE Continuous, Ping-Pong modes are disabled; 
-    DMA2CON= 0x00 & 0x7FFF; //Enable DMA Channel later;
-    // IRQSEL INT0; FORCE disabled; 
-    DMA2REQ= 0x00;
+    // AMODE Peripheral Indirect Addressing mode; CHEN disabled; SIZE 16 bit; DIR Reads from peripheral address, writes to RAM address; NULLW disabled; HALF Initiates interrupt when all of the data has been moved; MODE Continuous, Ping-Pong modes are disabled; 
+    DMA2CON= 0x20 & 0x7FFF; //Enable DMA Channel later;
+    // IRQSEL ADC1; FORCE disabled; 
+    DMA2REQ= 0x0D;
     // STA 0; 
     DMA2STAH= 0x00;
     // STA 4096; 
@@ -106,8 +106,8 @@ void DMA_Initialize(void)
     DMA2STBL= 0x00;
     // PAD 0; 
     DMA2PAD= 0x00;
-    // CNT 0; 
-    DMA2CNT= 0x00;
+    // CNT 7; 
+    DMA2CNT= 0x07;
     // Clearing Channel 2 Interrupt Flag;
     IFS1bits.DMA2IF = false;
     // Enabling Channel 2 Interrupt

@@ -79,25 +79,29 @@
 #include "clock.h"
 #include "system.h"
 #include "system_types.h"
-#include "oc1.h"
 #include "oc2.h"
+#include "oc1.h"
+#include "adc1.h"
+#include "uart1.h"
 #include "interrupt_manager.h"
 #include "traps.h"
-#include "dma.h"
 #include "can1.h"
-#include "uart1.h"
 #include "tmr2.h"
+#include "tmr3.h"
+#include "dma.h"
 
 void SYSTEM_Initialize(void)
 {
     PIN_MANAGER_Initialize();
-    INTERRUPT_Initialize();
     CLOCK_Initialize();
+    INTERRUPT_Initialize();
     UART1_Initialize();
     OC1_Initialize();
-    OC2_Initialize();
     CAN1_Initialize();
     TMR2_Initialize();
+    ADC1_Initialize();
+    TMR3_Initialize();
+    OC2_Initialize();
     DMA_Initialize();
     INTERRUPT_GlobalEnable();
     SYSTEM_CORCONModeOperatingSet(CORCON_MODE_PORVALUES);

@@ -32,4 +32,7 @@ float limitPWM(float val){
 	{
 		return MAX_PWM_DUTY_ALLOWED;
 	}
+	else{
+		return val;
+	}
 }	

@@ -2,36 +2,51 @@
 
 
 
+
+
+CAN_MSG_OBJ message_rec;
+
 APP_DATA appData;
 
-CAN_MSG_OBJ message;
-
-uint8_t hex_wheel = 0;
-
-uint8_t to_send[4] = {178,203,15,18};
+int i;
 
 
 
 void APP_Initialize(void){
 
-	SYSTEM_Initialize();  //System initialize is defined by MCC when configuring the used modules
-    CAN1_TransmitEnable(); //Enable CAN transmit and receive operations
-    CAN1_ReceiveEnable();
-    IO_RA4_SetHigh();
-
-
-    //Calculate Can bus address given by Hex Switch Wheel
+	//System initialize is defined by MCC when configuring the used modules
+	SYSTEM_Initialize();  
+   
+    
+	//Calculate Can bus address given by Hex Switch Wheel
+	//CAN address cannot be changed at runtime
     appData.canAddress = ~(PORTBbits.RB12 + 2*PORTBbits.RB13 + 4*PORTBbits.RB14 + 8*PORTBbits.RB15)&(0x0F);
+  	//Filter messages so it reads only messages that have its hex address
+  	setCanFilter();
+
+  	//Enable CAN transmit and receive operations
+    CAN1_ReceiveEnable();
+    CAN1_TransmitEnable();
+    //Enable analog to digital conversion
+    ADC1_Enable();
+    IO_RA4_SetHigh();
+    
+    //Timers initialization
+    TMR3_SetInterruptHandler(&Tmr3_interrupt);
+    TMR3_Start();
 
 
-    //Initial app state
-    appData.state = APP_STATE_TRANSMIT_CAN;
 
-    message.field.frameType = CAN_FRAME_DATA; //Data transfer type
-	message.field.idType = CAN_FRAME_STD; //Regular id 
-	message.field.dlc = CAN_DLC_4; //transfer 4 bytes
-	message.msgId = ADDRESS_REQ_ID; //Message id
-	message.data = &to_send[0]; //Data to send
+
+   
+    //Testing
+
+    appData.pos = 17;
+    appData.vel = 20;
+    appData.torque = 25;
+
+    appData.sendCanMessages = 0;
+
 
 
 }
@@ -56,6 +71,8 @@ void APP_Tasks(void){
         	break;
         }
 
+
+
         case APP_STATE_UPDATE_MOTOR :
         {
         	LATAbits.LATA3 = PORTAbits.RA1; // Relay is controlled by RA1 (jumper)
@@ -66,19 +83,66 @@ void APP_Tasks(void){
         	break;
         }
 
+
+
+
         case APP_STATE_TRANSMIT_CAN:
         {
-        	CAN1_Transmit(CAN_PRIORITY_HIGH,&message);
+        	//appData.sendCanMessages is interrupt driven at a frequency ginven by TMR2
+
+        	if(appData.sendCanMessages == 1)
+        	{
+        		//Send CAN data
+        		sendPosVelTorque(appData.pos, appData.vel, appData.torque);
+        		appData.sendCanMessages = 0;
+        	}
+        	
         	appData.state = APP_STATE_SEND_UART;
         	break;
         }
 
+
+
+
         case APP_STATE_SEND_UART:
         {
-    
-			appData.state = APP_STATE_UPDATE_SENSORS;
+    		//printf("Number of can messages received : %i \r\n",CAN1_ReceivedMessageCountGet());
+			//printf("%i\r\n", C1RXF1SID);
+			//CAN1_Receive(&message_rec);	
+
+			/*ADC1_SoftwareTriggerEnable();
+			for(i=0;i <1000;i++)
+	        {
+	        }
+	        ADC1_SoftwareTriggerDisable();
+	        */
+        	//while(!ADC1_IsConversionComplete(channel_AN0));
+
+			printf("Conversion result : %u \r\n",appData.motorPowerVoltage);
+
+			appData.state = APP_STATE_READ_BATTERY;
 			break;
 		}
+
+		case APP_STATE_READ_BATTERY:
+		{
+			/*Autosampling is activated
+			Voltage is 10 bit unsigned decimal
+			Measured voltage is 1/10th of real voltage via voltage divider*/
+			
+			appData.motorPowerVoltage = ADC1_ConversionResultGet(channel_AN0);
+			appData.state = APP_STATE_UPDATE_SENSORS;
+
+			break;
+		}
+
+        
+        case APP_STATE_ERROR:
+        {
+            break;
+        }
+
+
 
 
 
