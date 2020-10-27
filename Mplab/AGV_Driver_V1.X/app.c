@@ -5,6 +5,7 @@
 
 
 CAN_MSG_OBJ message_rec;
+CAN_MSG_OBJ message_receive;
 
 APP_DATA appData;
 
@@ -34,6 +35,7 @@ void APP_Initialize(void){
     //Timers initialization
     TMR3_SetInterruptHandler(&Tmr3_interrupt);
     TMR3_Start();
+    LATAbits.LATA3=0;
 
 
 
@@ -76,7 +78,7 @@ void APP_Tasks(void){
         case APP_STATE_UPDATE_MOTOR :
         {
         	// Relay is controlled by RA1 (jumper)
-        	LATAbits.LATA3 = PORTAbits.RA1; 
+        	//LATAbits.LATA3 = PORTAbits.RA1; 
 
         	setDuty(100);
 
@@ -98,8 +100,23 @@ void APP_Tasks(void){
         		appData.sendCanMessages = 0;
         	}
         	
-        	appData.state = APP_STATE_SEND_UART;
-        	break;
+        	appData.state = APP_STATE_READ_CAN;
+            break;
+        }
+
+        case APP_STATE_READ_CAN:
+        {
+
+            //Read CAN
+
+
+            CAN1_Receive(&message_receive);
+            if(message_receive.data[0]==55){
+                LATAbits.LATA3 = 1;
+            }
+
+            appData.state = APP_STATE_SEND_UART;
+            break;
         }
 
 

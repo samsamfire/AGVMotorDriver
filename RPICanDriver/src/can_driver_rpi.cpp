@@ -1,15 +1,27 @@
 #include "can_driver_rpi.h"
 //#include <iostream>
-#include <string>
-#include "stdio.h"
-#include "can_message.h"
 
-using namespace std;
+
+
+/*TODO
+-Add security to switch off motors if connection is lost
+*/
+
+
+
+
 //Constructor
-void MotorCAN::MotorCan(){
-
+MotorCAN::MotorCAN(){
+	int i;
 	//Create a motor can object
 	memset(&frame, 0, sizeof(struct can_frame));
+
+	//All motors are off to begin with 
+
+	for (i = 0; i < 4; ++i)
+	{
+		motors_state[i] = false;
+	}
 
 }
 
@@ -81,7 +93,9 @@ int MotorCAN::startMotors(){
 
 		if (motor_addresses[i] != -1)
 		{
-			printf("Starting motor %i at address %i \r\n",i,motor_addresses[i]);
+			//should check for ack
+			motors_state[i] = true;
+			printf("Starting motor %s at address %i \r\n",motor_names[i],i);
 			write(s, &frame, sizeof(frame));
 		}
 
@@ -103,7 +117,9 @@ int MotorCAN::stopMotors(){
 		frame.data[0] = 66;
 		if (motor_addresses[i] != -1)
 		{
-			printf("Stoping motor %i at address %i \r\n",i,motor_addresses[i]);
+			//Should check for ack
+			motors_state[i]=false;
+			printf("Stoping motor %s at address %i \r\n",motor_names[i],i);
 			write(s, &frame, sizeof(frame));
 		}
 
@@ -122,6 +138,38 @@ void MotorCAN::setAddresses(int fl, int fr, int br, int bl){
 	motor_addresses[3] = bl;
 }
 
+int MotorCAN::setVel(uint8_t motor_num, int16_t vel){
+
+	frame.can_id = (motor_addresses[motor_num]<<7)|SET_VEL_ID;
+	frame.can_dlc = 2;
+	frame.data[0] = vel & 0xFF;
+	frame.data[1] = vel >> 8;
+
+	nbytes = write(s, &frame, sizeof(frame)); 
+    if(nbytes != sizeof(frame)) {
+        printf("Send Error frame[0]!\r\n");
+        //system("sudo ifconfig can0 down");
+        return 1;
+    }
+
+	return 0;
+
+}
+
+int MotorCAN::getHdl(){
+
+	return s;
+}
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -131,12 +179,20 @@ void MotorCAN::setAddresses(int fl, int fr, int br, int bl){
 int main(int argc, char const *argv[])
 {
 	/* code */
+	int s;
 	MotorCAN m_can;
 	m_can.startConnection(500000);
+	s=m_can.getHdl();
+	Motor m1(s,5);
+	m1.start(); 
 
-	m_can.setAddresses(1, 2, 3, 4);
-	m_can.startMotors();
-	m_can.stopMotors();
+
+
+	//m_can.setAddresses(1, 2, 3, 4);
+	//m_can.startMotors();
+	//m_can.stopMotors();
+
+	m_can.stopConnection();
 
 
 
