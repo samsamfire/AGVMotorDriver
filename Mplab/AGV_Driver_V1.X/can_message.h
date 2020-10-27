@@ -8,9 +8,12 @@
 #include "mcc_generated_files/system.h"
 #include "app.h"
 
-
+#define START_ID 33;
 
 #define ADDRESS_REQ_ID (appData.canAddress << 7)|1
+
+#define START_REQ_ID (appData.canAddress <<7)|33;
+#define STOP_REQ_ID (appData.canAddress <<7)|44;
 
 #define POS_REQ_ID (appData.canAddress << 7)|10; 
 #define VEL_REQ_ID (appData.canAddress << 7)|11;

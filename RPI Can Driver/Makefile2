@@ -1,0 +1,19 @@
+CC=gcc
+CFLAGS=-W -Wall -ansi -pedantic
+LDFLAGS=
+EXEC=can_driver_rpi
+
+all: $(EXEC)
+
+can_driver_rpi: can_driver_rpi.o
+	$(CC) -o can_driver_rpi can_driver_rpi.o $(LDFLAGS)
+
+
+can_driver_rpi.o: can_driver_rpi.cpp can_driver_rpi.h
+	$(CC) -o can_driver_rpi.o -c can_driver_rpi.cpp $(CFLAGS)
+
+clean:
+	rm -rf *.o
+
+mrproper: clean
+	rm -rf $(EXEC)
