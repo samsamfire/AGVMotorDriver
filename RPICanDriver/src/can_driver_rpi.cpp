@@ -9,15 +9,16 @@ using namespace std;
 void MotorCAN::MotorCan(){
 
 	//Create a motor can object
+	memset(&frame, 0, sizeof(struct can_frame));
 
 }
 
 int MotorCAN::startConnection(int bitrate){
 
 	char buff[100];
-	memset(&frame, 0, sizeof(struct can_frame));
+	
 
-	sprintf(buff,"sudo ip link set can0 type can %i",bitrate);
+	sprintf(buff,"sudo ip link set can0 type can bitrate %i",bitrate);
 	system(buff);
     system("sudo ifconfig can0 up");
 
