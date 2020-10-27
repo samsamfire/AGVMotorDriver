@@ -6,9 +6,13 @@
             <file>file:/D:/Projet_Smart_Factory/AGV_Driver/Mplab/AGV_Driver_V1.X/mcc_generated_files/oc2.h</file>
             <file>file:/D:/Projet_Smart_Factory/AGV_Driver/Mplab/AGV_Driver_V1.X/mcc_generated_files/can1.h</file>
             <file>file:/D:/Projet_Smart_Factory/AGV_Driver/Mplab/AGV_Driver_V1.X/mcc_generated_files/can_types.h</file>
+            <file>file:/D:/Projet_Smart_Factory/AGV_Driver/Mplab/AGV_Driver_V1.X/motor_driver.c</file>
             <file>file:/D:/Projet_Smart_Factory/AGV_Driver/Mplab/AGV_Driver_V1.X/mcc_generated_files/can1.c</file>
+            <file>file:/D:/Projet_Smart_Factory/AGV_Driver/Mplab/AGV_Driver_V1.X/app.h</file>
+            <file>file:/D:/Projet_Smart_Factory/AGV_Driver/Mplab/AGV_Driver_V1.X/can_message.c</file>
             <file>file:/D:/Projet_Smart_Factory/AGV_Driver/Mplab/AGV_Driver_V1.X/mcc_generated_files/can_module_features.h</file>
             <file>file:/D:/Projet_Smart_Factory/AGV_Driver/Mplab/AGV_Driver_V1.X/main.c</file>
+            <file>file:/D:/Projet_Smart_Factory/AGV_Driver/Mplab/AGV_Driver_V1.X/app.c</file>
             <file>file:/D:/Projet_Smart_Factory/AGV_Driver/Mplab/AGV_Driver_V1.X/mcc_generated_files/tmr2.c</file>
         </group>
     </open-files>

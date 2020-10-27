@@ -41,8 +41,8 @@ void APP_Initialize(void){
    
     //Testing
 
-    appData.pos = 17;
-    appData.vel = 20;
+    appData.pos_sensor = 17;
+    appData.vel_sensor = 20;
     appData.torque = 25;
 
     appData.sendCanMessages = 0;
@@ -75,7 +75,8 @@ void APP_Tasks(void){
 
         case APP_STATE_UPDATE_MOTOR :
         {
-        	LATAbits.LATA3 = PORTAbits.RA1; // Relay is controlled by RA1 (jumper)
+        	// Relay is controlled by RA1 (jumper)
+        	LATAbits.LATA3 = PORTAbits.RA1; 
 
         	setDuty(100);
 
@@ -93,7 +94,7 @@ void APP_Tasks(void){
         	if(appData.sendCanMessages == 1)
         	{
         		//Send CAN data
-        		sendPosVelTorque(appData.pos, appData.vel, appData.torque);
+        		sendPosVelTorque(appData.pos_sensor, appData.vel_sensor, appData.torque);
         		appData.sendCanMessages = 0;
         	}
         	
@@ -107,16 +108,8 @@ void APP_Tasks(void){
         case APP_STATE_SEND_UART:
         {
     		//printf("Number of can messages received : %i \r\n",CAN1_ReceivedMessageCountGet());
-			//printf("%i\r\n", C1RXF1SID);
 			//CAN1_Receive(&message_rec);	
 
-			/*ADC1_SoftwareTriggerEnable();
-			for(i=0;i <1000;i++)
-	        {
-	        }
-	        ADC1_SoftwareTriggerDisable();
-	        */
-        	//while(!ADC1_IsConversionComplete(channel_AN0));
 
 			printf("Conversion result : %u \r\n",appData.motorPowerVoltage);
 

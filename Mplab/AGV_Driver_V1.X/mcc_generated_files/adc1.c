@@ -63,8 +63,8 @@ void ADC1_Initialize (void)
 {
     // ASAM enabled; ADDMABM disabled; ADSIDL disabled; DONE disabled; SIMSAM Sequential; FORM Absolute decimal result, unsigned, right-justified; SAMP disabled; SSRC Internal counter ends sampling and starts conversion; AD12B 10-bit; ADON enabled; SSRCG disabled; 
     AD1CON1 = 0x80E4;
-    // CSCNA enabled; VCFG0 AVDD; VCFG1 AVSS; ALTS disabled; BUFM disabled; SMPI Generates interrupt after completion of every 3rd sample/conversion operation; CHPS 1 Channel; 
-    AD1CON2 = 0x408;
+    // CSCNA disabled; VCFG0 AVDD; VCFG1 AVSS; ALTS disabled; BUFM disabled; SMPI Generates interrupt after completion of every sample/conversion operation; CHPS 1 Channel; 
+    AD1CON2 = 0x00;
     // SAMC 10; ADRC FOSC/2; ADCS 7; 
     AD1CON3 = 0xA07;
     // CH0SA AN0; CH0SB AN0; CH0NB AVSS; CH0NA AVSS; 

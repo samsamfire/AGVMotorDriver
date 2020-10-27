@@ -39,8 +39,8 @@ typedef struct
 	uint8_t canAddress;
 	uint8_t sendCanMessages;
 	uint16_t motorPowerVoltage;
-	int16_t vel;
-	int16_t pos;
+	int16_t vel_sensor;
+	int16_t pos_sensor;
 	int16_t torque;
 	float reqvel;
 	float reqpos;
