@@ -1,17 +1,24 @@
-#include "can_driver_rpi.h"
+#include "Motor_Driver_DSPIC33.h"
 
 
 
-Motor::Motor(int socket_hdl, int motor_address){
+Motor::Motor(int motor_address){
 	//Add constructor stuff
 	this->address = motor_address;
-	this->s = socket_hdl;
+	
 }
 
 bool Motor::getState(){
 
 	return state;
 }
+
+bool Motor::setHdl(int s){
+
+	this->s=s;
+	return true;
+}
+
 
 void Motor::readPos(){
 	//Add some filtering to get right motor

@@ -1,5 +1,5 @@
-#ifndef H_CAN_DRIVER_RPI
-#define H_CAN_DRIVER_RPI
+#ifndef H_MOTOR_DRIVER
+#define H_MOTOR_DRIVER
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -22,19 +22,22 @@
 class Motor
 {
 	public:
-		Motor(int socket_handle,int motor_addess);
+		Motor(int motor_addess);
 		void readVelEncoder();
 		void readPosEncoder();
 		void readPos(); 
 		void readVel();
 		void readPosVel();
 		void readPosVelEncoder();
+
 		void start();
 		void stop();
 
 		void writeVel(int16_t vel);
 		void writePos(uint16_t pos);
 		bool getState();
+
+		bool setHdl(int s);
 		
 
 
@@ -63,48 +66,6 @@ class Motor
 
 
 
-
-
-class MotorCAN
-{
-
-	public:
-		MotorCAN();
-		int init();
-		int getSpeed();
-
-		int setVel(uint8_t motor_num, int16_t vel);
-
-		int startConnection(int bitrate);
-		int stopConnection();
-
-		int on();
-		int off();
-
-		int startMotors();
-		int stopMotors();
-		
-		int setMode();
-		int getMode();
-
-		int getState(); //On or off of each motor
-
-		void setAddresses(int fl, int fr, int br, int bl); //-1 ifdon't care 
-		int getHdl();
-
-
-	private:
-		int ret;
-	    int s, nbytes;
-	    struct sockaddr_can addr;
-	    struct ifreq ifr;
-	    struct can_frame frame;
-
-	    bool motors_state[4];
-	    int motor_addresses[4]; //Sens trigo : front left, front right, back right, back left
-	    char * motor_names[4] = {"front left","front right","back right","back left"};
-	    
-};
 
 
 

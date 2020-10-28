@@ -1,7 +1,17 @@
 #ifndef  H_AGV_DRIVER
 #define H_AGV_DRIVER
 
-#include "can_driver_rpi.h"
+#include "Motor_Driver_DSPIC33.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+#include <net/if.h>
+#include <sys/ioctl.h>
+#include <sys/socket.h>
+#include <linux/can.h>
+#include <linux/can/raw.h>
+#include <stdint.h>
 
 #define Rr 10 //Rayon de la roue
 #define Z 70 //Rapport de reduction
@@ -30,26 +40,37 @@ class AGV
 public:
 
 	AGV(); //fl fr br bl;
-	AGV(int ad_fl, int ad_fr, int ad_br, int ad_bl, int s): 
-	m{Motor(s,ad_fl),Motor(s,ad_fr),Motor(s,ad_br),Motor(s,ad_bl)}{};
+	AGV(int ad_fl, int ad_fr, int ad_br, int ad_bl): 
+	m{Motor(ad_fl),Motor(ad_fr),Motor(ad_br),Motor(ad_bl)}{};
 
 	void setMode();
 	void writePos();
 
 	void writeVel(double vel[3]);
-
 	void start();
 	void stop();
 
+	bool openBus(int bitrate);
+	bool closeBus();
 
 
-	//
 
 
 private:
 	//Declare the 4 motor drivers
 
 	Motor m[4];
+
+	double vel[3],pos[3];
+
+	//CAN bus info
+
+	int ret;
+    int s, nbytes;
+    struct sockaddr_can addr;
+    struct ifreq ifr;
+    struct can_frame frame;
+
 
 
 
