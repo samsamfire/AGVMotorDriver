@@ -5,9 +5,11 @@
 
 
 CAN_MSG_OBJ message_rec;
-CAN_MSG_OBJ message_receive;
+
 
 APP_DATA appData;
+
+uint8_t cmd_id;
 
 int i;
 
@@ -42,7 +44,9 @@ void APP_Initialize(void){
 
    
     //Testing
-
+    appData.reqPos = 0;
+    appData.reqVel = 0;
+    appData.on = 0;
     appData.pos_sensor = 17;
     appData.vel_sensor = 20;
     appData.torque = 25;
@@ -58,6 +62,10 @@ void APP_Tasks(void){
 
 	//State machine
 
+	uint8_t data[8] = {0};
+    CAN_MSG_OBJ msg_rec;
+    msg_rec.data = data;
+
 	switch(appData.state){
 
 		case APP_STATE_INIT : 
@@ -69,6 +77,13 @@ void APP_Tasks(void){
 
         case APP_STATE_UPDATE_SENSORS :
         {
+        	appData.state = APP_STATE_UPDATE_RELAY;
+        	break;
+        }
+
+        case APP_STATE_UPDATE_RELAY :
+        {
+        	LATAbits.LATA3 = appData.on;
         	appData.state = APP_STATE_UPDATE_MOTOR;
         	break;
         }
@@ -80,7 +95,7 @@ void APP_Tasks(void){
         	// Relay is controlled by RA1 (jumper)
         	//LATAbits.LATA3 = PORTAbits.RA1; 
 
-        	setDuty(100);
+        	setDuty(appData.reqVel);
 
 			appData.state = APP_STATE_TRANSMIT_CAN;
         	break;
@@ -96,7 +111,7 @@ void APP_Tasks(void){
         	if(appData.sendCanMessages == 1)
         	{
         		//Send CAN data
-        		sendPosVelTorque(appData.pos_sensor, appData.vel_sensor, appData.torque);
+        		//sendPosVelTorque(appData.pos_sensor, appData.vel_sensor, appData.torque);
         		appData.sendCanMessages = 0;
         	}
         	
@@ -109,11 +124,12 @@ void APP_Tasks(void){
 
             //Read CAN
 
-
-            CAN1_Receive(&message_receive);
-            if(message_receive.data[0]==55){
-                LATAbits.LATA3 = 1;
-            }
+           /* if(CAN1_ReceivedMessageCountGet()>0){
+                CAN1_Receive(&message_receive);
+                if(message_receive.data[0]==55){
+                    LATAbits.LATA3 = 1;
+                }
+            }*/
 
             appData.state = APP_STATE_SEND_UART;
             break;
@@ -125,10 +141,21 @@ void APP_Tasks(void){
         case APP_STATE_SEND_UART:
         {
     		//printf("Number of can messages received : %i \r\n",CAN1_ReceivedMessageCountGet());
-			//CAN1_Receive(&message_rec);	
+			//printf("Id of message : %i \r\n",message_receive.msgId);
+			// if(CAN1_ReceivedMessageCountGet()>0){
+			// 	printf("Received a message\r\n" );
+			// 	if(true == CAN1_Receive(&msg_rec)){
+			// 		printf("Read message successful\r\n");
+			// 		cmd_id= msg_rec.msgId&0b00001111111;
+			// 		printf("Command ID : %i \r\n",cmd_id);
+			// 	}
+			// 	else{
+			// 		printf("Read unsuccsessful\r\n");
+			// 	}
+			// }
 
-
-			printf("Conversion result : %u \r\n",appData.motorPowerVoltage);
+            
+			//printf("Conversion result : %u \r\n",appData.motorPowerVoltage);
 
 			appData.state = APP_STATE_READ_BATTERY;
 			break;

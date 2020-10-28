@@ -55,3 +55,12 @@ void Motor::stop(){
 	frame.data[0] = 44;
 	write(s, &frame, sizeof(frame));
 }
+
+void Motor::writeVel(int16_t vel){
+	frame.can_id = (address << 7) | SET_VEL_ID ;
+	frame.can_dlc = 2;
+	frame.data[0] = vel & 0xFF;
+	frame.data[1] = vel >> 8;
+	write(s,&frame,sizeof(frame));
+
+}

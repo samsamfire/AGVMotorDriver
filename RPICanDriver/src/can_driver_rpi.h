@@ -32,6 +32,8 @@ class Motor
 		void start();
 		void stop();
 
+		void writeVel(int16_t vel);
+
 
 	private:
 		int16_t vel;

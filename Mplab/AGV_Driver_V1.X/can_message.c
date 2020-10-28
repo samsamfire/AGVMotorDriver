@@ -4,27 +4,27 @@
 
 
 
-CAN_TX_MSG_REQUEST_STATUS sendPosVelTorque(uint16_t pos, int16_t vel, uint16_t torque){
+// CAN_TX_MSG_REQUEST_STATUS sendPosVelTorque(uint16_t pos, int16_t vel, uint16_t torque){
 	
-	//Create CAN message
-	CAN_MSG_OBJ canMessage;
-	int16_t data[3];
+// 	//Create CAN message
+// 	CAN_MSG_OBJ canMessage;
+// 	int16_t data[3];
 
-	data[0] = pos;
-	data[1] = vel;
-	data[2] = torque;
+// 	data[0] = pos;
+// 	data[1] = vel;
+// 	data[2] = torque;
 
-	canMessage.field.frameType = CAN_FRAME_DATA;
-	canMessage.field.idType = CAN_FRAME_STD;
-	canMessage.field.dlc = CAN_DLC_6;
-	canMessage.msgId = POS_VEL_TORQUE_REQ_ID;
+// 	canMessage.field.frameType = CAN_FRAME_DATA;
+// 	canMessage.field.idType = CAN_FRAME_STD;
+// 	canMessage.field.dlc = CAN_DLC_6;
+// 	canMessage.msgId = POS_VEL_TORQUE_REQ_ID;
 
-	canMessage.data = (uint8_t *)&data[0];
+// 	canMessage.data = (uint8_t *)&data[0];
 
-	return CAN1_Transmit(CAN_PRIORITY_HIGH, &canMessage);
+// 	return CAN1_Transmit(CAN_PRIORITY_HIGH, &canMessage);
 
 
-}
+// }
 
 void setCanFilter(){
 
@@ -61,4 +61,10 @@ void setCanFilter(){
 
 
 
+}
+
+
+uint8_t getCmdId(CAN_MSG_OBJ * msgRx){
+
+    return (msgRx->msgId) & 0b00001111111;
 }

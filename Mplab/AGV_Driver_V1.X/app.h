@@ -22,6 +22,7 @@
 typedef enum
 {
 	APP_STATE_INIT = 0,
+	APP_STATE_UPDATE_RELAY,
 	APP_STATE_UPDATE_SENSORS,
 	APP_STATE_UPDATE_MOTOR,
 	APP_STATE_TRANSMIT_CAN,
@@ -43,10 +44,12 @@ typedef struct
 	int16_t vel_sensor;
 	int16_t pos_sensor;
 	int16_t torque;
-	float reqvel;
-	float reqpos;
-	float reqtorque;
+	int16_t reqVel;
+	uint16_t reqPos;
+	uint16_t reqtorque;
 	CAN_MSG_OBJ canMsg;
+	uint8_t on;
+	uint8_t mode;
 	
 } APP_DATA;
 

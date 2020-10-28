@@ -184,7 +184,9 @@ int main(int argc, char const *argv[])
 	m_can.startConnection(500000);
 	s=m_can.getHdl();
 	Motor m1(s,5);
-	m1.start(); 
+	m1.start();
+
+	m1.writeVel(20);
 
 
 
