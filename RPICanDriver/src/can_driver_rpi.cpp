@@ -184,12 +184,14 @@ int main(int argc, char const *argv[])
 	int s;
 	MotorCAN m_can;
 
-	AGV agv_robot(5,6,-1,-1,s);
+	
 
 
 	m_can.startConnection(500000);
 	s=m_can.getHdl();
 
+	AGV agv_robot(5,6,-1,-1,s);
+	
 	agv_robot.start();
 	usleep(2000000);
 	agv_robot.stop();
