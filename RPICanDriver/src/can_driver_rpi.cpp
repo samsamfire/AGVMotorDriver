@@ -1,4 +1,5 @@
 #include "can_driver_rpi.h"
+#include "AGV_Driver.h"
 //#include <iostream>
 
 
@@ -182,23 +183,18 @@ int main(int argc, char const *argv[])
 	int i;
 	int s;
 	MotorCAN m_can;
+
+	AGV agv_robot(5,6,-1,-1,s);
+
+
 	m_can.startConnection(500000);
 	s=m_can.getHdl();
-	Motor m1(s,5);
-	m1.start();
 
-	for (i = 0; i < 11; ++i)
-	{
-		m1.writeVel(i*10);
-		usleep(1000000);
-	}
-	
-	m1.stop();
+	agv_robot.start();
+	usleep(2000000);
+	agv_robot.stop();
 
 
-	//m_can.setAddresses(1, 2, 3, 4);
-	//m_can.startMotors();
-	//m_can.stopMotors();
 
 	m_can.stopConnection();
 

@@ -34,6 +34,7 @@ class Motor
 
 		void writeVel(int16_t vel);
 		void writePos(uint16_t pos);
+		bool getState();
 		
 
 
@@ -57,10 +58,6 @@ class Motor
 
 
 		//std::string name;
-
-
-
-
 
 };
 

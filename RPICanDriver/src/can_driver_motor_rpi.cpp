@@ -8,6 +8,11 @@ Motor::Motor(int socket_hdl, int motor_address){
 	this->s = socket_hdl;
 }
 
+bool Motor::getState(){
+
+	return state;
+}
+
 void Motor::readPos(){
 	//Add some filtering to get right motor
 	read(s, &frame, sizeof(frame));
