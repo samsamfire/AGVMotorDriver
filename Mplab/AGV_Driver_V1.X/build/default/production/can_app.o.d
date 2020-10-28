@@ -12,4 +12,6 @@ mcc_generated_files/can_types.h  \
 can_message.h  \
 interrupts.h  \
 mcc_generated_files/tmr3.h  \
- mcc_generated_files/adc1.h 
+ mcc_generated_files/adc1.h  \
+mcc_generated_files/oc1.h  \
+ mcc_generated_files/oc2.h 

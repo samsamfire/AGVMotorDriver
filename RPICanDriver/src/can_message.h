@@ -15,6 +15,8 @@
 #define SET_POS_ID 11
 #define GET_POS_ID 21
 
+#define POS_VEL_TORQUE_SENS_ID 30
+
 
 
 

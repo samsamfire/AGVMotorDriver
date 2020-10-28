@@ -6,6 +6,8 @@
 
 
 
+
+
 typedef enum
 {
 	CAN_APP_STATE_INIT=0,
@@ -25,6 +27,7 @@ typedef struct
 	uint8_t dataRx[8];
 	uint8_t dataTx[8];
 	uint8_t cmdId;
+	uint8_t sendCanMessages;
 	
 	
 } CAN_APP_DATA;
@@ -35,7 +38,7 @@ void CAN_APP_Tasks();
 
 
 
-
+extern CAN_APP_DATA cappData;
 
 
 

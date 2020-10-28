@@ -59,12 +59,12 @@ void CAN_APP_Tasks(){
 
 						case SET_VEL_ID :
 						{
-							appData.reqVel = cappData.dataRx[0] + cappData.dataRx[1]<<8;
+							appData.reqVel = (cappData.dataRx[0]) + (cappData.dataRx[1]<<8);
 						}
 
 						case SET_POS_ID :
 						{
-							appData.reqPos = cappData.dataRx[0] + cappData.dataRx[1]<<8;
+							appData.reqPos = (cappData.dataRx[0]) + (cappData.dataRx[1]<<8);
 						}
 
 						case SET_MODE_ID :
@@ -89,6 +89,15 @@ void CAN_APP_Tasks(){
 
 		case CAN_APP_STATE_TRANSMIT :
 		{
+			//Check whether it's time to send
+			if (cappData.sendCanMessages == 1)
+			{
+				
+				sendPosVelTorque(0,0,0,&cappData.msgTx);
+				cappData.sendCanMessages = 0;
+
+			}
+
 			cappData.state = CAN_APP_STATE_RECEIVE;
 			break;
 		}

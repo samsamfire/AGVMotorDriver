@@ -33,6 +33,8 @@ class Motor
 		void stop();
 
 		void writeVel(int16_t vel);
+		void writePos(uint16_t pos);
+		
 
 
 	private:

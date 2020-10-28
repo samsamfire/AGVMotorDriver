@@ -18,7 +18,15 @@ int i;
 void APP_Initialize(void){
 
 	//System initialize is defined by MCC when configuring the used modules
+
 	SYSTEM_Initialize();  
+
+	OC1_Start();
+	OC2_Start();
+	OC1RS = 20000;
+	OC2RS=20000;
+	
+
    
     
 	//Calculate Can bus address given by Hex Switch Wheel
@@ -37,9 +45,8 @@ void APP_Initialize(void){
     //Timers initialization
     TMR3_SetInterruptHandler(&Tmr3_interrupt);
     TMR3_Start();
+    //TMR2_Start();
     LATAbits.LATA3=0;
-
-
 
 
    
@@ -47,11 +54,11 @@ void APP_Initialize(void){
     appData.reqPos = 0;
     appData.reqVel = 0;
     appData.on = 0;
-    appData.pos_sensor = 17;
-    appData.vel_sensor = 20;
-    appData.torque = 25;
+    appData.sensPos = 17;
+    appData.sensVel = 20;
+    appData.sensTorque = 25;
 
-    appData.sendCanMessages = 0;
+
 
 
 
@@ -83,6 +90,9 @@ void APP_Tasks(void){
 
         case APP_STATE_UPDATE_RELAY :
         {
+        	// Relay is controlled by RA1 (jumper)
+        	//Should implement a timeout so that turns off automatically
+        	//If connection lost
         	LATAbits.LATA3 = appData.on;
         	appData.state = APP_STATE_UPDATE_MOTOR;
         	break;
@@ -92,47 +102,14 @@ void APP_Tasks(void){
 
         case APP_STATE_UPDATE_MOTOR :
         {
-        	// Relay is controlled by RA1 (jumper)
-        	//LATAbits.LATA3 = PORTAbits.RA1; 
-
+        	
+       		
+        	//To be changed by real duty cycle after PID implementation
         	setDuty(appData.reqVel);
 
-			appData.state = APP_STATE_TRANSMIT_CAN;
+
+			appData.state = APP_STATE_SEND_UART;
         	break;
-        }
-
-
-
-
-        case APP_STATE_TRANSMIT_CAN:
-        {
-        	//appData.sendCanMessages is interrupt driven at a frequency ginven by TMR2
-
-        	if(appData.sendCanMessages == 1)
-        	{
-        		//Send CAN data
-        		//sendPosVelTorque(appData.pos_sensor, appData.vel_sensor, appData.torque);
-        		appData.sendCanMessages = 0;
-        	}
-        	
-        	appData.state = APP_STATE_READ_CAN;
-            break;
-        }
-
-        case APP_STATE_READ_CAN:
-        {
-
-            //Read CAN
-
-           /* if(CAN1_ReceivedMessageCountGet()>0){
-                CAN1_Receive(&message_receive);
-                if(message_receive.data[0]==55){
-                    LATAbits.LATA3 = 1;
-                }
-            }*/
-
-            appData.state = APP_STATE_SEND_UART;
-            break;
         }
 
 
@@ -178,8 +155,6 @@ void APP_Tasks(void){
         {
             break;
         }
-
-
 
 
 

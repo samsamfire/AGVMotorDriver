@@ -79,16 +79,16 @@
 #include "clock.h"
 #include "system.h"
 #include "system_types.h"
-#include "uart1.h"
-#include "tmr2.h"
+#include "oc1.h"
 #include "adc1.h"
 #include "interrupt_manager.h"
 #include "traps.h"
-#include "dma.h"
-#include "oc2.h"
-#include "oc1.h"
+#include "tmr2.h"
 #include "tmr3.h"
+#include "oc2.h"
 #include "can1.h"
+#include "uart1.h"
+#include "dma.h"
 
 void SYSTEM_Initialize(void)
 {

@@ -179,6 +179,7 @@ int MotorCAN::getHdl(){
 int main(int argc, char const *argv[])
 {
 	/* code */
+	int i;
 	int s;
 	MotorCAN m_can;
 	m_can.startConnection(500000);
@@ -186,8 +187,13 @@ int main(int argc, char const *argv[])
 	Motor m1(s,5);
 	m1.start();
 
-	m1.writeVel(20);
-
+	for (i = 0; i < 11; ++i)
+	{
+		m1.writeVel(i*10);
+		usleep(1000000);
+	}
+	
+	m1.stop();
 
 
 	//m_can.setAddresses(1, 2, 3, 4);
