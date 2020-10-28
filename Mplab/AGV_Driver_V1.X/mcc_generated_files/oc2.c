@@ -68,10 +68,10 @@ static uint16_t         gOC2Mode;
 
 void OC2_Initialize (void)
 {
-    // ENFLT0 disabled; ENFLT1 disabled; OCSIDL disabled; OCM Edge-Aligned PWM mode; OCFLT1 disabled; OCFLT0 disabled; OCTSEL TMR2; TRIGMODE Only Software; 
-    OC2CON1 = 0x06;
-    // SYNCSEL TMR2; TRIGSTAT disabled; OCINV disabled; OCTRIG Sync; OC32 disabled; FLTOUT disabled; OCTRIS disabled; FLTMD Cycle; FLTTRIEN disabled; 
-    OC2CON2 = 0x0C;
+    // ENFLT0 disabled; ENFLT1 disabled; OCSIDL disabled; OCM Edge-Aligned PWM mode; OCFLT1 disabled; OCFLT0 disabled; OCTSEL FOSC/2; TRIGMODE Only Software; 
+    OC2CON1 = 0x1C06;
+    // SYNCSEL Self; TRIGSTAT disabled; OCINV disabled; OCTRIG Sync; OC32 disabled; FLTOUT disabled; OCTRIS disabled; FLTMD Cycle; FLTTRIEN disabled; 
+    OC2CON2 = 0x1F;
     // OC2RS 0; 
     OC2RS = 0x00;
     // OC2R 0; 

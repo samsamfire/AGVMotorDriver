@@ -14,6 +14,8 @@
 #include "interrupts.h"
 #include "mcc_generated_files/tmr3.h"
 #include "mcc_generated_files/adc1.h"
+#include "mcc_generated_files/oc1.h"
+#include "mcc_generated_files/oc2.h"
 
 
 
@@ -39,14 +41,16 @@ typedef struct
 {
 	APP_STATES state;
 	uint8_t canAddress;
-	uint8_t sendCanMessages;
 	uint16_t motorPowerVoltage;
-	int16_t vel_sensor;
-	int16_t pos_sensor;
-	int16_t torque;
+
+	int16_t sensVel;
+	uint16_t sensPos;
+	int16_t sensTorque;
+
 	int16_t reqVel;
 	uint16_t reqPos;
-	uint16_t reqtorque;
+	int16_t reqTorque;
+
 	CAN_MSG_OBJ canMsg;
 	uint8_t on;
 	uint8_t mode;

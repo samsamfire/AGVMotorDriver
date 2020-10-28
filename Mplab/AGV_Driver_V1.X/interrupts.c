@@ -1,4 +1,5 @@
 #include "interrupts.h"
+#include "can_app.h"
 #include "app.h"
 #include "mcc_generated_files/system.h"
 #include <stdio.h>
@@ -11,7 +12,7 @@
 
 void Tmr3_interrupt(void)
 {
-	appData.sendCanMessages = 1;
+	cappData.sendCanMessages = 1;
 }
 
 

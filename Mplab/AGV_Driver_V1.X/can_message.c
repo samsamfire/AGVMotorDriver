@@ -1,30 +1,32 @@
 #include "can_message.h"
 #include "app.h"
+#include "can_app.h"
 
 
 
 
-// CAN_TX_MSG_REQUEST_STATUS sendPosVelTorque(uint16_t pos, int16_t vel, uint16_t torque){
+CAN_TX_MSG_REQUEST_STATUS sendPosVelTorque(uint16_t pos, int16_t vel, uint16_t torque,CAN_MSG_OBJ* msgTx){
 	
-// 	//Create CAN message
-// 	CAN_MSG_OBJ canMessage;
-// 	int16_t data[3];
+	
+	msgTx->data[0] = pos&0xFF;
+    msgTx->data[1] =(uint8_t) (pos >> 8);
+    msgTx->data[2] = vel&0xFF;
+    msgTx->data[3] =(uint8_t) (vel >> 8);
+    msgTx->data[4] = torque&0xFF;
+    msgTx->data[5] =(uint8_t) (torque >> 8);
+	
 
-// 	data[0] = pos;
-// 	data[1] = vel;
-// 	data[2] = torque;
-
-// 	canMessage.field.frameType = CAN_FRAME_DATA;
-// 	canMessage.field.idType = CAN_FRAME_STD;
-// 	canMessage.field.dlc = CAN_DLC_6;
-// 	canMessage.msgId = POS_VEL_TORQUE_REQ_ID;
-
-// 	canMessage.data = (uint8_t *)&data[0];
-
-// 	return CAN1_Transmit(CAN_PRIORITY_HIGH, &canMessage);
+	msgTx->field.frameType = CAN_FRAME_DATA;
+	msgTx->field.idType = CAN_FRAME_STD;
+	msgTx->field.dlc = CAN_DLC_6;
+	msgTx->msgId = (cappData.canAddress <<7) | POS_VEL_TORQUE_SENS_ID;
 
 
-// }
+	return CAN1_Transmit(CAN_PRIORITY_HIGH, msgTx);
+    
+}
+
+
 
 void setCanFilter(){
 

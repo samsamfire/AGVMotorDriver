@@ -19,7 +19,7 @@
 #define SET_POS_ID 11
 #define GET_POS_ID 21
 
-
+#define POS_VEL_TORQUE_SENS_ID 30
 
 
 // #define ADDRESS_REQ_ID (appData.canAddress << 7)|1
@@ -40,8 +40,10 @@
 
 
 
+/*This function sends to RPI position, velocity and torque measured values
+from sensors*/
 
-CAN_TX_MSG_REQUEST_STATUS sendPosVelTorque(uint16_t pos, int16_t vel, uint16_t torque);
+CAN_TX_MSG_REQUEST_STATUS sendPosVelTorque(uint16_t pos, int16_t vel, uint16_t torque, CAN_MSG_OBJ *msgTx);
 
 
 /*This function is used in order to create a filter for the pic on the
@@ -49,6 +51,8 @@ CAN bus. The PIC will only receive the messages if the 4 upper bits of SID
 correspond to the hex address given by the address switch*/
 
 void setCanFilter();
+
+/*This functions returns the command type of a received message*/
 
 uint8_t getCmdId(CAN_MSG_OBJ * msgRx);
 
