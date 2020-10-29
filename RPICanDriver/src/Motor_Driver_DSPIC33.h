@@ -30,7 +30,7 @@ class Motor
 		void readVel();
 
 		void readPosVel();
-		void readPosVelEncoder();
+		uint16_t* readPosVelTorqueEncoder();
 
 		void start();
 		void stop();
@@ -45,6 +45,8 @@ class Motor
 
 
 	private:
+
+		uint16_t twist[3];
 		int16_t vel;
 		int16_t pos;
 		bool state; //On or Off

@@ -44,11 +44,17 @@ void Motor::readVelEncoder(){
 	vel_encoder = (frame.data[1] << 8) + frame.data[0];
 }
 
-void Motor::readPosVelEncoder(){
+uint16_t* Motor::readPosVelTorqueEncoder(){
+
 
 	read(s, &frame, sizeof(frame));
-	pos_encoder = (frame.data[1] << 8) + frame.data[0];
-	vel_encoder = (frame.data[3] << 8) + frame.data[2];
+
+	twist[0] = (frame.data[1] << 8) + frame.data[0];
+	twist[1] = (frame.data[3] << 8) + frame.data[2];
+	twist[2] = (frame.data[5] << 8) + frame.data[4];
+
+	return twist;
+
 
 }
 

@@ -11,6 +11,13 @@ actual dx, dy, dyaw via inverse kinematics*/
 
 void AGV::readVel(double vel[3]){
 
+	uint16_t ** state = NULL;
+	for (int i = 0; i < 4; ++i)
+	{
+		state[i] = m[i].readPosVelTorqueEncoder();
+		printf("Read positio,velocity,torque : %i %i %i\r\n",state[i][0],state[i][1],state[i][2]);
+	}
+
 
 }
 
@@ -107,9 +114,10 @@ bool AGV::openBus(int bitrate){
 
     printf("Initialized can at bitrate %i \r\n",bitrate);
 
-    //1.Create socket
+    
     for (int i = 0; i < 4; ++i)
     {
+    	//1.Create socket
     	s[i] = socket(PF_CAN, SOCK_RAW, CAN_RAW);
 
     	if (s[i] < 0) {
@@ -134,30 +142,20 @@ bool AGV::openBus(int bitrate){
 	        perror("bind failed");
 	        return 1;
 	    }
-	}
 
-    //4.Define receive rules
-
-    for (int i = 0; i < 4; ++i)
-    {
-    	rfilter[i].can_id = (m[i].getAdress() << 7); //Ids begging with correct address
+	    //4.Define receive rules
+	    rfilter[i].can_id = (m[i].getAdress() << 7); //Ids begging with correct address
     	rfilter[i].can_mask = (m[i].getAdress() << 7);//All lower bits are don't cares
     	setsockopt(s[i], SOL_CAN_RAW, CAN_RAW_FILTER, &rfilter, sizeof(rfilter[0]));
-    }
-    
-    // rfilter[0].can_id = ;
-    // rfilter[0].can_mask = CAN_SFF_MASK;
-    // setsockopt(s, SOL_CAN_RAW, CAN_RAW_FILTER, &rfilter, sizeof(rfilter));
+	
 
-    //5.Give to motors socket handle
-    for (int i = 0; i < 4; ++i)
-    {
-    	m[i].setHdl(s[i]);
-    }
+		//5.Give to motors socket handle
+
+		m[i].setHdl(s[i]);
+
+	}
 
     return 0;
-
-    
 }
 
 /*Close CAN bus*/
