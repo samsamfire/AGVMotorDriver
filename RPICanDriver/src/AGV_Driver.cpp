@@ -108,35 +108,51 @@ bool AGV::openBus(int bitrate){
     printf("Initialized can at bitrate %i \r\n",bitrate);
 
     //1.Create socket
-    s = socket(PF_CAN, SOCK_RAW, CAN_RAW);
-    s2 = socket(PF_CAN, SOCK_RAW, CAN_RAW);
-
-    if (s < 0) {
-        perror("socket PF_CAN failed");
-        return 1;
-    }
-    
-    //2.Specify can0 device
-    strcpy(ifr.ifr_name, "can0");
-    ret = ioctl(s, SIOCGIFINDEX, &ifr);
-    if (ret < 0) {
-        perror("ioctl failed");
-        return 1;
-    }
-    
-    //3.Bind the socket to can0
-    addr.can_family = AF_CAN;
-    addr.can_ifindex = ifr.ifr_ifindex;
-    ret = bind(s, (struct sockaddr *)&addr, sizeof(addr));
-    if (ret < 0) {
-        perror("bind failed");
-        return 1;
-    }
-
-    //4.Give to motors socket handle
     for (int i = 0; i < 4; ++i)
     {
-    	m[i].setHdl(s);
+    	s[i] = socket(PF_CAN, SOCK_RAW, CAN_RAW);
+
+    	if (s[i] < 0) {
+	        perror("socket PF_CAN failed");
+	        return 1;
+    	}
+
+    	 //2.Specify can0 device
+	    strcpy(ifr[i].ifr_name, "can0");
+	    ret[i] = ioctl(s[i], SIOCGIFINDEX, &ifr[i]);
+	    if (ret[i] < 0) {
+	        perror("ioctl failed");
+        	return 1;
+        }
+
+
+        //3.Bind the socket to can0
+	    addr[i].can_family = AF_CAN;
+	    addr[i].can_ifindex = ifr[i].ifr_ifindex;
+	    ret[i] = bind(s[i], (struct sockaddr *)&addr[i], sizeof(addr[0]));
+	    if (ret[i] < 0) {
+	        perror("bind failed");
+	        return 1;
+	    }
+	}
+
+    //4.Define receive rules
+
+    for (int i = 0; i < 4; ++i)
+    {
+    	rfilter[i].can_id = (m[i].getAdress() << 7); //Ids begging with correct address
+    	rfilter[i].can_mask = (m[i].getAdress() << 7);//All lower bits are don't cares
+    	setsockopt(s[i], SOL_CAN_RAW, CAN_RAW_FILTER, &rfilter, sizeof(rfilter[0]));
+    }
+    
+    // rfilter[0].can_id = ;
+    // rfilter[0].can_mask = CAN_SFF_MASK;
+    // setsockopt(s, SOL_CAN_RAW, CAN_RAW_FILTER, &rfilter, sizeof(rfilter));
+
+    //5.Give to motors socket handle
+    for (int i = 0; i < 4; ++i)
+    {
+    	m[i].setHdl(s[i]);
     }
 
     return 0;
@@ -149,7 +165,11 @@ bool AGV::openBus(int bitrate){
 bool AGV::closeBus(){
 
 	//Shutdown can and socket
-	close(s);
+	for (int i = 0; i < 4; ++i)
+	{
+		close(s[i]);
+	}
+	
 	system("sudo ifconfig can0 down");
 
 	printf("Shut down can0\n");

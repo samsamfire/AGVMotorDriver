@@ -20,7 +20,7 @@ typedef enum
 //This contains the essential data during app operation
 typedef struct
 {
-	APP_STATES state;
+	CAN_APP_STATES state;
 	uint8_t canAddress;
 	CAN_MSG_OBJ msgRx;
 	CAN_MSG_OBJ msgTx;

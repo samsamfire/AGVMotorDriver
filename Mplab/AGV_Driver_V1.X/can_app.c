@@ -93,7 +93,7 @@ void CAN_APP_Tasks(){
 			if (cappData.sendCanMessages == 1)
 			{
 				
-				sendPosVelTorque(0,0,0,&cappData.msgTx);
+				sendPosVelTorque(200,-50,88,&cappData.msgTx);
 				cappData.sendCanMessages = 0;
 
 			}

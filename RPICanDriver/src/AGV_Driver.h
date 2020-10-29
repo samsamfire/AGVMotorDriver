@@ -66,11 +66,12 @@ private:
 
 	//CAN bus info
 
-	int ret;
-    int s,s2, nbytes;
-    struct sockaddr_can addr;
-    struct ifreq ifr;
+	int ret[4];
+    int s[4], nbytes[4];
+    struct sockaddr_can addr[4];
+    struct ifreq ifr[4];
     struct can_frame frame;
+    struct can_filter rfilter[4];
 
 
 

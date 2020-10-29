@@ -65,6 +65,7 @@ int main(void)
 {
     
     APP_Initialize();
+    CAN_APP_Init();
     
     
     while (1)

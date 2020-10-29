@@ -53,9 +53,13 @@ void Motor::readPosVelEncoder(){
 }
 
 void Motor::start(){
+
 	frame.can_id = (address << 7) | START_ID;
 	frame.can_dlc = 0;
 	write(s, &frame, sizeof(frame));
+
+	/*Todo perform checks*/
+	state = 1;
 }
 
 
@@ -63,6 +67,8 @@ void Motor::stop(){
 	frame.can_id = (address << 7) | STOP_ID;
 	frame.can_dlc = 0;
 	write(s, &frame, sizeof(frame));
+
+	state = 0;
 }
 
 void Motor::writeVel(int16_t vel){
@@ -84,4 +90,9 @@ void Motor::writePos(uint16_t pos){
 	write(s,&frame,sizeof(frame));
 
 
+}
+
+uint8_t Motor::getAdress(){
+
+	return address;
 }
