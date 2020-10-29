@@ -21,7 +21,7 @@ int main(int argc, char const *argv[])
 	//Send a speed command
 	//agv_robot.writeVel(vel);
 
-	//agv_robot.readVel(vel);
+	agv_robot.readVel(vel);
 
 
 	usleep(2000000);
