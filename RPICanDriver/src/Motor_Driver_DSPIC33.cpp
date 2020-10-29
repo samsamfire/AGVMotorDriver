@@ -13,6 +13,8 @@ bool Motor::getState(){
 	return state;
 }
 
+
+
 bool Motor::setHdl(int s){
 
 	this->s=s;
@@ -44,19 +46,22 @@ void Motor::readVelEncoder(){
 	vel_encoder = (frame.data[1] << 8) + frame.data[0];
 }
 
-uint16_t* Motor::readPosVelTorqueEncoder(){
+bool Motor::readEncoder(){
 
 	printf("%i\n",s );
+	/*TODO add an error mechanism*/
 	read(s, &frame, sizeof(frame));
 
-	twist[0] = (frame.data[1] << 8) + frame.data[0];
-	twist[1] = (frame.data[3] << 8) + frame.data[2];
-	twist[2] = (frame.data[5] << 8) + frame.data[4];
+	pos_encoder = (frame.data[1] << 8) + frame.data[0];
+	vel_encoder = (frame.data[3] << 8) + frame.data[2];
+	torque_encoder = (frame.data[5] << 8) + frame.data[4];
 
-	return twist;
+	return 0;
 
 
 }
+
+
 
 void Motor::start(){
 
@@ -101,4 +106,20 @@ void Motor::writePos(uint16_t pos){
 int Motor::getAdress(){
 
 	return address;
+}
+
+
+int16_t Motor::getVel(){
+
+	return vel_encoder;
+}
+
+uint16_t Motor::getPos(){
+
+	return pos_encoder;
+}
+
+int16_t Motor::getTorque(){
+
+	return torque_encoder;
 }

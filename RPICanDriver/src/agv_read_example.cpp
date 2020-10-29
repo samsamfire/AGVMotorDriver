@@ -5,7 +5,7 @@
 
 
 
-double vel[3] = {0.3,0,0};
+
 
 int main(int argc, char const *argv[])
 {
@@ -23,13 +23,10 @@ int main(int argc, char const *argv[])
 
 	while(1){
 
-	agv_robot.readVel(vel);
+	agv_robot.readVel();
 	usleep(1000000);
 
 	}
-
-
-	
 
 
 

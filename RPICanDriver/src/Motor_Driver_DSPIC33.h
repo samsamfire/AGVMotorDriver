@@ -27,10 +27,15 @@ class Motor
 		void readPosEncoder();
 		void readPos();
 
-		void readVel();
+		void readVel(); //Reads from PIC
+
+
+		int16_t getVel(); //Gets the value
+		uint16_t getPos();
+		int16_t getTorque();
 
 		void readPosVel();
-		uint16_t* readPosVelTorqueEncoder();
+		bool readEncoder(); //Reads from picd
 
 		void start();
 		void stop();
@@ -46,13 +51,15 @@ class Motor
 
 	private:
 
-		uint16_t twist[3];
+		//int16_t twist[3];
 		int16_t vel;
 		int16_t pos;
 		bool state; //On or Off
 		uint8_t mode; // pos 1, vel 2, torque 3...
 		int16_t vel_encoder;
-		int16_t pos_encoder;
+		uint16_t pos_encoder;
+		int16_t torque_encoder;
+
 		bool error; //1 for yes 0 for no
 		uint8_t connection_state;
 		int address;

@@ -23,6 +23,9 @@ Cela suppose que les vitesses sont contenus entre -30m/s et +30m/s(largement le 
 */
 #define F 1000 
 
+/*Facteur d'aggrandissment pour les vitesses angulaires des roues, meme raison*/
+#define H 1000
+
 
 
 
@@ -47,7 +50,7 @@ public:
 	void writePos();
 
 	void writeVel(double vel[3]);
-	void readVel(double vel[3]);
+	void readVel(void);
 	void start();
 	void stop();
 
@@ -63,6 +66,7 @@ private:
 	Motor m[4];
 
 	double vel[3],pos[3];
+	double vel_sens[3],pos_sens[3];
 
 	//CAN bus info
 

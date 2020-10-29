@@ -9,25 +9,40 @@
 /*This function reads velocity info from encoder of all 4 drivers and computes 
 actual dx, dy, dyaw via inverse kinematics*/
 
-void AGV::readVel(double vel[3]){
+void AGV::readVel(void){
 
-	uint16_t *state[4];
+	int16_t v[4];
+
+	
 	for (int i = 0; i < 4; ++i)
 	{
 		if(m[i].getState() == true){
-			state[i] = m[i].readPosVelTorqueEncoder();
-			printf("Read position,velocity,torque : %i %i %i motor %i\r\n",state[i][0],state[i][1],state[i][2],i);
+			m[i].readEncoder(); //Updates values from encoders
+			v[i] = m[i].getVel();
+
+			//Debugging
+			printf("Read position,velocity,torque : %i %d %i motor %i\r\n",
+				m[i].getPos(),m[i].getVel(),m[i].getTorque(),i);
+		}
+
+		else{
+			printf("Motor is %i is not on\r\n",i);
 		}
 		
 	}
+	//Let's compute dx,dy,dyaw
 
+	/*TODO adjust signs after testing*/
+	vel_sens[0] = (Rr/4)*(v[0] - v[1] + v[2] - v[3])/(H*Z);
+	vel_sens[1] = (Rr/4)*(v[0] + v[1] + v[2] + v[3])/(H*Z);
+	vel_sens[2] = (Rr/4)*((-1/(La+Lb))*(v[0]+v[3])+(1/(La+Lb))*(v[1]+v[3]))/(H*Z);
 
 }
 
 
 void AGV::writeVel( double vel[3] ){
+	
 	//Cinematic model:
-
 	this->vel[0] = vel[0];
 	this->vel[1] = vel[1];
 	this->vel[2] = vel[2];
@@ -50,10 +65,10 @@ void AGV::writeVel( double vel[3] ){
 	
 //Check signs by testing
 
-	m_v[0] = (1/Rr)*(Vx-Vy-(La+Lb))*F;
-	m_v[1] = -(1/Rr)*(Vx+Vy+(La+Lb))*F;
-	m_v[2] = (1/Rr)*(Vx-Vy-(La+Lb))*F;
-	m_v[3] = -(1/Rr)*(Vx+Vy+(La+Lb))*F;
+	m_v[0] = (1/Rr)*(Vx-Vy-(La+Lb))*F*Z;
+	m_v[1] = -(1/Rr)*(Vx+Vy+(La+Lb))*F*Z;
+	m_v[2] = (1/Rr)*(Vx-Vy-(La+Lb))*F*Z;
+	m_v[3] = -(1/Rr)*(Vx+Vy+(La+Lb))*F*Z;
 
 	for (int i = 0; i < 4; ++i)
 	{
