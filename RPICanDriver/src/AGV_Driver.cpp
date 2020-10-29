@@ -5,6 +5,16 @@
 //Maybe create a twits message to interface with ROS ?
 
 
+
+/*This function reads velocity info from encoder of all 4 drivers and computes 
+actual dx, dy, dyaw via inverse kinematics*/
+
+void AGV::readVel(double vel[3]){
+
+
+}
+
+
 void AGV::writeVel( double vel[3] ){
 	//Cinematic model:
 
@@ -99,6 +109,8 @@ bool AGV::openBus(int bitrate){
 
     //1.Create socket
     s = socket(PF_CAN, SOCK_RAW, CAN_RAW);
+    s2 = socket(PF_CAN, SOCK_RAW, CAN_RAW);
+
     if (s < 0) {
         perror("socket PF_CAN failed");
         return 1;

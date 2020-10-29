@@ -25,8 +25,10 @@ class Motor
 		Motor(int motor_addess);
 		void readVelEncoder();
 		void readPosEncoder();
-		void readPos(); 
+		void readPos();
+
 		void readVel();
+
 		void readPosVel();
 		void readPosVelEncoder();
 

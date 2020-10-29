@@ -47,6 +47,7 @@ public:
 	void writePos();
 
 	void writeVel(double vel[3]);
+	void readVel(double vel[3]);
 	void start();
 	void stop();
 
@@ -66,7 +67,7 @@ private:
 	//CAN bus info
 
 	int ret;
-    int s, nbytes;
+    int s,s2, nbytes;
     struct sockaddr_can addr;
     struct ifreq ifr;
     struct can_frame frame;
