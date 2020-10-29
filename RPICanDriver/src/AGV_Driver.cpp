@@ -14,8 +14,11 @@ void AGV::readVel(double vel[3]){
 	uint16_t *state[3];
 	for (int i = 0; i < 4; ++i)
 	{
-		state[i] = m[i].readPosVelTorqueEncoder();
-		printf("Read positio,velocity,torque : %i %i %i\r\n",state[i][0],state[i][1],state[i][2]);
+		if(m[i].getState() == true){
+			state[i] = m[i].readPosVelTorqueEncoder();
+			printf("Read positio,velocity,torque : %i %i %i\r\n",state[i][0],state[i][1],state[i][2]);
+		}
+		
 	}
 
 
@@ -74,9 +77,10 @@ void AGV::writeVel( double vel[3] ){
 void AGV::start(){
 	for (int i = 0; i < 4; ++i)
 	{
-		m[i].start();
+		if(m[i].getAdress() != -1){
+			m[i].start();
+		}
 	}
-
 
 }
 
@@ -89,7 +93,9 @@ void AGV::stop(){
 
 	for (int i = 0; i < 4; ++i)
 	{
-		m[i].stop();
+		if(m[i].getAdress() != -1){
+			m[i].stop();
+		}
 	}
 
 }

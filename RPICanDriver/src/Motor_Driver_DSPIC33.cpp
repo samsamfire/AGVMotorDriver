@@ -98,7 +98,7 @@ void Motor::writePos(uint16_t pos){
 
 }
 
-uint8_t Motor::getAdress(){
+int Motor::getAdress(){
 
 	return address;
 }

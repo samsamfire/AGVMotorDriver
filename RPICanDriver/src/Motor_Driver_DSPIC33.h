@@ -40,7 +40,7 @@ class Motor
 		bool getState();
 
 		bool setHdl(int s);
-		uint8_t getAdress();
+		int getAdress();
 		
 
 
@@ -55,7 +55,7 @@ class Motor
 		int16_t pos_encoder;
 		bool error; //1 for yes 0 for no
 		uint8_t connection_state;
-		uint8_t address;
+		int address;
 		//CAN variables
 		uint8_t update_rate_can;//Rate at which info is sent from pic default 50Hz
 		struct can_frame frame;
