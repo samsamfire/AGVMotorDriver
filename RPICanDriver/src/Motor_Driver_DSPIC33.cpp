@@ -46,7 +46,7 @@ void Motor::readVelEncoder(){
 
 uint16_t* Motor::readPosVelTorqueEncoder(){
 
-
+	printf("%i\n",s );
 	read(s, &frame, sizeof(frame));
 
 	twist[0] = (frame.data[1] << 8) + frame.data[0];

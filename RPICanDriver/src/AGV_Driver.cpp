@@ -11,12 +11,12 @@ actual dx, dy, dyaw via inverse kinematics*/
 
 void AGV::readVel(double vel[3]){
 
-	uint16_t *state[3];
+	uint16_t *state[4];
 	for (int i = 0; i < 4; ++i)
 	{
 		if(m[i].getState() == true){
 			state[i] = m[i].readPosVelTorqueEncoder();
-			printf("Read positio,velocity,torque : %i %i %i\r\n",state[i][0],state[i][1],state[i][2]);
+			printf("Read position,velocity,torque : %i %i %i motor %i\r\n",state[i][0],state[i][1],state[i][2],i);
 		}
 		
 	}
