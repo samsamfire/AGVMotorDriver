@@ -11,7 +11,7 @@ actual dx, dy, dyaw via inverse kinematics*/
 
 void AGV::readVel(double vel[3]){
 
-	uint16_t ** state = NULL;
+	uint16_t *state[3];
 	for (int i = 0; i < 4; ++i)
 	{
 		state[i] = m[i].readPosVelTorqueEncoder();
