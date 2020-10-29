@@ -150,9 +150,10 @@ bool AGV::openBus(int bitrate){
 	    }
 
 	    //4.Define receive rules
-	    rfilter[i].can_id = (m[i].getAdress() << 7); //Ids begging with correct address
+	    rfilter[i].can_id = (m[i].getAdress() << 7); //Ids beggining with correct address
     	rfilter[i].can_mask = (m[i].getAdress() << 7);//All lower bits are don't cares
-    	setsockopt(s[i], SOL_CAN_RAW, CAN_RAW_FILTER, &rfilter, sizeof(rfilter[0]));
+    	printf("Added filter to motor address : %i \r\n",m[i].getAdress()<<7);
+    	setsockopt(s[i], SOL_CAN_RAW, CAN_RAW_FILTER, &rfilter[i], sizeof(rfilter[0]));
 	
 
 		//5.Give to motors socket handle
