@@ -44,10 +44,22 @@ typedef struct
 	uint16_t motorPowerVoltage;
 
 	int16_t sensVel;
+	float sensLowVelRaw;
+	float sensFilterVel;
+	float sensFilteredVel;
+	uint8_t filter;
+
 	uint16_t sensPos;
 	int16_t sensTorque;
 
-	int16_t reqVel;
+	uint16_t timerVel;
+	float sensLowVel;
+
+	float pidOutputVel;
+
+
+	int16_t reqVel;  //reqVel is the wanted velocity in radians/s * 1000
+	float reqPWM; //reqPWM is the calculated pwm after conversion
 	uint16_t reqPos;
 	int16_t reqTorque;
 

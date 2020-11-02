@@ -18,8 +18,9 @@ void CAN_APP_Init(){
 	cappData.canAddress = ~(PORTBbits.RB12 + 2*PORTBbits.RB13 + 4*PORTBbits.RB14 + 8*PORTBbits.RB15)&(0x0F);
 }
 
+long counter = 0;
 
-
+int pos = 0;
 
 
 void CAN_APP_Tasks(){
@@ -92,8 +93,12 @@ void CAN_APP_Tasks(){
 			//Check whether it's time to send
 			if (cappData.sendCanMessages == 1)
 			{
-				
-				sendPosVelTorque(200,-50,88,&cappData.msgTx);
+				// if(counter>=100){
+					
+				sendPosVelTorque(appData.sensPos,appData.sensFilteredVel * 1000,0,&cappData.msgTx);
+				// counter=0;
+				// }
+				// counter++;
 				cappData.sendCanMessages = 0;
 
 			}

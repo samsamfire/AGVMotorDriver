@@ -29,11 +29,15 @@
         <itemPath>mcc_generated_files/adc_module_features.h</itemPath>
         <itemPath>mcc_generated_files/adc1.h</itemPath>
       </logicalFolder>
+      <logicalFolder name="f1" displayName="New Folder 1" projectFiles="true">
+      </logicalFolder>
       <itemPath>motor_driver.h</itemPath>
       <itemPath>app.h</itemPath>
       <itemPath>can_message.h</itemPath>
       <itemPath>interrupts.h</itemPath>
       <itemPath>can_app.h</itemPath>
+      <itemPath>pid_app.h</itemPath>
+      <itemPath>PID.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -67,6 +71,8 @@
       <itemPath>can_message.c</itemPath>
       <itemPath>interrupts.c</itemPath>
       <itemPath>can_app.c</itemPath>
+      <itemPath>pid_app.c</itemPath>
+      <itemPath>PID.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

@@ -1,5 +1,6 @@
-build/default/production/main.o:  \
-main.c  \
+build/default/production/pid_app.o:  \
+pid_app.c  \
+pid_app.h  \
 app.h  \
  mcc_generated_files/system.h  \
 mcc_generated_files/system_types.h  \
@@ -14,6 +15,4 @@ mcc_generated_files/tmr3.h  \
  mcc_generated_files/adc1.h  \
 mcc_generated_files/oc1.h  \
  mcc_generated_files/oc2.h  \
-can_app.h  \
-pid_app.h  \
 PID.h 

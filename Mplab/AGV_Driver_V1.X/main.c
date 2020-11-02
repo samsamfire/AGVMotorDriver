@@ -51,6 +51,7 @@
 #include <stdlib.h>                     // Defines EXIT_FAILURE
 #include "app.h"                        // Main app
 #include "can_app.h"                    // CAN Bus app
+#include "pid_app.h"                    // PID app
 
 
 
@@ -66,6 +67,7 @@ int main(void)
     
     APP_Initialize();
     CAN_APP_Init();
+    PID_APP_Init();
     
     
     while (1)
@@ -75,6 +77,7 @@ int main(void)
         
         APP_Tasks();
         CAN_APP_Tasks();
+        PID_APP_Tasks();
         
         
     }

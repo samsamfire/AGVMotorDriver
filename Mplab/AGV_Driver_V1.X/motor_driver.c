@@ -18,7 +18,7 @@ void setDuty(float duty)
 	else if(duty<0)
 	{
 		OC1R = 0; //Turn off forward half-bridge
-		OC2R = (uint16_t) limitPWM((float)MAX_PWM_DUTY*((float)duty/100));
+		OC2R = (uint16_t) limitPWM((float)-MAX_PWM_DUTY*((float)duty/100));
 	}
 }
 
@@ -29,10 +29,7 @@ uint16_t limitPWM(float val){
 	{
 		return MAX_PWM_DUTY_ALLOWED;
 	}
-	else if(val<-MAX_PWM_DUTY_ALLOWED)
-	{
-		return MAX_PWM_DUTY_ALLOWED;
-	}
+	
 	else{
 		return val;
 	}

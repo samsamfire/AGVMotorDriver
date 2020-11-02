@@ -50,13 +50,38 @@ void APP_Initialize(void){
 
 
    
-    //Testing
+    //Default values
     appData.reqPos = 0;
     appData.reqVel = 0;
     appData.on = 0;
     appData.sensPos = 17;
     appData.sensVel = 20;
     appData.sensTorque = 25;
+    appData.filter =0 ;
+    appData.sensLowVelRaw = 0;
+    appData.sensLowVel = 0;
+    appData.pidOutputVel = 0;
+
+    //     /* Initialize QEI 1 Peripheral */
+    QEI1LECH = 0x00;                     /* Lower bound (High)*/
+    QEI1LECL = 0x00;                     /* Lower bound (Low)*/
+    QEI1GECH = 0x00;                     /* Upper bound (High)*/
+    QEI1GECL = 0xFFFF;                   /* Upper bound (Low)*/
+    QEI1IOC = 0x7100;
+
+    // DFLT1CONbits.CEID = 1; // Count error interrupts disabled
+    // DFLT1CONbits.QEOUT = 1; // Digital filters output enabled for QEn pins
+    // DFLT1CONbits.QECK = 5; // 1:64 clock divide for digital filter for QEn
+    // DFLTCONbits.INDOUT = 1; // Digital filter output enabled for Index pin
+    // DFLTCONbits.INDCK = 5; // 1:64 clock divide for digital filter for Index
+    QEI1CON = 0x9800;
+    QEI1CONbits.INTDIV = 6; //INTDIV is set to 6 for a 1:256 prescaler 8.5248 uS/ time step
+
+    POS1CNTL=0;
+
+    TRISBbits.TRISB0 = 0;
+    TRISBbits.TRISB1=0;
+
 
 
 
@@ -84,19 +109,54 @@ void APP_Tasks(void){
 
         case APP_STATE_UPDATE_SENSORS :
         {
+
+        
+          //appData.sensLowVel = INT1HLDL;
+          appData.sensPos = POS1CNTL;
+          appData.sensVel = VEL1CNT;
+          appData.timerVel = INT1HLDL;
+
+          appData.sensLowVelRaw = (float) 2*4*0.008377/(appData.timerVel*0.0000085248);
+          if(appData.filter <8){
+            appData.sensFilterVel += appData.sensLowVelRaw;
+            appData.filter += 1;
+          }
+          else{
+            appData.filter = 0;
+
+            appData.sensFilteredVel = appData.sensFilterVel/8;
+            appData.sensFilterVel = 0;
+          }
+
+          
         	appData.state = APP_STATE_UPDATE_RELAY;
         	break;
         }
+
+
+
+
+
+
+
 
         case APP_STATE_UPDATE_RELAY :
         {
         	// Relay is controlled by RA1 (jumper)
         	//Should implement a timeout so that turns off automatically
         	//If connection lost
-        	LATAbits.LATA3 = appData.on;
+        	LATAbits.LATA3 = 1;
+
+          LATBbits.LATB0 = PORTBbits.RB6;
         	appData.state = APP_STATE_UPDATE_MOTOR;
         	break;
         }
+
+
+
+
+
+
 
 
 
@@ -105,10 +165,15 @@ void APP_Tasks(void){
         	
        		
         	//To be changed by real duty cycle after PID implementation
-        	setDuty(appData.reqVel);
+
+          appData.reqPWM = (float) (appData.reqVel/1000 + 8.5)/0.46; //Calculated from excel spreadsheet and divided by 1000
+          
+          setDuty(appData.reqPWM);
+        	//setDuty(-40);
+          
 
 
-			appData.state = APP_STATE_SEND_UART;
+			   appData.state = APP_STATE_SEND_UART;
         	break;
         }
 
@@ -133,6 +198,8 @@ void APP_Tasks(void){
 
             
 			//printf("Conversion result : %u \r\n",appData.motorPowerVoltage);
+
+          //printf("Speed raw, pos, Speed Low : %i %i %f\r\n",appData.timerVel, appData.sensPos, appData.sensFilteredVel);
 
 			appData.state = APP_STATE_READ_BATTERY;
 			break;
