@@ -3,3 +3,5 @@
 RPICanDriver/bin/*
 RPICanDriver/debug/*
 RPICanDriver/obj/*
+
+Mplab/AGV_Driver_V1.X/build/*
