@@ -101,7 +101,7 @@ void PIN_MANAGER_Initialize (void)
     RPOR4bits.RP42R = 0x0010;    //RB10->OC1:OC1
     RPOR4bits.RP43R = 0x0011;    //RB11->OC2:OC2
     RPOR3bits.RP41R = 0x000E;    //RB9->ECAN1:C1TX
-    RPINR14 = 0x2627;
+    RPINR14 = 0x2627;  //User Added
 
     __builtin_write_OSCCONL(OSCCON | 0x40); // lock PPS
 }

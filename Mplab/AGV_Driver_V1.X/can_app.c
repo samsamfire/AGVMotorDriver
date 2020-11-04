@@ -95,7 +95,7 @@ void CAN_APP_Tasks(){
 			{
 				// if(counter>=100){
 					
-				sendPosVelTorque(appData.sensPos,appData.sensFilteredVel * 1000,0,&cappData.msgTx);
+				sendPosVelTorque(appData.sensPos,appData.sensLowVelRaw * 1000,0,&cappData.msgTx);
 				// counter=0;
 				// }
 				// counter++;

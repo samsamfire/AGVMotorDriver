@@ -9,6 +9,7 @@
 
 
 void Tmr3_interrupt(void);
+void Tmr2_interrupt(void);
 
 
 

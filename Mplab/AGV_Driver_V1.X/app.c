@@ -45,6 +45,9 @@ void APP_Initialize(void){
     //Timers initialization
     TMR3_SetInterruptHandler(&Tmr3_interrupt);
     TMR3_Start();
+
+    TMR2_SetInterruptHandler(&Tmr2_interrupt);
+    TMR2_Start();
     //TMR2_Start();
     LATAbits.LATA3=0;
 
@@ -57,10 +60,11 @@ void APP_Initialize(void){
     appData.sensPos = 17;
     appData.sensVel = 20;
     appData.sensTorque = 25;
-    appData.filter =0 ;
     appData.sensLowVelRaw = 0;
     appData.sensLowVel = 0;
     appData.pidOutputVel = 0;
+    appData.timerVel = 0;
+    appData.dir = 1;
 
     //     /* Initialize QEI 1 Peripheral */
     QEI1LECH = 0x00;                     /* Lower bound (High)*/
@@ -82,12 +86,23 @@ void APP_Initialize(void){
     TRISBbits.TRISB0 = 0;
     TRISBbits.TRISB1=0;
 
+    appData.velPid.input = &appData.reqVel;
+    appData.velPid.feedback = &appData.sensLowVelRaw;
+    appData.velPid.iterm = 0;
+    appData.velPid.Kp = 1;
+    appData.velPid.Ki = 10;
+    appData.velPid.antiWindup = 10; //Anti windup of 10 rad.s-1
+
 
 
 
 
 
 }
+
+
+uint8_t Kp = 10;
+float pid_output = 0;
 
 
 void APP_Tasks(void){
@@ -110,25 +125,31 @@ void APP_Tasks(void){
         case APP_STATE_UPDATE_SENSORS :
         {
 
-        
-          //appData.sensLowVel = INT1HLDL;
           appData.sensPos = POS1CNTL;
           appData.sensVel = VEL1CNT;
           appData.timerVel = INT1HLDL;
 
-          appData.sensLowVelRaw = (float) 2*4*0.008377/(appData.timerVel*0.0000085248);
-          if(appData.filter <8){
-            appData.sensFilterVel += appData.sensLowVelRaw;
-            appData.filter += 1;
+          //need to calculate direction of motor
+
+          if(appData.sensPos>appData.sensPosPrev){
+            appData.dir = 1;
+          }
+          else if(appData.sensPos<appData.sensPosPrev){
+            appData.dir = -1;
+          }
+          //Change only if sensed position changed
+
+
+
+          if(appData.timerVel == 0){
+            appData.sensLowVelRaw = 0;
           }
           else{
-            appData.filter = 0;
-
-            appData.sensFilteredVel = appData.sensFilterVel/8;
-            appData.sensFilterVel = 0;
+            appData.sensLowVelRaw = (float) appData.dir*2*4*0.008377/(appData.timerVel*0.0000085248);
           }
-
           
+
+            appData.sensPosPrev = appData.sensPos;
         	appData.state = APP_STATE_UPDATE_RELAY;
         	break;
         }
@@ -145,7 +166,8 @@ void APP_Tasks(void){
         	// Relay is controlled by RA1 (jumper)
         	//Should implement a timeout so that turns off automatically
         	//If connection lost
-        	LATAbits.LATA3 = 1;
+            //LATAbits.LATA3 = 1;
+        	LATAbits.LATA3 = appData.on;
 
           LATBbits.LATB0 = PORTBbits.RB6;
         	appData.state = APP_STATE_UPDATE_MOTOR;
@@ -162,19 +184,19 @@ void APP_Tasks(void){
 
         case APP_STATE_UPDATE_MOTOR :
         {
-        	
-       		
-        	//To be changed by real duty cycle after PID implementation
 
-          appData.reqPWM = (float) (appData.reqVel/1000 + 8.5)/0.46; //Calculated from excel spreadsheet and divided by 1000
-          
-          setDuty(appData.reqPWM);
-        	//setDuty(-40);
-          
+           if(appData.updateMotor == 1){
 
+                update_pid(&appData.velPid);
 
-			   appData.state = APP_STATE_SEND_UART;
+                setDuty(appData.velPid.output_pwm);
+
+                appData.updateMotor = 0;
+            }
+
+			appData.state = APP_STATE_SEND_UART;
         	break;
+            //setDuty(35);
         }
 
 
@@ -200,7 +222,8 @@ void APP_Tasks(void){
 			//printf("Conversion result : %u \r\n",appData.motorPowerVoltage);
 
           //printf("Speed raw, pos, Speed Low : %i %i %f\r\n",appData.timerVel, appData.sensPos, appData.sensFilteredVel);
-
+            //printf("pwm %f value %f\r\n",*(appData.velPid.output_pwm,appData.velPid.input));
+            //printf("Speed %i \r\n",appData.dir);
 			appData.state = APP_STATE_READ_BATTERY;
 			break;
 		}

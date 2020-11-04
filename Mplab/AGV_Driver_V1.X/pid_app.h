@@ -2,6 +2,7 @@
 #define PID_APP
 #include "app.h"
 #include "PID.h"
+#include <stdint.h>
 
 
 
@@ -19,6 +20,8 @@ typedef struct
 	
 	
 } PID_APP_DATA;
+
+
 
 
 

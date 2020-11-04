@@ -13,9 +13,11 @@
 #include <stdio.h>
 #include "interrupts.h"
 #include "mcc_generated_files/tmr3.h"
+#include "mcc_generated_files/tmr2.h"
 #include "mcc_generated_files/adc1.h"
 #include "mcc_generated_files/oc1.h"
 #include "mcc_generated_files/oc2.h"
+#include "PID.h"
 
 
 
@@ -36,6 +38,8 @@ typedef enum
 
 } APP_STATES;
 
+
+
 //This contains the essential data during app operation
 typedef struct
 {
@@ -45,11 +49,10 @@ typedef struct
 
 	int16_t sensVel;
 	float sensLowVelRaw;
-	float sensFilterVel;
-	float sensFilteredVel;
-	uint8_t filter;
 
-	uint16_t sensPos;
+	int16_t sensPos;
+	int16_t sensPosPrev;
+
 	int16_t sensTorque;
 
 	uint16_t timerVel;
@@ -66,8 +69,14 @@ typedef struct
 	CAN_MSG_OBJ canMsg;
 	uint8_t on;
 	uint8_t mode;
+	uint8_t updateMotor;
+	int8_t dir;
+
+	PID velPid;
 	
 } APP_DATA;
+
+
 
 
 
