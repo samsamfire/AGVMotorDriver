@@ -28,6 +28,7 @@
         <itemPath>mcc_generated_files/tmr3.h</itemPath>
         <itemPath>mcc_generated_files/adc_module_features.h</itemPath>
         <itemPath>mcc_generated_files/adc1.h</itemPath>
+        <itemPath>mcc_generated_files/tmr4.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f1" displayName="New Folder 1" projectFiles="true">
       </logicalFolder>
@@ -63,6 +64,7 @@
         <itemPath>mcc_generated_files/can1.c</itemPath>
         <itemPath>mcc_generated_files/tmr3.c</itemPath>
         <itemPath>mcc_generated_files/adc1.c</itemPath>
+        <itemPath>mcc_generated_files/tmr4.c</itemPath>
       </logicalFolder>
       <itemPath>main.c</itemPath>
       <itemPath>app.c</itemPath>

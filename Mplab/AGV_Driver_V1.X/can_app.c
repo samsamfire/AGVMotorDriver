@@ -93,12 +93,9 @@ void CAN_APP_Tasks(){
 			//Check whether it's time to send
 			if (cappData.sendCanMessages == 1)
 			{
-				// if(counter>=100){
 					
 				sendPosVelTorque(appData.sensPos,appData.sensLowVelRaw * 1000,0,&cappData.msgTx);
-				// counter=0;
-				// }
-				// counter++;
+
 				cappData.sendCanMessages = 0;
 
 			}

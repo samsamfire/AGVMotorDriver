@@ -10,7 +10,7 @@
 
 void Tmr3_interrupt(void)
 {
-	cappData.sendCanMessages = 1; //Around 50 ms
+	cappData.sendCanMessages = 1; //Around 10 ms
 }
 
 
@@ -21,6 +21,12 @@ void Tmr2_interrupt(void)
 
 }
 
+
+void Tmr4_interrupt(void)
+{
+	appData.updateQEI=1;
+
+}
 
 
 

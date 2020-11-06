@@ -10,6 +10,7 @@
 
 void Tmr3_interrupt(void);
 void Tmr2_interrupt(void);
+void Tmr4_interrupt(void);
 
 
 

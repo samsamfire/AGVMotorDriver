@@ -48,6 +48,10 @@ void APP_Initialize(void){
 
     TMR2_SetInterruptHandler(&Tmr2_interrupt);
     TMR2_Start();
+
+    TMR4_SetInterruptHandler(&Tmr4_interrupt);
+    TMR4_Start();
+
     //TMR2_Start();
     LATAbits.LATA3=0;
 
@@ -60,11 +64,18 @@ void APP_Initialize(void){
     appData.sensPos = 17;
     appData.sensVel = 20;
     appData.sensTorque = 25;
-    appData.sensLowVelRaw = 0;
+    
     appData.sensLowVel = 0;
     appData.pidOutputVel = 0;
+
+    appData.counterUart = 0;
+
+    appData.sensPosPrev = 0;
+    appData.sensLowVelRaw = 0;
     appData.timerVel = 0;
     appData.dir = 1;
+    appData.sensLowVelRawSum = 0;
+    appData.filterCounter = 0;
 
     //     /* Initialize QEI 1 Peripheral */
     QEI1LECH = 0x00;                     /* Lower bound (High)*/
@@ -87,11 +98,11 @@ void APP_Initialize(void){
     TRISBbits.TRISB1=0;
 
     appData.velPid.input = &appData.reqVel;
-    appData.velPid.feedback = &appData.sensLowVelRaw;
+    appData.velPid.feedback = &appData.sensLowVelFilt;
     appData.velPid.iterm = 0;
-    appData.velPid.Kp = 1;
-    appData.velPid.Ki = 10;
-    appData.velPid.antiWindup = 10; //Anti windup of 10 rad.s-1
+    appData.velPid.Kp = 1.5;
+    appData.velPid.Ki = 30;
+    appData.velPid.antiWindup = 12; //Anti windup of 10 rad.s-1
 
 
 
@@ -101,8 +112,6 @@ void APP_Initialize(void){
 }
 
 
-uint8_t Kp = 10;
-float pid_output = 0;
 
 
 void APP_Tasks(void){
@@ -125,31 +134,50 @@ void APP_Tasks(void){
         case APP_STATE_UPDATE_SENSORS :
         {
 
-          appData.sensPos = POS1CNTL;
-          appData.sensVel = VEL1CNT;
-          appData.timerVel = INT1HLDL;
 
-          //need to calculate direction of motor
+          if(appData.updateQEI == 1){
+            appData.sensPos = POS1CNTL;
+            appData.sensVel = VEL1CNT;
+            appData.timerVel = INT1HLDL;
 
-          if(appData.sensPos>appData.sensPosPrev){
-            appData.dir = 1;
-          }
-          else if(appData.sensPos<appData.sensPosPrev){
-            appData.dir = -1;
-          }
-          //Change only if sensed position changed
+            //Detect change in direction
+
+             if(appData.sensPos>appData.sensPosPrev){
+                appData.dir = 1;
+              }
+              else if(appData.sensPos<appData.sensPosPrev){
+                appData.dir = -1;
+              }
 
 
-
-          if(appData.timerVel == 0){
-            appData.sensLowVelRaw = 0;
-          }
-          else{
+            //Calculate speed
             appData.sensLowVelRaw = (float) appData.dir*2*4*0.008377/(appData.timerVel*0.0000085248);
+            appData.sensLowVelRawSum+=appData.sensLowVelRaw;
+
+            appData.filterCounter += 1;
+
+            if(appData.filterCounter == 20){
+
+                appData.sensLowVelFilt = appData.sensLowVelRawSum/20;
+                appData.sensLowVelRawSum = 0;
+                appData.filterCounter = 0;
+
+            }
+            
+           
+
+            //Update QEI values
+            appData.updateQEI = 0;
+           // appData.sensLowVelRaw = (float) appData.sensPos-appData.sensPosPrev;
+            //appData.sensLowVelRaw = appData.sensPos;
+            appData.sensPosPrev = appData.sensPos;
+
           }
+
+
           
 
-            appData.sensPosPrev = appData.sensPos;
+            
         	appData.state = APP_STATE_UPDATE_RELAY;
         	break;
         }
@@ -166,7 +194,7 @@ void APP_Tasks(void){
         	// Relay is controlled by RA1 (jumper)
         	//Should implement a timeout so that turns off automatically
         	//If connection lost
-            //LATAbits.LATA3 = 1;
+            //.LATA3 = 1;
         	LATAbits.LATA3 = appData.on;
 
           LATBbits.LATB0 = PORTBbits.RB6;
@@ -204,26 +232,13 @@ void APP_Tasks(void){
 
         case APP_STATE_SEND_UART:
         {
-    		//printf("Number of can messages received : %i \r\n",CAN1_ReceivedMessageCountGet());
-			//printf("Id of message : %i \r\n",message_receive.msgId);
-			// if(CAN1_ReceivedMessageCountGet()>0){
-			// 	printf("Received a message\r\n" );
-			// 	if(true == CAN1_Receive(&msg_rec)){
-			// 		printf("Read message successful\r\n");
-			// 		cmd_id= msg_rec.msgId&0b00001111111;
-			// 		printf("Command ID : %i \r\n",cmd_id);
-			// 	}
-			// 	else{
-			// 		printf("Read unsuccsessful\r\n");
-			// 	}
-			// }
+    		if(appData.counterUart>10000){
+                //printf
+                printf("Motor speed is : %f \r\n",  appData.sensLowVelFilt);
+                appData.counterUart = 0;
+            }
 
-            
-			//printf("Conversion result : %u \r\n",appData.motorPowerVoltage);
-
-          //printf("Speed raw, pos, Speed Low : %i %i %f\r\n",appData.timerVel, appData.sensPos, appData.sensFilteredVel);
-            //printf("pwm %f value %f\r\n",*(appData.velPid.output_pwm,appData.velPid.input));
-            //printf("Speed %i \r\n",appData.dir);
+            appData.counterUart += 1;
 			appData.state = APP_STATE_READ_BATTERY;
 			break;
 		}

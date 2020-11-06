@@ -14,6 +14,7 @@
 #include "interrupts.h"
 #include "mcc_generated_files/tmr3.h"
 #include "mcc_generated_files/tmr2.h"
+#include "mcc_generated_files/tmr4.h"
 #include "mcc_generated_files/adc1.h"
 #include "mcc_generated_files/oc1.h"
 #include "mcc_generated_files/oc2.h"
@@ -49,6 +50,9 @@ typedef struct
 
 	int16_t sensVel;
 	float sensLowVelRaw;
+	float sensLowVelRawSum;
+	float sensLowVelFilt;
+	int16_t filterCounter;
 
 	int16_t sensPos;
 	int16_t sensPosPrev;
@@ -70,7 +74,10 @@ typedef struct
 	uint8_t on;
 	uint8_t mode;
 	uint8_t updateMotor;
+	uint8_t updateQEI;
 	int8_t dir;
+
+	uint16_t counterUart;
 
 	PID velPid;
 	
