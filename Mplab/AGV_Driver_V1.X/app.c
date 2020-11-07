@@ -85,11 +85,6 @@ void APP_Initialize(void){
     QEI1GECL = 0xFFFF;                   /* Upper bound (Low)*/
     QEI1IOC = 0x7100;
 
-    // DFLT1CONbits.CEID = 1; // Count error interrupts disabled
-    // DFLT1CONbits.QEOUT = 1; // Digital filters output enabled for QEn pins
-    // DFLT1CONbits.QECK = 5; // 1:64 clock divide for digital filter for QEn
-    // DFLTCONbits.INDOUT = 1; // Digital filter output enabled for Index pin
-    // DFLTCONbits.INDCK = 5; // 1:64 clock divide for digital filter for Index
     QEI1CON = 0x9800;
     QEI1CONbits.INTDIV = 6; //INTDIV is set to 6 for a 1:256 prescaler 8.5248 uS/ time step
 

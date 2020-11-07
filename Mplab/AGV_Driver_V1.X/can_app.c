@@ -73,6 +73,12 @@ void CAN_APP_Tasks(){
 							appData.mode = cappData.msgRx.data[0];
 						}
 
+						case SET_KP_KI_VEL_ID :
+						{
+							appData.velPid.Kp = (float)((cappData.dataRx[0]) + (cappData.dataRx[1]<<8))/100;
+							appData.velPid.Ki = (float)((cappData.dataRx[2]) + (cappData.dataRx[3]<<8))/100;
+						}
+
 						default :
 						{
 							//Add an error mechanism

@@ -241,11 +241,11 @@ section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x200              0x1bc4          0x29a6  (10662)
 .const                      0x1dc4                0x18            0x24  (36)
-.text                       0x1ddc               0xce6          0x1359  (4953)
-.dinit                      0x2ac2               0x148           0x1ec  (492)
-.text                       0x2c0a               0xc86          0x12c9  (4809)
+.text                       0x1ddc               0xe50          0x1578  (5496)
+.dinit                      0x2c2c               0x148           0x1ec  (492)
+.text                       0x2d74               0xb5c          0x110a  (4362)
 
-                 Total "program" memory used (bytes):         0x51d8  (20952) 7%
+                 Total "program" memory used (bytes):         0x5238  (21048) 7%
 
 
 "data" Memory  [Origin = 0x1000, Length = 0x8000]
@@ -263,7 +263,7 @@ section                    address      alignment gaps    total length  (dec)
 .bss                        0x11ca                   0             0xc  (12)
 .data                       0x11d6                   0             0x4  (4)
 .bss                        0x11da                   0             0x2  (2)
-_00000000058EB3205fa58d47    0x1200                   0           0x200  (512)
+_000000000605D3205fa6bb61    0x1200                   0           0x200  (512)
 
                  Total "data" memory used (bytes):          0x3dc  (988) 3%
 
@@ -445,103 +445,103 @@ External Symbols in Program Memory (by address):
                   0x0027ca                  _CAN1_sleep
                   0x002820                  _APP_Initialize
                   0x00291c                  _APP_Tasks
-                  0x002c0a                  _CAN_APP_Init
-                  0x002c66                  _CAN_APP_Tasks
-                  0x002d34                  _update_pid
-                  0x002e4a                  _RESET_GetCause
-                  0x002f56                  _RESET_CauseClearAll
-                  0x002f5e                  _OC2_Initialize
-                  0x002f80                  _OC2_Tasks
-                  0x002f94                  _OC2_Start
-                  0x002fae                  _OC2_Stop
-                  0x002fbc                  _OC2_SecondaryValueSet
-                  0x002fc8                  _OC2_PrimaryValueSet
-                  0x002fd4                  _OC2_IsCompareCycleComplete
-                  0x002fec                  _OC2_FaultStatusGet
-                  0x00302a                  _OC2_FaultStatusClear
-                  0x003046                  _OC2_ManualTriggerSet
-                  0x00304e                  _OC2_TriggerStatusGet
-                  0x003066                  _OC2_TriggerStatusClear
-                  0x00306e                  _OC1_Initialize
-                  0x003090                  _OC1_Tasks
-                  0x0030a2                  _OC1_Start
-                  0x0030bc                  _OC1_Stop
-                  0x0030ca                  _OC1_SecondaryValueSet
-                  0x0030d6                  _OC1_PrimaryValueSet
-                  0x0030e2                  _OC1_IsCompareCycleComplete
-                  0x0030fa                  _OC1_FaultStatusGet
-                  0x003138                  _OC1_FaultStatusClear
-                  0x003154                  _OC1_ManualTriggerSet
-                  0x00315c                  _OC1_TriggerStatusGet
-                  0x003174                  _OC1_TriggerStatusClear
-                  0x00317c                  _sendPosVelTorque
-                  0x003208                  _setCanFilter
-                  0x003250                  _getCmdId
-                  0x003262                  _DMA_Initialize
-                  0x0032d0                  _DMA_Channel0_Tasks
-                  0x0032e8                  _DMA_Channel1_Tasks
-                  0x003302                  _DMA_Channel2_Tasks
-                  0x00331c                  _DMA_Channel3_Tasks
-                  0x00332e                  _UART1_Initialize
-                  0x003342                  _UART1_Read
-                  0x003360                  _UART1_Write
-                  0x003378                  _UART1_IsRxReady
-                  0x003390                  _UART1_IsTxReady
-                  0x0033b2                  _UART1_IsTxDone
-                  0x0033ca                  _UART1_StatusGet
-                  0x0033d2                  _UART1_Enable
-                  0x0033dc                  _UART1_Disable
-                  0x0033e6                  _TMR2_Initialize
-                  0x00340a                  _TMR2_Period16BitSet
-                  0x00341c                  _TMR2_Period16BitGet
-                  0x003424                  _TMR2_Counter16BitSet
-                  0x003436                  _TMR2_Counter16BitGet
-                  0x003444                  _TMR2_SetInterruptHandler
-                  0x003454                  _TMR2_Start
-                  0x003464                  _TMR2_Stop
-                  0x00346e                  _TMR2_GetElapsedThenClear
-                  0x003486                  _TMR2_SoftwareCounterGet
-                  0x003492                  _TMR2_SoftwareCounterClear
-                  0x00349e                  _TMR3_Initialize
-                  0x0034c2                  _TMR3_Period16BitSet
-                  0x0034d4                  _TMR3_Period16BitGet
-                  0x0034dc                  _TMR3_Counter16BitSet
-                  0x0034ee                  _TMR3_Counter16BitGet
-                  0x0034fc                  _TMR3_SetInterruptHandler
-                  0x00350c                  _TMR3_Start
-                  0x00351c                  _TMR3_Stop
-                  0x003526                  _TMR3_GetElapsedThenClear
-                  0x00353e                  _TMR3_SoftwareCounterGet
-                  0x00354a                  _TMR3_SoftwareCounterClear
-                  0x003556                  _TMR4_Initialize
-                  0x00357a                  _TMR4_Period16BitSet
-                  0x00358c                  _TMR4_Period16BitGet
-                  0x003594                  _TMR4_Counter16BitSet
-                  0x0035a6                  _TMR4_Counter16BitGet
-                  0x0035b4                  _TMR4_SetInterruptHandler
-                  0x0035c4                  _TMR4_Start
-                  0x0035d4                  _TMR4_Stop
-                  0x0035de                  _TMR4_GetElapsedThenClear
-                  0x0035f6                  _TMR4_SoftwareCounterGet
-                  0x003602                  _TMR4_SoftwareCounterClear
-                  0x00360e                  _setDuty
-                  0x003682                  _limitPWM
-                  0x0036b0                  _PIN_MANAGER_Initialize
-                  0x003742                  _CLOCK_Initialize
-                  0x003792                  _ADC1_Initialize
-                  0x0037ba                  _ADC1_SetInterruptHandler
-                  0x003800                  _SYSTEM_Initialize
-                  0x003824                  _INTERRUPT_Initialize
-                  0x003848                  _Tmr3_interrupt
-                  0x003854                  _Tmr2_interrupt
-                  0x003860                  _Tmr4_interrupt
-                  0x003884                  _main
+                  0x002ac2                  _CAN_APP_Init
+                  0x002b1e                  _CAN_APP_Tasks
+                  0x002d74                  _update_pid
+                  0x002e8a                  _RESET_GetCause
+                  0x002f96                  _RESET_CauseClearAll
+                  0x002f9e                  _OC2_Initialize
+                  0x002fc0                  _OC2_Tasks
+                  0x002fd4                  _OC2_Start
+                  0x002fee                  _OC2_Stop
+                  0x002ffc                  _OC2_SecondaryValueSet
+                  0x003008                  _OC2_PrimaryValueSet
+                  0x003014                  _OC2_IsCompareCycleComplete
+                  0x00302c                  _OC2_FaultStatusGet
+                  0x00306a                  _OC2_FaultStatusClear
+                  0x003086                  _OC2_ManualTriggerSet
+                  0x00308e                  _OC2_TriggerStatusGet
+                  0x0030a6                  _OC2_TriggerStatusClear
+                  0x0030ae                  _OC1_Initialize
+                  0x0030d0                  _OC1_Tasks
+                  0x0030e2                  _OC1_Start
+                  0x0030fc                  _OC1_Stop
+                  0x00310a                  _OC1_SecondaryValueSet
+                  0x003116                  _OC1_PrimaryValueSet
+                  0x003122                  _OC1_IsCompareCycleComplete
+                  0x00313a                  _OC1_FaultStatusGet
+                  0x003178                  _OC1_FaultStatusClear
+                  0x003194                  _OC1_ManualTriggerSet
+                  0x00319c                  _OC1_TriggerStatusGet
+                  0x0031b4                  _OC1_TriggerStatusClear
+                  0x0031bc                  _sendPosVelTorque
+                  0x003248                  _setCanFilter
+                  0x003290                  _getCmdId
+                  0x0032a2                  _DMA_Initialize
+                  0x003310                  _DMA_Channel0_Tasks
+                  0x003328                  _DMA_Channel1_Tasks
+                  0x003342                  _DMA_Channel2_Tasks
+                  0x00335c                  _DMA_Channel3_Tasks
+                  0x00336e                  _UART1_Initialize
+                  0x003382                  _UART1_Read
+                  0x0033a0                  _UART1_Write
+                  0x0033b8                  _UART1_IsRxReady
+                  0x0033d0                  _UART1_IsTxReady
+                  0x0033f2                  _UART1_IsTxDone
+                  0x00340a                  _UART1_StatusGet
+                  0x003412                  _UART1_Enable
+                  0x00341c                  _UART1_Disable
+                  0x003426                  _TMR2_Initialize
+                  0x00344a                  _TMR2_Period16BitSet
+                  0x00345c                  _TMR2_Period16BitGet
+                  0x003464                  _TMR2_Counter16BitSet
+                  0x003476                  _TMR2_Counter16BitGet
+                  0x003484                  _TMR2_SetInterruptHandler
+                  0x003494                  _TMR2_Start
+                  0x0034a4                  _TMR2_Stop
+                  0x0034ae                  _TMR2_GetElapsedThenClear
+                  0x0034c6                  _TMR2_SoftwareCounterGet
+                  0x0034d2                  _TMR2_SoftwareCounterClear
+                  0x0034de                  _TMR3_Initialize
+                  0x003502                  _TMR3_Period16BitSet
+                  0x003514                  _TMR3_Period16BitGet
+                  0x00351c                  _TMR3_Counter16BitSet
+                  0x00352e                  _TMR3_Counter16BitGet
+                  0x00353c                  _TMR3_SetInterruptHandler
+                  0x00354c                  _TMR3_Start
+                  0x00355c                  _TMR3_Stop
+                  0x003566                  _TMR3_GetElapsedThenClear
+                  0x00357e                  _TMR3_SoftwareCounterGet
+                  0x00358a                  _TMR3_SoftwareCounterClear
+                  0x003596                  _TMR4_Initialize
+                  0x0035ba                  _TMR4_Period16BitSet
+                  0x0035cc                  _TMR4_Period16BitGet
+                  0x0035d4                  _TMR4_Counter16BitSet
+                  0x0035e6                  _TMR4_Counter16BitGet
+                  0x0035f4                  _TMR4_SetInterruptHandler
+                  0x003604                  _TMR4_Start
+                  0x003614                  _TMR4_Stop
+                  0x00361e                  _TMR4_GetElapsedThenClear
+                  0x003636                  _TMR4_SoftwareCounterGet
+                  0x003642                  _TMR4_SoftwareCounterClear
+                  0x00364e                  _setDuty
+                  0x0036c2                  _limitPWM
+                  0x0036f0                  _PIN_MANAGER_Initialize
+                  0x003782                  _CLOCK_Initialize
+                  0x0037d2                  _ADC1_Initialize
+                  0x0037fa                  _ADC1_SetInterruptHandler
+                  0x003840                  _SYSTEM_Initialize
+                  0x003864                  _INTERRUPT_Initialize
+                  0x003888                  _Tmr3_interrupt
+                  0x003894                  _Tmr2_interrupt
+                  0x0038a0                  _Tmr4_interrupt
+                  0x0038c4                  _main
                   0x02affa                  __FGS.sec
 
 External Symbols in Program Memory (by name):
 
-                  0x003792                  _ADC1_Initialize
-                  0x0037ba                  _ADC1_SetInterruptHandler
+                  0x0037d2                  _ADC1_Initialize
+                  0x0037fa                  _ADC1_SetInterruptHandler
                   0x002820                  _APP_Initialize
                   0x00291c                  _APP_Tasks
                   0x0021be                  _CAN1_Initialize
@@ -568,88 +568,88 @@ External Symbols in Program Memory (by name):
                   0x002676                  _CAN1_receive
                   0x0027ca                  _CAN1_sleep
                   0x0025be                  _CAN1_transmit
-                  0x002c0a                  _CAN_APP_Init
-                  0x002c66                  _CAN_APP_Tasks
-                  0x003742                  _CLOCK_Initialize
-                  0x0032d0                  _DMA_Channel0_Tasks
-                  0x0032e8                  _DMA_Channel1_Tasks
-                  0x003302                  _DMA_Channel2_Tasks
-                  0x00331c                  _DMA_Channel3_Tasks
-                  0x003262                  _DMA_Initialize
-                  0x003824                  _INTERRUPT_Initialize
-                  0x003138                  _OC1_FaultStatusClear
-                  0x0030fa                  _OC1_FaultStatusGet
-                  0x00306e                  _OC1_Initialize
-                  0x0030e2                  _OC1_IsCompareCycleComplete
-                  0x003154                  _OC1_ManualTriggerSet
-                  0x0030d6                  _OC1_PrimaryValueSet
-                  0x0030ca                  _OC1_SecondaryValueSet
-                  0x0030a2                  _OC1_Start
-                  0x0030bc                  _OC1_Stop
-                  0x003090                  _OC1_Tasks
-                  0x003174                  _OC1_TriggerStatusClear
-                  0x00315c                  _OC1_TriggerStatusGet
-                  0x00302a                  _OC2_FaultStatusClear
-                  0x002fec                  _OC2_FaultStatusGet
-                  0x002f5e                  _OC2_Initialize
-                  0x002fd4                  _OC2_IsCompareCycleComplete
-                  0x003046                  _OC2_ManualTriggerSet
-                  0x002fc8                  _OC2_PrimaryValueSet
-                  0x002fbc                  _OC2_SecondaryValueSet
-                  0x002f94                  _OC2_Start
-                  0x002fae                  _OC2_Stop
-                  0x002f80                  _OC2_Tasks
-                  0x003066                  _OC2_TriggerStatusClear
-                  0x00304e                  _OC2_TriggerStatusGet
-                  0x0036b0                  _PIN_MANAGER_Initialize
-                  0x002f56                  _RESET_CauseClearAll
-                  0x002e4a                  _RESET_GetCause
-                  0x003800                  _SYSTEM_Initialize
-                  0x003436                  _TMR2_Counter16BitGet
-                  0x003424                  _TMR2_Counter16BitSet
-                  0x00346e                  _TMR2_GetElapsedThenClear
-                  0x0033e6                  _TMR2_Initialize
-                  0x00341c                  _TMR2_Period16BitGet
-                  0x00340a                  _TMR2_Period16BitSet
-                  0x003444                  _TMR2_SetInterruptHandler
-                  0x003492                  _TMR2_SoftwareCounterClear
-                  0x003486                  _TMR2_SoftwareCounterGet
-                  0x003454                  _TMR2_Start
-                  0x003464                  _TMR2_Stop
-                  0x0034ee                  _TMR3_Counter16BitGet
-                  0x0034dc                  _TMR3_Counter16BitSet
-                  0x003526                  _TMR3_GetElapsedThenClear
-                  0x00349e                  _TMR3_Initialize
-                  0x0034d4                  _TMR3_Period16BitGet
-                  0x0034c2                  _TMR3_Period16BitSet
-                  0x0034fc                  _TMR3_SetInterruptHandler
-                  0x00354a                  _TMR3_SoftwareCounterClear
-                  0x00353e                  _TMR3_SoftwareCounterGet
-                  0x00350c                  _TMR3_Start
-                  0x00351c                  _TMR3_Stop
-                  0x0035a6                  _TMR4_Counter16BitGet
-                  0x003594                  _TMR4_Counter16BitSet
-                  0x0035de                  _TMR4_GetElapsedThenClear
-                  0x003556                  _TMR4_Initialize
-                  0x00358c                  _TMR4_Period16BitGet
-                  0x00357a                  _TMR4_Period16BitSet
-                  0x0035b4                  _TMR4_SetInterruptHandler
-                  0x003602                  _TMR4_SoftwareCounterClear
-                  0x0035f6                  _TMR4_SoftwareCounterGet
-                  0x0035c4                  _TMR4_Start
-                  0x0035d4                  _TMR4_Stop
-                  0x003854                  _Tmr2_interrupt
-                  0x003848                  _Tmr3_interrupt
-                  0x003860                  _Tmr4_interrupt
-                  0x0033dc                  _UART1_Disable
-                  0x0033d2                  _UART1_Enable
-                  0x00332e                  _UART1_Initialize
-                  0x003378                  _UART1_IsRxReady
-                  0x0033b2                  _UART1_IsTxDone
-                  0x003390                  _UART1_IsTxReady
-                  0x003342                  _UART1_Read
-                  0x0033ca                  _UART1_StatusGet
-                  0x003360                  _UART1_Write
+                  0x002ac2                  _CAN_APP_Init
+                  0x002b1e                  _CAN_APP_Tasks
+                  0x003782                  _CLOCK_Initialize
+                  0x003310                  _DMA_Channel0_Tasks
+                  0x003328                  _DMA_Channel1_Tasks
+                  0x003342                  _DMA_Channel2_Tasks
+                  0x00335c                  _DMA_Channel3_Tasks
+                  0x0032a2                  _DMA_Initialize
+                  0x003864                  _INTERRUPT_Initialize
+                  0x003178                  _OC1_FaultStatusClear
+                  0x00313a                  _OC1_FaultStatusGet
+                  0x0030ae                  _OC1_Initialize
+                  0x003122                  _OC1_IsCompareCycleComplete
+                  0x003194                  _OC1_ManualTriggerSet
+                  0x003116                  _OC1_PrimaryValueSet
+                  0x00310a                  _OC1_SecondaryValueSet
+                  0x0030e2                  _OC1_Start
+                  0x0030fc                  _OC1_Stop
+                  0x0030d0                  _OC1_Tasks
+                  0x0031b4                  _OC1_TriggerStatusClear
+                  0x00319c                  _OC1_TriggerStatusGet
+                  0x00306a                  _OC2_FaultStatusClear
+                  0x00302c                  _OC2_FaultStatusGet
+                  0x002f9e                  _OC2_Initialize
+                  0x003014                  _OC2_IsCompareCycleComplete
+                  0x003086                  _OC2_ManualTriggerSet
+                  0x003008                  _OC2_PrimaryValueSet
+                  0x002ffc                  _OC2_SecondaryValueSet
+                  0x002fd4                  _OC2_Start
+                  0x002fee                  _OC2_Stop
+                  0x002fc0                  _OC2_Tasks
+                  0x0030a6                  _OC2_TriggerStatusClear
+                  0x00308e                  _OC2_TriggerStatusGet
+                  0x0036f0                  _PIN_MANAGER_Initialize
+                  0x002f96                  _RESET_CauseClearAll
+                  0x002e8a                  _RESET_GetCause
+                  0x003840                  _SYSTEM_Initialize
+                  0x003476                  _TMR2_Counter16BitGet
+                  0x003464                  _TMR2_Counter16BitSet
+                  0x0034ae                  _TMR2_GetElapsedThenClear
+                  0x003426                  _TMR2_Initialize
+                  0x00345c                  _TMR2_Period16BitGet
+                  0x00344a                  _TMR2_Period16BitSet
+                  0x003484                  _TMR2_SetInterruptHandler
+                  0x0034d2                  _TMR2_SoftwareCounterClear
+                  0x0034c6                  _TMR2_SoftwareCounterGet
+                  0x003494                  _TMR2_Start
+                  0x0034a4                  _TMR2_Stop
+                  0x00352e                  _TMR3_Counter16BitGet
+                  0x00351c                  _TMR3_Counter16BitSet
+                  0x003566                  _TMR3_GetElapsedThenClear
+                  0x0034de                  _TMR3_Initialize
+                  0x003514                  _TMR3_Period16BitGet
+                  0x003502                  _TMR3_Period16BitSet
+                  0x00353c                  _TMR3_SetInterruptHandler
+                  0x00358a                  _TMR3_SoftwareCounterClear
+                  0x00357e                  _TMR3_SoftwareCounterGet
+                  0x00354c                  _TMR3_Start
+                  0x00355c                  _TMR3_Stop
+                  0x0035e6                  _TMR4_Counter16BitGet
+                  0x0035d4                  _TMR4_Counter16BitSet
+                  0x00361e                  _TMR4_GetElapsedThenClear
+                  0x003596                  _TMR4_Initialize
+                  0x0035cc                  _TMR4_Period16BitGet
+                  0x0035ba                  _TMR4_Period16BitSet
+                  0x0035f4                  _TMR4_SetInterruptHandler
+                  0x003642                  _TMR4_SoftwareCounterClear
+                  0x003636                  _TMR4_SoftwareCounterGet
+                  0x003604                  _TMR4_Start
+                  0x003614                  _TMR4_Stop
+                  0x003894                  _Tmr2_interrupt
+                  0x003888                  _Tmr3_interrupt
+                  0x0038a0                  _Tmr4_interrupt
+                  0x00341c                  _UART1_Disable
+                  0x003412                  _UART1_Enable
+                  0x00336e                  _UART1_Initialize
+                  0x0033b8                  _UART1_IsRxReady
+                  0x0033f2                  _UART1_IsTxDone
+                  0x0033d0                  _UART1_IsTxReady
+                  0x003382                  _UART1_Read
+                  0x00340a                  _UART1_StatusGet
+                  0x0033a0                  _UART1_Write
                   0x00036c                  __AddressError
                   0x000bd0                  __Atexit
                   0x00044e                  __C1Interrupt
@@ -739,18 +739,18 @@ External Symbols in Program Memory (by name):
                   0x000aa6                  _fclose
                   0x0012be                  _free
                   0x000938                  _fwrite
-                  0x003250                  _getCmdId
+                  0x003290                  _getCmdId
                   0x001322                  _ldiv
-                  0x003682                  _limitPWM
-                  0x003884                  _main
+                  0x0036c2                  _limitPWM
+                  0x0038c4                  _main
                   0x0013b2                  _malloc
                   0x0009e0                  _memchr
                   0x0009f4                  _memcpy
-                  0x00317c                  _sendPosVelTorque
-                  0x003208                  _setCanFilter
-                  0x00360e                  _setDuty
+                  0x0031bc                  _sendPosVelTorque
+                  0x003248                  _setCanFilter
+                  0x00364e                  _setDuty
                   0x001406                  _strchr
-                  0x002d34                  _update_pid
+                  0x002d74                  _update_pid
                   0x000556                  _write
                   0x000b36                  fclose.EP_elo:_closeall
                   0x00090c                  printf_fF.EPeo:_prout
@@ -1081,7 +1081,7 @@ __FOSCSEL
 
 __FGS             0x02affa          0x2
  *(__FGS.sec*)
- __FGS.sec        0x02affa          0x2 /CW/_FGS0ÆÃ
+ __FGS.sec        0x02affa          0x2 /CW/_FGSêb∆
                   0x02affa                  __FGS.sec
 
 __FUID0
@@ -1152,7 +1152,7 @@ __FUID3
  .debug_abbrev    0x0018a8         0x86 build/default/production/PID.o
  .debug_abbrev    0x00192e        0x18d build/default/production/mcc_generated_files/tmr4.o
 
-.debug_line       0x000000       0x1ddb
+.debug_line       0x000000       0x1ddf
  *(.debug_line)
  .debug_line      0x000000        0x156 build/default/production/mcc_generated_files/traps.o
  .debug_line      0x000156        0x122 build/default/production/mcc_generated_files/interrupt_manager.o
@@ -1174,9 +1174,9 @@ __FUID3
  .debug_line      0x0016a2        0x117 build/default/production/motor_driver.o
  .debug_line      0x0017b9        0x15f build/default/production/can_message.o
  .debug_line      0x001918        0x14d build/default/production/interrupts.o
- .debug_line      0x001a65        0x17c build/default/production/can_app.o
- .debug_line      0x001be1         0x9d build/default/production/PID.o
- .debug_line      0x001c7e        0x15d build/default/production/mcc_generated_files/tmr4.o
+ .debug_line      0x001a65        0x180 build/default/production/can_app.o
+ .debug_line      0x001be5         0x9d build/default/production/PID.o
+ .debug_line      0x001c82        0x15d build/default/production/mcc_generated_files/tmr4.o
 
 .debug_frame      0x000000       0x13b2
  *(.debug_frame)
@@ -2625,7 +2625,7 @@ LOAD c:/program files/microchip/xc16/v1.60/bin/bin/../../lib\libm-elf.a
 LOAD c:/program files/microchip/xc16/v1.60/bin/bin/../../lib\liblega-c-elf.a
 END GROUP
 OUTPUT(dist/default/production/AGV_Driver_V1.X.production.elf elf32-pic30)
-LOAD /CW/_FGS0ÆÃ
+LOAD /CW/_FGSêb∆
 LOAD jump_table
 LOAD default_isr
 LOAD data_init
@@ -2886,9 +2886,9 @@ __c30_signature
  .nbss              0x1020          0x2 build/default/production/mcc_generated_files/tmr4.o
                     0x1020                  _TMR4_InterruptHandler
 
-_00000000058EB3205fa58d47
+_000000000605D3205fa6bb61
                     0x1200        0x200
- _00000000058EB3205fa58d47
+ _000000000605D3205fa6bb61
                     0x1200        0x200 build/default/production/mcc_generated_files/can1.o
 
 .data               0x1022         0x88
@@ -3006,7 +3006,7 @@ _00000000058EB3205fa58d47
 .const              0x9dc4         0x18 load address 0x001dc4  
  .const             0x9dc4         0x18 build/default/production/app.o
 
-.text             0x001ddc        0xce6
+.text             0x001ddc        0xe50
  .text            0x001ddc        0xa10 build/default/production/mcc_generated_files/can1.o
                   0x0021be                  _CAN1_Initialize
                   0x0022ca                  _CAN1_TransmitEnable
@@ -3036,132 +3036,132 @@ _00000000058EB3205fa58d47
  .text            0x0027ec        0x2d6 build/default/production/app.o
                   0x002820                  _APP_Initialize
                   0x00291c                  _APP_Tasks
+ .text            0x002ac2        0x16a build/default/production/can_app.o
+                  0x002ac2                  _CAN_APP_Init
+                  0x002b1e                  _CAN_APP_Tasks
 
-.dinit            0x002ac2        0x148
- .dinit           0x002ac2        0x148 data_init
+.dinit            0x002c2c        0x148
+ .dinit           0x002c2c        0x148 data_init
 
-.text             0x002c0a        0xc86
- .text            0x002c0a        0x12a build/default/production/can_app.o
-                  0x002c0a                  _CAN_APP_Init
-                  0x002c66                  _CAN_APP_Tasks
- .text            0x002d34        0x116 build/default/production/PID.o
-                  0x002d34                  _update_pid
- .text            0x002e4a        0x114 build/default/production/mcc_generated_files/reset.o
-                  0x002e4a                  _RESET_GetCause
-                  0x002e52                  _RESET_CauseHandler
-                  0x002f56                  _RESET_CauseClearAll
- .text            0x002f5e        0x110 build/default/production/mcc_generated_files/oc2.o
-                  0x002f5e                  _OC2_Initialize
-                  0x002f7a                  _OC2_CallBack
-                  0x002f80                  _OC2_Tasks
-                  0x002f94                  _OC2_Start
-                  0x002fae                  _OC2_Stop
-                  0x002fbc                  _OC2_SecondaryValueSet
-                  0x002fc8                  _OC2_PrimaryValueSet
-                  0x002fd4                  _OC2_IsCompareCycleComplete
-                  0x002fec                  _OC2_FaultStatusGet
-                  0x00302a                  _OC2_FaultStatusClear
-                  0x003046                  _OC2_ManualTriggerSet
-                  0x00304e                  _OC2_TriggerStatusGet
-                  0x003066                  _OC2_TriggerStatusClear
- .text            0x00306e        0x10e build/default/production/mcc_generated_files/oc1.o
-                  0x00306e                  _OC1_Initialize
-                  0x00308a                  _OC1_CallBack
-                  0x003090                  _OC1_Tasks
-                  0x0030a2                  _OC1_Start
-                  0x0030bc                  _OC1_Stop
-                  0x0030ca                  _OC1_SecondaryValueSet
-                  0x0030d6                  _OC1_PrimaryValueSet
-                  0x0030e2                  _OC1_IsCompareCycleComplete
-                  0x0030fa                  _OC1_FaultStatusGet
-                  0x003138                  _OC1_FaultStatusClear
-                  0x003154                  _OC1_ManualTriggerSet
-                  0x00315c                  _OC1_TriggerStatusGet
-                  0x003174                  _OC1_TriggerStatusClear
- .text            0x00317c         0xe6 build/default/production/can_message.o
-                  0x00317c                  _sendPosVelTorque
-                  0x003208                  _setCanFilter
-                  0x003250                  _getCmdId
- .text            0x003262         0xcc build/default/production/mcc_generated_files/dma.o
-                  0x003262                  _DMA_Initialize
-                  0x0032ca                  _DMA_Channel0_CallBack
-                  0x0032d0                  _DMA_Channel0_Tasks
-                  0x0032e2                  _DMA_Channel1_CallBack
-                  0x0032e8                  _DMA_Channel1_Tasks
-                  0x0032fc                  _DMA_Channel2_CallBack
-                  0x003302                  _DMA_Channel2_Tasks
-                  0x003316                  _DMA_Channel3_CallBack
-                  0x00331c                  _DMA_Channel3_Tasks
- .text            0x00332e         0xb8 build/default/production/mcc_generated_files/uart1.o
-                  0x00332e                  _UART1_Initialize
-                  0x003342                  _UART1_Read
-                  0x003360                  _UART1_Write
-                  0x003378                  _UART1_IsRxReady
-                  0x003390                  _UART1_IsTxReady
-                  0x0033b2                  _UART1_IsTxDone
-                  0x0033ca                  _UART1_StatusGet
-                  0x0033d2                  _UART1_Enable
-                  0x0033dc                  _UART1_Disable
- .text            0x0033e6         0xb8 build/default/production/mcc_generated_files/tmr2.o
-                  0x0033e6                  _TMR2_Initialize
-                  0x00340a                  _TMR2_Period16BitSet
-                  0x00341c                  _TMR2_Period16BitGet
-                  0x003424                  _TMR2_Counter16BitSet
-                  0x003436                  _TMR2_Counter16BitGet
-                  0x00343e                  _TMR2_CallBack
-                  0x003444                  _TMR2_SetInterruptHandler
-                  0x003454                  _TMR2_Start
-                  0x003464                  _TMR2_Stop
-                  0x00346e                  _TMR2_GetElapsedThenClear
-                  0x003486                  _TMR2_SoftwareCounterGet
-                  0x003492                  _TMR2_SoftwareCounterClear
- .text            0x00349e         0xb8 build/default/production/mcc_generated_files/tmr3.o
-                  0x00349e                  _TMR3_Initialize
-                  0x0034c2                  _TMR3_Period16BitSet
-                  0x0034d4                  _TMR3_Period16BitGet
-                  0x0034dc                  _TMR3_Counter16BitSet
-                  0x0034ee                  _TMR3_Counter16BitGet
-                  0x0034f6                  _TMR3_CallBack
-                  0x0034fc                  _TMR3_SetInterruptHandler
-                  0x00350c                  _TMR3_Start
-                  0x00351c                  _TMR3_Stop
-                  0x003526                  _TMR3_GetElapsedThenClear
-                  0x00353e                  _TMR3_SoftwareCounterGet
-                  0x00354a                  _TMR3_SoftwareCounterClear
- .text            0x003556         0xb8 build/default/production/mcc_generated_files/tmr4.o
-                  0x003556                  _TMR4_Initialize
-                  0x00357a                  _TMR4_Period16BitSet
-                  0x00358c                  _TMR4_Period16BitGet
-                  0x003594                  _TMR4_Counter16BitSet
-                  0x0035a6                  _TMR4_Counter16BitGet
-                  0x0035ae                  _TMR4_CallBack
-                  0x0035b4                  _TMR4_SetInterruptHandler
-                  0x0035c4                  _TMR4_Start
-                  0x0035d4                  _TMR4_Stop
-                  0x0035de                  _TMR4_GetElapsedThenClear
-                  0x0035f6                  _TMR4_SoftwareCounterGet
-                  0x003602                  _TMR4_SoftwareCounterClear
- .text            0x00360e         0xa2 build/default/production/motor_driver.o
-                  0x00360e                  _setDuty
-                  0x003682                  _limitPWM
- .text            0x0036b0         0x92 build/default/production/mcc_generated_files/pin_manager.o
-                  0x0036b0                  _PIN_MANAGER_Initialize
- .text            0x003742         0x50 build/default/production/mcc_generated_files/clock.o
-                  0x003742                  _CLOCK_Initialize
- .text            0x003792         0x50 build/default/production/mcc_generated_files/adc1.o
-                  0x003792                  _ADC1_Initialize
-                  0x0037b4                  _ADC1_CallBack
-                  0x0037ba                  _ADC1_SetInterruptHandler
-                  0x0037c6                  _ADC1_Tasks
- .text            0x0037e2         0x42 build/default/production/mcc_generated_files/system.o
-                  0x003800                  _SYSTEM_Initialize
- .text            0x003824         0x24 build/default/production/mcc_generated_files/interrupt_manager.o
-                  0x003824                  _INTERRUPT_Initialize
- .text            0x003848         0x24 build/default/production/interrupts.o
-                  0x003848                  _Tmr3_interrupt
-                  0x003854                  _Tmr2_interrupt
-                  0x003860                  _Tmr4_interrupt
- .text            0x00386c         0x18 build/default/production/mcc_generated_files/traps.o
-                  0x00386c                  _TRAPS_halt_on_error
- .text            0x003884          0xc build/default/production/main.o
-                  0x003884                  _main
+.text             0x002d74        0xb5c
+ .text            0x002d74        0x116 build/default/production/PID.o
+                  0x002d74                  _update_pid
+ .text            0x002e8a        0x114 build/default/production/mcc_generated_files/reset.o
+                  0x002e8a                  _RESET_GetCause
+                  0x002e92                  _RESET_CauseHandler
+                  0x002f96                  _RESET_CauseClearAll
+ .text            0x002f9e        0x110 build/default/production/mcc_generated_files/oc2.o
+                  0x002f9e                  _OC2_Initialize
+                  0x002fba                  _OC2_CallBack
+                  0x002fc0                  _OC2_Tasks
+                  0x002fd4                  _OC2_Start
+                  0x002fee                  _OC2_Stop
+                  0x002ffc                  _OC2_SecondaryValueSet
+                  0x003008                  _OC2_PrimaryValueSet
+                  0x003014                  _OC2_IsCompareCycleComplete
+                  0x00302c                  _OC2_FaultStatusGet
+                  0x00306a                  _OC2_FaultStatusClear
+                  0x003086                  _OC2_ManualTriggerSet
+                  0x00308e                  _OC2_TriggerStatusGet
+                  0x0030a6                  _OC2_TriggerStatusClear
+ .text            0x0030ae        0x10e build/default/production/mcc_generated_files/oc1.o
+                  0x0030ae                  _OC1_Initialize
+                  0x0030ca                  _OC1_CallBack
+                  0x0030d0                  _OC1_Tasks
+                  0x0030e2                  _OC1_Start
+                  0x0030fc                  _OC1_Stop
+                  0x00310a                  _OC1_SecondaryValueSet
+                  0x003116                  _OC1_PrimaryValueSet
+                  0x003122                  _OC1_IsCompareCycleComplete
+                  0x00313a                  _OC1_FaultStatusGet
+                  0x003178                  _OC1_FaultStatusClear
+                  0x003194                  _OC1_ManualTriggerSet
+                  0x00319c                  _OC1_TriggerStatusGet
+                  0x0031b4                  _OC1_TriggerStatusClear
+ .text            0x0031bc         0xe6 build/default/production/can_message.o
+                  0x0031bc                  _sendPosVelTorque
+                  0x003248                  _setCanFilter
+                  0x003290                  _getCmdId
+ .text            0x0032a2         0xcc build/default/production/mcc_generated_files/dma.o
+                  0x0032a2                  _DMA_Initialize
+                  0x00330a                  _DMA_Channel0_CallBack
+                  0x003310                  _DMA_Channel0_Tasks
+                  0x003322                  _DMA_Channel1_CallBack
+                  0x003328                  _DMA_Channel1_Tasks
+                  0x00333c                  _DMA_Channel2_CallBack
+                  0x003342                  _DMA_Channel2_Tasks
+                  0x003356                  _DMA_Channel3_CallBack
+                  0x00335c                  _DMA_Channel3_Tasks
+ .text            0x00336e         0xb8 build/default/production/mcc_generated_files/uart1.o
+                  0x00336e                  _UART1_Initialize
+                  0x003382                  _UART1_Read
+                  0x0033a0                  _UART1_Write
+                  0x0033b8                  _UART1_IsRxReady
+                  0x0033d0                  _UART1_IsTxReady
+                  0x0033f2                  _UART1_IsTxDone
+                  0x00340a                  _UART1_StatusGet
+                  0x003412                  _UART1_Enable
+                  0x00341c                  _UART1_Disable
+ .text            0x003426         0xb8 build/default/production/mcc_generated_files/tmr2.o
+                  0x003426                  _TMR2_Initialize
+                  0x00344a                  _TMR2_Period16BitSet
+                  0x00345c                  _TMR2_Period16BitGet
+                  0x003464                  _TMR2_Counter16BitSet
+                  0x003476                  _TMR2_Counter16BitGet
+                  0x00347e                  _TMR2_CallBack
+                  0x003484                  _TMR2_SetInterruptHandler
+                  0x003494                  _TMR2_Start
+                  0x0034a4                  _TMR2_Stop
+                  0x0034ae                  _TMR2_GetElapsedThenClear
+                  0x0034c6                  _TMR2_SoftwareCounterGet
+                  0x0034d2                  _TMR2_SoftwareCounterClear
+ .text            0x0034de         0xb8 build/default/production/mcc_generated_files/tmr3.o
+                  0x0034de                  _TMR3_Initialize
+                  0x003502                  _TMR3_Period16BitSet
+                  0x003514                  _TMR3_Period16BitGet
+                  0x00351c                  _TMR3_Counter16BitSet
+                  0x00352e                  _TMR3_Counter16BitGet
+                  0x003536                  _TMR3_CallBack
+                  0x00353c                  _TMR3_SetInterruptHandler
+                  0x00354c                  _TMR3_Start
+                  0x00355c                  _TMR3_Stop
+                  0x003566                  _TMR3_GetElapsedThenClear
+                  0x00357e                  _TMR3_SoftwareCounterGet
+                  0x00358a                  _TMR3_SoftwareCounterClear
+ .text            0x003596         0xb8 build/default/production/mcc_generated_files/tmr4.o
+                  0x003596                  _TMR4_Initialize
+                  0x0035ba                  _TMR4_Period16BitSet
+                  0x0035cc                  _TMR4_Period16BitGet
+                  0x0035d4                  _TMR4_Counter16BitSet
+                  0x0035e6                  _TMR4_Counter16BitGet
+                  0x0035ee                  _TMR4_CallBack
+                  0x0035f4                  _TMR4_SetInterruptHandler
+                  0x003604                  _TMR4_Start
+                  0x003614                  _TMR4_Stop
+                  0x00361e                  _TMR4_GetElapsedThenClear
+                  0x003636                  _TMR4_SoftwareCounterGet
+                  0x003642                  _TMR4_SoftwareCounterClear
+ .text            0x00364e         0xa2 build/default/production/motor_driver.o
+                  0x00364e                  _setDuty
+                  0x0036c2                  _limitPWM
+ .text            0x0036f0         0x92 build/default/production/mcc_generated_files/pin_manager.o
+                  0x0036f0                  _PIN_MANAGER_Initialize
+ .text            0x003782         0x50 build/default/production/mcc_generated_files/clock.o
+                  0x003782                  _CLOCK_Initialize
+ .text            0x0037d2         0x50 build/default/production/mcc_generated_files/adc1.o
+                  0x0037d2                  _ADC1_Initialize
+                  0x0037f4                  _ADC1_CallBack
+                  0x0037fa                  _ADC1_SetInterruptHandler
+                  0x003806                  _ADC1_Tasks
+ .text            0x003822         0x42 build/default/production/mcc_generated_files/system.o
+                  0x003840                  _SYSTEM_Initialize
+ .text            0x003864         0x24 build/default/production/mcc_generated_files/interrupt_manager.o
+                  0x003864                  _INTERRUPT_Initialize
+ .text            0x003888         0x24 build/default/production/interrupts.o
+                  0x003888                  _Tmr3_interrupt
+                  0x003894                  _Tmr2_interrupt
+                  0x0038a0                  _Tmr4_interrupt
+ .text            0x0038ac         0x18 build/default/production/mcc_generated_files/traps.o
+                  0x0038ac                  _TRAPS_halt_on_error
+ .text            0x0038c4          0xc build/default/production/main.o
+                  0x0038c4                  _main

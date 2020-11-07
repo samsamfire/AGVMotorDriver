@@ -12,6 +12,7 @@
 #define STOP_ID 44
 
 #define SET_MODE_ID 5
+#define SET_KP_KI_VEL_ID 7
 
 #define SET_VEL_ID 10
 #define GET_VEL_ID 20
