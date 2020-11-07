@@ -15,6 +15,7 @@ int i;
 
 
 
+
 void APP_Initialize(void){
 
 	//System initialize is defined by MCC when configuring the used modules
@@ -98,11 +99,11 @@ void APP_Initialize(void){
     TRISBbits.TRISB1=0;
 
     appData.velPid.input = &appData.reqVel;
-    appData.velPid.feedback = &appData.sensLowVelFilt;
+    appData.velPid.feedback = &appData.sensLowVelRaw;
     appData.velPid.iterm = 0;
     appData.velPid.Kp = 1.5;
-    appData.velPid.Ki = 30;
-    appData.velPid.antiWindup = 12; //Anti windup of 10 rad.s-1
+    appData.velPid.Ki = 20;
+    appData.velPid.antiWindup = 15; //Anti windup of 10 rad.s-1
 
 
 
@@ -135,56 +136,53 @@ void APP_Tasks(void){
         {
 
 
-          if(appData.updateQEI == 1){
-            appData.sensPos = POS1CNTL;
-            appData.sensVel = VEL1CNT;
-            appData.timerVel = INT1HLDL;
+            if(appData.updateQEI == 1){
+                appData.sensPos = POS1CNTL;
+                appData.sensVel = VEL1CNT;
+                appData.timerVel = INT1HLDL;
 
-            //Detect change in direction
+                //Detect change in direction
 
-             if(appData.sensPos>appData.sensPosPrev){
-                appData.dir = 1;
-              }
-              else if(appData.sensPos<appData.sensPosPrev){
-                appData.dir = -1;
-              }
+                if(appData.sensPos>appData.sensPosPrev){
+                    appData.dir = 1;
+                }
+                else if(appData.sensPos<appData.sensPosPrev){
+                    appData.dir = -1;
+                }
 
+                if(appData.timerVel != 0){
+                    appData.sensLowVelRaw = (float) appData.dir*2*4*0.008377/(appData.timerVel*0.0000085248);
+                    //Calculate speed
+                    if(abs(appData.sensLowVelRaw) < MIN_SPEED){
+                        appData.sensLowVelRaw = 0;
+                        //Reset integrator value
+                        appData.velPid.iterm = 0;
+                    }
+                }
 
-            //Calculate speed
-            appData.sensLowVelRaw = (float) appData.dir*2*4*0.008377/(appData.timerVel*0.0000085248);
+                else{
+                    appData.sensLowVelRaw = 0;
+                }
+
+            //Filtering    
             appData.sensLowVelRawSum+=appData.sensLowVelRaw;
-
             appData.filterCounter += 1;
+                if(appData.filterCounter == 20){
 
-            if(appData.filterCounter == 20){
-
-                appData.sensLowVelFilt = appData.sensLowVelRawSum/20;
-                appData.sensLowVelRawSum = 0;
-                appData.filterCounter = 0;
-
-            }
-            
-           
+                    appData.sensLowVelFilt = appData.sensLowVelRawSum/20;
+                    appData.sensLowVelRawSum = 0;
+                    appData.filterCounter = 0;
+                }
 
             //Update QEI values
             appData.updateQEI = 0;
-           // appData.sensLowVelRaw = (float) appData.sensPos-appData.sensPosPrev;
-            //appData.sensLowVelRaw = appData.sensPos;
             appData.sensPosPrev = appData.sensPos;
 
           }
-
-
-          
-
             
         	appData.state = APP_STATE_UPDATE_RELAY;
         	break;
         }
-
-
-
-
 
 
 
@@ -195,14 +193,13 @@ void APP_Tasks(void){
         	//Should implement a timeout so that turns off automatically
         	//If connection lost
             //.LATA3 = 1;
-        	LATAbits.LATA3 = appData.on;
+            LATAbits.LATA3 = appData.on | PORTAbits.RA1;
+            //Led depends on enconder output
+            LATBbits.LATB0 = PORTBbits.RB6;
 
-          LATBbits.LATB0 = PORTBbits.RB6;
         	appData.state = APP_STATE_UPDATE_MOTOR;
         	break;
         }
-
-
 
 
 
@@ -224,7 +221,6 @@ void APP_Tasks(void){
 
 			appData.state = APP_STATE_SEND_UART;
         	break;
-            //setDuty(35);
         }
 
 

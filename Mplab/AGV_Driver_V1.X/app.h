@@ -20,7 +20,7 @@
 #include "mcc_generated_files/oc2.h"
 #include "PID.h"
 
-
+#define MIN_SPEED 0.1
 
 //This is an enumeration of all the different possible states of the state machine
 
