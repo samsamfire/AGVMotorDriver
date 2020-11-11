@@ -73,11 +73,13 @@ void CAN_APP_Tasks(){
 							appData.mode = cappData.msgRx.data[0];
 						}
 
-						case SET_KP_KI_VEL_ID :
-						{
-							appData.velPid.Kp = (float)((cappData.dataRx[0]) + (cappData.dataRx[1]<<8))/100;
-							appData.velPid.Ki = (float)((cappData.dataRx[2]) + (cappData.dataRx[3]<<8))/100;
-						}
+						//This causes error why ???
+
+						//  case SET_KP_KI_VEL_ID :
+						// {
+						// 	appData.velPid.Kp = (float) ((cappData.dataRx[0]) + (cappData.dataRx[1]<<8))/100;
+						// 	appData.velPid.Ki = (float) ((cappData.dataRx[2]) + (cappData.dataRx[3]<<8))/100;
+						// }
 
 						default :
 						{
@@ -100,7 +102,7 @@ void CAN_APP_Tasks(){
 			if (cappData.sendCanMessages == 1)
 			{
 					
-				sendPosVelTorque(appData.sensPos,appData.sensLowVelRaw * 1000,0,&cappData.msgTx);
+				sendPosVelTorque(appData.sensPos,appData.sensLowVelFilt * 1000,0,&cappData.msgTx);
 
 				cappData.sendCanMessages = 0;
 
