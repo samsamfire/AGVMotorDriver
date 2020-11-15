@@ -18,9 +18,10 @@
 #include "mcc_generated_files/adc1.h"
 #include "mcc_generated_files/oc1.h"
 #include "mcc_generated_files/oc2.h"
+#include "mcc_generated_files/uart1.h"
 #include "PID.h"
 
-#define MIN_SPEED 0.1
+#define MIN_SPEED 0.01
 
 //This is an enumeration of all the different possible states of the state machine
 
@@ -54,8 +55,10 @@ typedef struct
 	float sensLowVelFilt;
 	int16_t filterCounter;
 
-	int16_t sensPos;
-	int16_t sensPosPrev;
+	int32_t sensPos;
+	uint16_t sensPosL;
+	uint16_t sensPosH;
+	int32_t sensPosPrev;
 
 	int16_t sensTorque;
 

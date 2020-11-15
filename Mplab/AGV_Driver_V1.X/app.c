@@ -13,7 +13,29 @@ uint8_t cmd_id;
 
 int i;
 
+uint16_t low = 0;
+uint16_t high = 0;
 
+int16_t low_speed = 0;
+int16_t high_speed = 0;
+int16_t low_counter = 0;
+int16_t high_counter = 0;
+float speed = 0;
+float position = 0;
+uint8_t vel_measure_count = 0;
+
+
+
+void write_data(uint8_t * buffer,uint8_t size){
+
+    int i=0;
+
+    
+    for (i = 0; i<size; ++i)
+    {
+        UART1_Write(*(buffer+i));
+    }
+}
 
 
 void APP_Initialize(void){
@@ -85,7 +107,18 @@ void APP_Initialize(void){
     QEI1GECL = 0xFFFF;                   /* Upper bound (Low)*/
     QEI1IOC = 0x7100;
 
-    QEI1CON = 0x9800;
+    
+    
+
+    
+    QEI1IOCbits.FLTREN = 1; //Enable filter
+    QEI1IOCbits.QFDIV = 6; //Filter out bad values
+
+    QEI1CON = 0;
+    QEI1CONbits.PIMOD = 0;
+    QEI1CONbits.QEIEN = 1;
+    //QEI1CON = 0x9800;
+    
     QEI1CONbits.INTDIV = 6; //INTDIV is set to 6 for a 1:256 prescaler 8.5248 uS/ time step
 
     POS1CNTL=0;
@@ -96,12 +129,10 @@ void APP_Initialize(void){
     appData.velPid.input = &appData.reqVel;
     appData.velPid.feedback = &appData.sensLowVelRaw;
     appData.velPid.iterm = 0;
-    appData.velPid.Kp = 1.5;
-    appData.velPid.Ki = 20;
-    appData.velPid.antiWindup = 15; //Anti windup of 10 rad.s-1
-
-
-
+    appData.velPid.Kp = 3;
+    appData.velPid.Ki = 50;
+    appData.velPid.Kd = 0.0001;
+    appData.velPid.antiWindup = 30; //Anti windup of 15 rad.s-1
 
 
 
@@ -132,9 +163,15 @@ void APP_Tasks(void){
 
 
             if(appData.updateQEI == 1){
-                appData.sensPos = POS1CNTL;
+
+                appData.sensPosL = POS1CNTL;
+                appData.sensPosH = POS1HLD;
+                //Combine low and high values
+                appData.sensPos = appData.sensPosH*65536 + appData.sensPosL;
                 appData.sensVel = VEL1CNT;
+                /*TODO Change and add high part*/
                 appData.timerVel = INT1HLDL;
+
 
                 //Detect change in direction
 
@@ -150,8 +187,13 @@ void APP_Tasks(void){
                     //Calculate speed
                     if(abs(appData.sensLowVelRaw) < MIN_SPEED){
                         appData.sensLowVelRaw = 0;
-                        //Reset integrator value
-                        appData.velPid.iterm = 0;
+                        
+                        if(appData.reqVel<MIN_SPEED*1000){
+                            //If requested velocity is under minimum velocity then remove iterm
+                            appData.velPid.iterm = 0;
+
+                        }
+                        
                     }
                 }
 
@@ -223,9 +265,38 @@ void APP_Tasks(void){
 
         case APP_STATE_SEND_UART:
         {
-    		if(appData.counterUart>10000){
-                //printf
-                printf("Motor speed is : %f \r\n",  appData.sensLowVelFilt);
+            //printf("OC1R %u OC2R %u \r\n", OC1R,OC2R);
+            //printf("QEI1OC %u %u\r\n",QEI1IOCbits.HOME,QEI1IOCbits.INDEX);
+            //printf("%f",appData.sensLowVelFilt);
+            
+            
+            
+    		if(appData.counterUart>50){
+                
+
+                write_data(&appData.velPid.error,4);
+                write_data(&appData.velPid.output,4);
+                write_data(&appData.velPid.output_pwm,4);
+                write_data(&appData.velPid.iterm,4);
+                write_data(&appData.sensLowVelFilt,4);
+           
+                printf("\n");
+           
+              
+                low_counter = INT1HLDL;
+                high_counter = INT1HLDH;
+
+                low_speed = VEL1CNT;
+                //high_speed = VELHL;
+                position = (float) (high*65536 + low);
+                speed = (float) low_speed;
+                //printf("QEI1STAT %u\r\n",QEI1STAT);
+                //printf("QEI1STAT %u\r\n",QEI1CON);
+                //printf("QEI1STAT %u\r\n",QEI1IOC);
+
+
+                //printf("IND1 %f %i %i \r\n",position,high_counter,low_counter & 0x7FFF);
+                //printf("Motor speed is : %f \r\n",  appData.sensLowVelFilt);
                 appData.counterUart = 0;
             }
 
@@ -263,3 +334,5 @@ void APP_Tasks(void){
 	}
 
 }
+
+

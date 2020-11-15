@@ -14,17 +14,17 @@ void Tmr3_interrupt(void)
 }
 
 
-void Tmr2_interrupt(void)
+void Tmr2_interrupt(void) //5ms
 {
 	//Update PIDs
-	appData.updateMotor = 1;
+	appData.updateMotor = 1; 
 
 }
 
 
 void Tmr4_interrupt(void)
 {
-	appData.updateQEI=1;
+	appData.updateQEI=1; //500us
 
 }
 

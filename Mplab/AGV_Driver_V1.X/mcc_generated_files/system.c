@@ -79,17 +79,17 @@
 #include "clock.h"
 #include "system.h"
 #include "system_types.h"
-#include "tmr3.h"
-#include "dma.h"
-#include "tmr4.h"
-#include "tmr2.h"
-#include "interrupt_manager.h"
-#include "traps.h"
 #include "uart1.h"
 #include "oc2.h"
 #include "oc1.h"
-#include "adc1.h"
+#include "dma.h"
+#include "interrupt_manager.h"
+#include "traps.h"
 #include "can1.h"
+#include "tmr2.h"
+#include "tmr3.h"
+#include "tmr4.h"
+#include "adc1.h"
 
 void SYSTEM_Initialize(void)
 {
@@ -97,8 +97,8 @@ void SYSTEM_Initialize(void)
     CLOCK_Initialize();
     INTERRUPT_Initialize();
     UART1_Initialize();
-    TMR4_Initialize();
     OC1_Initialize();
+    TMR4_Initialize();
     CAN1_Initialize();
     TMR2_Initialize();
     ADC1_Initialize();

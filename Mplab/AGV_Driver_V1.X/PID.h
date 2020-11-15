@@ -7,7 +7,7 @@
 
 
 
-#define T 0.005 //5 ms interrupts
+#define T 0.001 //5 ms interrupts
 
 
 
@@ -25,7 +25,9 @@ typedef struct
 	float prev_value;
 	float prev_error;
 
+	float error;
 	float iterm;
+	float dterm;
 	float antiWindup;
 
 	float* feedback;

@@ -74,7 +74,7 @@ void PIN_MANAGER_Initialize (void)
      * Setting the Weak Pull Up and Weak Pull Down SFR(s)
      ***************************************************************************/
     CNPDA = 0x0000;
-    CNPDB = 0x0000;
+    CNPDB = 0x0C00;
     CNPUA = 0x0000;
     CNPUB = 0x0000;
 

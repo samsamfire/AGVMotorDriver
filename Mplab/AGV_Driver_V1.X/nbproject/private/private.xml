@@ -16,7 +16,7 @@
             <file>file:/D:/Projet_Smart_Factory/AGV_Driver/Mplab/AGV_Driver_V1.X/pid_app.h</file>
             <file>file:/D:/Projet_Smart_Factory/AGV_Driver/Mplab/AGV_Driver_V1.X/app.c</file>
             <file>file:/D:/Projet_Smart_Factory/AGV_Driver/Mplab/AGV_Driver_V1.X/mcc_generated_files/tmr2.c</file>
-            <file>file:/D:/Projet_Smart_Factory/AGV_Driver/Mplab/AGV_Driver_V1.X/can_app.c</file>
+            <file>file:/D:/Projet_Smart_Factory/AGV_Driver/Mplab/AGV_Driver_V1.X/mcc_generated_files/uart1.h</file>
         </group>
     </open-files>
 </project-private>
