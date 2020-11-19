@@ -5,3 +5,5 @@ RPICanDriver/debug/*
 RPICanDriver/obj/*
 
 Mplab/AGV_Driver_V1.X/build/*
+Mplab/Bootloader_CAN.X/build/*
+Mplab/Bootloader_test.X/build/*

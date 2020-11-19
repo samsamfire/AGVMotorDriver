@@ -1,0 +1,1 @@
+hexmate r0-2FFF,..\..\..\Bootloader_CAN.X\dist\default\production\Bootloader_CAN.X.production.hex r3000-54FFF,..\..\dist\default\production\Bootloader_test.X.production.hex r55000-FFFFFFFF,..\..\..\Bootloader_CAN.X\dist\default\production\Bootloader_CAN.X.production.hex -O..\..\dist\default\production\combined.production.hex

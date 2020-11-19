@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project>
+  <executable name="dist/default/debug/Bootloader_CAN.X.debug.elf">
+    <memory name="data">
+      <units>bytes</units>
+      <length>32768</length>
+      <used>910</used>
+      <free>31858</free>
+    </memory>
+    <memory name="program">
+      <units>bytes</units>
+      <length>263394</length>
+      <used>262716</used>
+      <free>678</free>
+    </memory>
+  </executable>
+</project>
