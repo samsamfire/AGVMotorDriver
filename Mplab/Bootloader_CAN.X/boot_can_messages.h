@@ -47,7 +47,10 @@ enum BOOT_COMMAND_RESPONSES
     BAD_ADDRESS = 0xFE,
     BAD_LENGTH  = 0xFD,
     VERIFY_FAIL = 0xFC,
-    BAD_DLC = 0xFB
+    BAD_DLC = 0xFB,
+    FLASH_CMD_ERROR = 0xFA,
+    FLASH_WRITE_SUCCESS =0xF9
+          
 };
 
 enum BOOT_COMMAND
@@ -65,6 +68,12 @@ enum BOOT_COMMAND
     GET_MEMORY_ADDRESS_RANGE_COMMAND = 0x0B,
     
 };
+
+
+extern CAN_MSG_FIELD NO_DATA_FIELD;
+
+extern CAN_MSG_FIELD FULL_DATA_FIELD;
+
 
 
 //////////HOST COMMANDS//////////////

@@ -128,50 +128,51 @@ section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x200               0x498           0x6e4  (1764)
 .text.CAN1_DMACopy           0x698               0x23c           0x35a  (858)
-.text.ReadFlash              0x8d4               0x1a2           0x273  (627)
-.text.WriteFlash             0xa76               0x178           0x234  (564)
-.text.CAN1_Initialize        0xbee               0x108           0x18c  (396)
-.text.CAN1_MessageToBuffer     0xcf6               0x106           0x189  (393)
-.NVM_flash                   0xdfc                0xf4           0x16e  (366)
-.text.setCanFilter           0xef0                0xe8           0x15c  (348)
-.text.CAN1_Transmit          0xfd8                0x90            0xd8  (216)
-.text.CAN1_Receive          0x1068                0x8c            0xd2  (210)
-.text.PIN_MANAGER_Initialize    0x10f4                0x7a            0xb7  (183)
-.text.CAN1_ReceivedMessageCountGet    0x116e                0x66            0x99  (153)
-.text.DMA_Initialize        0x11d4                0x62            0x93  (147)
-.text.BOOT_ProcessCommand    0x1236                0x58            0x84  (132)
-.text.CLOCK_Initialize      0x128e                0x50            0x78  (120)
-.text.BOOT_COM_Write        0x12de                0x50            0x78  (120)
-.text.ReadVersion           0x132e                0x4a            0x6f  (111)
-.text.BOOT_CAN_Initialize    0x1378                0x42            0x63  (99)
-.dinit                      0x13ba                0x40            0x60  (96)
-.text.DMA_StartAddressASet    0x13fa                0x3e            0x5d  (93)
-.text.DMA_PeripheralAddressSet    0x1438                0x36            0x51  (81)
-.text.DMA_ChannelEnable     0x146e                0x2c            0x42  (66)
-.text.IsLegalAddress        0x149a                0x2c            0x42  (66)
-.text.BOOT_CAN_Tasks        0x14c6                0x26            0x39  (57)
-.text.CommandError          0x14ec                0x26            0x39  (57)
-.text.BOOT_Verify           0x1512                0x22            0x33  (51)
-.text.BOOT_COM_GetMessagesReady    0x1534                0x1e            0x2d  (45)
-.text.SYSTEM_Initialize     0x1552                0x1a            0x27  (39)
-.text.CAN1_TransmitEnable    0x156c                0x1a            0x27  (39)
-.text.CAN1_ReceiveEnable    0x1586                0x1a            0x27  (39)
-.text.UART1_Initialize      0x15a0                0x14            0x1e  (30)
-.text.SYSTEM_CORCONModeOperatingSet    0x15b4                0x12            0x1b  (27)
-.text.getCmdId              0x15c6                0x12            0x1b  (27)
-.text.use_failsafe_stack    0x15d8                 0xe            0x15  (21)
-.text.BOOT_StartApplication    0x15e6                 0xe            0x15  (21)
-.text.INTERRUPT_GlobalEnable    0x15f4                 0xc            0x12  (18)
-.text.CAN1_SetBusWakeUpActivityInterruptHandler    0x1600                 0xc            0x12  (18)
-.text.main                  0x160c                 0xc            0x12  (18)
-.text.TRAPS_halt_on_error    0x1618                 0xa             0xf  (15)
-.text.EnterBootloadMode     0x1622                 0x8             0xc  (12)
-.text.INTERRUPT_Initialize    0x162a                 0x6             0x9  (9)
-.text.CAN1_DefaultBusWakeUpActivityHandler    0x1630                 0x6             0x9  (9)
-.text.BOOT_Initialize       0x1636                 0x6             0x9  (9)
+.text.WriteFlash             0x8d4               0x17a           0x237  (567)
+.text.ReadFlash              0xa4e               0x146           0x1e9  (489)
+.text.CAN1_Initialize        0xb94               0x108           0x18c  (396)
+.text.CAN1_MessageToBuffer     0xc9c               0x106           0x189  (393)
+.NVM_flash                   0xda2                0xf4           0x16e  (366)
+.text.setCanFilter           0xe96                0xe8           0x15c  (348)
+.text.BOOT_COM_Response      0xf7e                0xa0            0xf0  (240)
+.text.CAN1_Transmit         0x101e                0x90            0xd8  (216)
+.text.CAN1_Receive          0x10ae                0x8c            0xd2  (210)
+.text.PIN_MANAGER_Initialize    0x113a                0x7a            0xb7  (183)
+.text.CAN1_ReceivedMessageCountGet    0x11b4                0x66            0x99  (153)
+.text.DMA_Initialize        0x121a                0x62            0x93  (147)
+.text.BOOT_ProcessCommand    0x127c                0x58            0x84  (132)
+.text.CLOCK_Initialize      0x12d4                0x50            0x78  (120)
+.text.BOOT_COM_Write        0x1324                0x50            0x78  (120)
+.text.ReadVersion           0x1374                0x4a            0x6f  (111)
+.text.BOOT_CAN_Initialize    0x13be                0x42            0x63  (99)
+.dinit                      0x1400                0x40            0x60  (96)
+.text.DMA_StartAddressASet    0x1440                0x3e            0x5d  (93)
+.text.DMA_PeripheralAddressSet    0x147e                0x36            0x51  (81)
+.text.DMA_ChannelEnable     0x14b4                0x2c            0x42  (66)
+.text.IsLegalAddress        0x14e0                0x2c            0x42  (66)
+.text.BOOT_CAN_Tasks        0x150c                0x26            0x39  (57)
+.text.CommandError          0x1532                0x26            0x39  (57)
+.text.BOOT_Verify           0x1558                0x22            0x33  (51)
+.text.BOOT_COM_GetMessagesReady    0x157a                0x1e            0x2d  (45)
+.text.SYSTEM_Initialize     0x1598                0x1a            0x27  (39)
+.text.CAN1_TransmitEnable    0x15b2                0x1a            0x27  (39)
+.text.CAN1_ReceiveEnable    0x15cc                0x1a            0x27  (39)
+.text.UART1_Initialize      0x15e6                0x14            0x1e  (30)
+.text.SYSTEM_CORCONModeOperatingSet    0x15fa                0x12            0x1b  (27)
+.text.getCmdId              0x160c                0x12            0x1b  (27)
+.text.use_failsafe_stack    0x161e                 0xe            0x15  (21)
+.text.BOOT_StartApplication    0x162c                 0xe            0x15  (21)
+.text.INTERRUPT_GlobalEnable    0x163a                 0xc            0x12  (18)
+.text.CAN1_SetBusWakeUpActivityInterruptHandler    0x1646                 0xc            0x12  (18)
+.text.TRAPS_halt_on_error    0x1652                 0xa             0xf  (15)
+.text.main                  0x165c                 0xa             0xf  (15)
+.text.EnterBootloadMode     0x1666                 0x8             0xc  (12)
+.text.INTERRUPT_Initialize    0x166e                 0x6             0x9  (9)
+.text.CAN1_DefaultBusWakeUpActivityHandler    0x1674                 0x6             0x9  (9)
+.text.BOOT_Initialize       0x167a                 0x6             0x9  (9)
 mcc_generated_files/boot/memory_partition.S.scn1    0x1800             0x297ea         0x3e3df  (254943)
 
-                 Total "program" memory used (bytes):        0x40239  (262713) 99%
+                 Total "program" memory used (bytes):        0x4029f  (262815) 99%
 
 
 "data" Memory  [Origin = 0x1000, Length = 0x8000]
@@ -184,7 +185,7 @@ section                    address      alignment gaps    total length  (dec)
 .ndata                      0x1010                   0             0x2  (2)
 .bss                        0x1012                   0           0x128  (296)
 .data                       0x113a                   0             0x4  (4)
-_000000000613D3205fb6536c    0x1200                   0           0x200  (512)
+_000000000585E3205fb69a59    0x1200                   0           0x200  (512)
 
                  Total "data" memory used (bytes):          0x33e  (830) 2%
 
@@ -223,8 +224,8 @@ External Symbols in Program Memory (by address):
 
                   0x000200                  __resetPRI
                   0x00023c                  __psv_init
-                  0x000248                  __data_init_extended
                   0x000248                  __data_init
+                  0x000248                  __data_init_extended
                   0x0002fe                  __OscillatorFail
                   0x00031e                  __StackError
                   0x000340                  __AddressError
@@ -249,75 +250,77 @@ External Symbols in Program Memory (by address):
                   0x000676                  __fbopReturnNaN
                   0x00067c                  _memcpy
                   0x00068a                  _memset
-                  0x000bee                  _CAN1_Initialize
-                  0x000dfe                  _FLASH_Unlock
-                  0x000e08                  _FLASH_Lock
-                  0x000e16                  _FLASH_SendNvmKey
-                  0x000e42                  _FLASH_ReadWord24
-                  0x000e50                  _FLASH_ReadWord16
-                  0x000e5c                  _FLASH_ErasePage
-                  0x000e78                  _FLASH_WriteDoubleWord24
-                  0x000eac                  _FLASH_WriteDoubleWord16
-                  0x000ee0                  _FLASH_GetErasePageOffset
-                  0x000ee6                  _FLASH_GetErasePageAddress
-                  0x000ef0                  _setCanFilter
-                  0x000fd8                  _CAN1_Transmit
-                  0x001068                  _CAN1_Receive
-                  0x0010f4                  _PIN_MANAGER_Initialize
-                  0x00116e                  _CAN1_ReceivedMessageCountGet
-                  0x0011d4                  _DMA_Initialize
-                  0x001236                  _BOOT_ProcessCommand
-                  0x00128e                  _CLOCK_Initialize
-                  0x0012de                  _BOOT_COM_Write
-                  0x001378                  _BOOT_CAN_Initialize
-                  0x0014c6                  _BOOT_CAN_Tasks
-                  0x001512                  _BOOT_Verify
-                  0x001534                  _BOOT_COM_GetMessagesReady
-                  0x001552                  _SYSTEM_Initialize
-                  0x00156c                  _CAN1_TransmitEnable
-                  0x001586                  _CAN1_ReceiveEnable
-                  0x0015a0                  _UART1_Initialize
-                  0x0015c6                  _getCmdId
-                  0x0015e6                  _BOOT_StartApplication
-                  0x001600                  _CAN1_SetBusWakeUpActivityInterruptHandler
-                  0x00160c                  _main
-                  0x00162a                  _INTERRUPT_Initialize
-                  0x001636                  _BOOT_Initialize
+                  0x000b94                  _CAN1_Initialize
+                  0x000da4                  _FLASH_Unlock
+                  0x000dae                  _FLASH_Lock
+                  0x000dbc                  _FLASH_SendNvmKey
+                  0x000de8                  _FLASH_ReadWord24
+                  0x000df6                  _FLASH_ReadWord16
+                  0x000e02                  _FLASH_ErasePage
+                  0x000e1e                  _FLASH_WriteDoubleWord24
+                  0x000e52                  _FLASH_WriteDoubleWord16
+                  0x000e86                  _FLASH_GetErasePageOffset
+                  0x000e8c                  _FLASH_GetErasePageAddress
+                  0x000e96                  _setCanFilter
+                  0x000f7e                  _BOOT_COM_Response
+                  0x00101e                  _CAN1_Transmit
+                  0x0010ae                  _CAN1_Receive
+                  0x00113a                  _PIN_MANAGER_Initialize
+                  0x0011b4                  _CAN1_ReceivedMessageCountGet
+                  0x00121a                  _DMA_Initialize
+                  0x00127c                  _BOOT_ProcessCommand
+                  0x0012d4                  _CLOCK_Initialize
+                  0x001324                  _BOOT_COM_Write
+                  0x0013be                  _BOOT_CAN_Initialize
+                  0x00150c                  _BOOT_CAN_Tasks
+                  0x001558                  _BOOT_Verify
+                  0x00157a                  _BOOT_COM_GetMessagesReady
+                  0x001598                  _SYSTEM_Initialize
+                  0x0015b2                  _CAN1_TransmitEnable
+                  0x0015cc                  _CAN1_ReceiveEnable
+                  0x0015e6                  _UART1_Initialize
+                  0x00160c                  _getCmdId
+                  0x00162c                  _BOOT_StartApplication
+                  0x001646                  _CAN1_SetBusWakeUpActivityInterruptHandler
+                  0x00165c                  _main
+                  0x00166e                  _INTERRUPT_Initialize
+                  0x00167a                  _BOOT_Initialize
                   0x02affa                  __FGS.sec
 
 External Symbols in Program Memory (by name):
 
-                  0x001378                  _BOOT_CAN_Initialize
-                  0x0014c6                  _BOOT_CAN_Tasks
-                  0x001534                  _BOOT_COM_GetMessagesReady
-                  0x0012de                  _BOOT_COM_Write
-                  0x001636                  _BOOT_Initialize
-                  0x001236                  _BOOT_ProcessCommand
-                  0x0015e6                  _BOOT_StartApplication
-                  0x001512                  _BOOT_Verify
-                  0x000bee                  _CAN1_Initialize
-                  0x001068                  _CAN1_Receive
-                  0x001586                  _CAN1_ReceiveEnable
-                  0x00116e                  _CAN1_ReceivedMessageCountGet
-                  0x001600                  _CAN1_SetBusWakeUpActivityInterruptHandler
-                  0x000fd8                  _CAN1_Transmit
-                  0x00156c                  _CAN1_TransmitEnable
-                  0x00128e                  _CLOCK_Initialize
-                  0x0011d4                  _DMA_Initialize
-                  0x000e5c                  _FLASH_ErasePage
-                  0x000ee6                  _FLASH_GetErasePageAddress
-                  0x000ee0                  _FLASH_GetErasePageOffset
-                  0x000e08                  _FLASH_Lock
-                  0x000e50                  _FLASH_ReadWord16
-                  0x000e42                  _FLASH_ReadWord24
-                  0x000e16                  _FLASH_SendNvmKey
-                  0x000dfe                  _FLASH_Unlock
-                  0x000eac                  _FLASH_WriteDoubleWord16
-                  0x000e78                  _FLASH_WriteDoubleWord24
-                  0x00162a                  _INTERRUPT_Initialize
-                  0x0010f4                  _PIN_MANAGER_Initialize
-                  0x001552                  _SYSTEM_Initialize
-                  0x0015a0                  _UART1_Initialize
+                  0x0013be                  _BOOT_CAN_Initialize
+                  0x00150c                  _BOOT_CAN_Tasks
+                  0x00157a                  _BOOT_COM_GetMessagesReady
+                  0x000f7e                  _BOOT_COM_Response
+                  0x001324                  _BOOT_COM_Write
+                  0x00167a                  _BOOT_Initialize
+                  0x00127c                  _BOOT_ProcessCommand
+                  0x00162c                  _BOOT_StartApplication
+                  0x001558                  _BOOT_Verify
+                  0x000b94                  _CAN1_Initialize
+                  0x0010ae                  _CAN1_Receive
+                  0x0015cc                  _CAN1_ReceiveEnable
+                  0x0011b4                  _CAN1_ReceivedMessageCountGet
+                  0x001646                  _CAN1_SetBusWakeUpActivityInterruptHandler
+                  0x00101e                  _CAN1_Transmit
+                  0x0015b2                  _CAN1_TransmitEnable
+                  0x0012d4                  _CLOCK_Initialize
+                  0x00121a                  _DMA_Initialize
+                  0x000e02                  _FLASH_ErasePage
+                  0x000e8c                  _FLASH_GetErasePageAddress
+                  0x000e86                  _FLASH_GetErasePageOffset
+                  0x000dae                  _FLASH_Lock
+                  0x000df6                  _FLASH_ReadWord16
+                  0x000de8                  _FLASH_ReadWord24
+                  0x000dbc                  _FLASH_SendNvmKey
+                  0x000da4                  _FLASH_Unlock
+                  0x000e52                  _FLASH_WriteDoubleWord16
+                  0x000e1e                  _FLASH_WriteDoubleWord24
+                  0x00166e                  _INTERRUPT_Initialize
+                  0x00113a                  _PIN_MANAGER_Initialize
+                  0x001598                  _SYSTEM_Initialize
+                  0x0015e6                  _UART1_Initialize
                   0x000340                  __AddressError
                   0x0003ec                  __C1Interrupt
                   0x000380                  __DMACError
@@ -345,11 +348,11 @@ External Symbols in Program Memory (by name):
                   0x00023c                  __psv_init
                   0x000200                  __resetPRI
                   0x000424                  _ceilf
-                  0x0015c6                  _getCmdId
-                  0x00160c                  _main
+                  0x00160c                  _getCmdId
+                  0x00165c                  _main
                   0x00067c                  _memcpy
                   0x00068a                  _memset
-                  0x000ef0                  _setCanFilter
+                  0x000e96                  _setCanFilter
 
 Memory Configuration
 
@@ -512,7 +515,7 @@ __FOSCSEL
 
 __FGS             0x02affa          0x2
  *(__FGS.sec*)
- __FGS.sec        0x02affa          0x2 /CW/_FGSÐ54
+ __FGS.sec        0x02affa          0x2 /CW/_FGS@p7
                   0x02affa                  __FGS.sec
 
 __FUID0
@@ -530,7 +533,7 @@ __FUID3
 .comment
  *(.comment)
 
-.debug_info       0x000000       0xc66c
+.debug_info       0x000000       0xc6ab
  *(.debug_info)
  .debug_info      0x000000         0xbb build/default/production/mcc_generated_files/boot/hardware_interrupt_table.o
  .debug_info      0x0000bb        0x1c8 build/default/production/mcc_generated_files/boot/boot_demo.o
@@ -545,15 +548,15 @@ __FUID3
  .debug_info      0x00395c        0x497 build/default/production/mcc_generated_files/reset.o
  .debug_info      0x003df3       0x1806 build/default/production/mcc_generated_files/dma.o
  .debug_info      0x0055f9       0x3f5e build/default/production/mcc_generated_files/can1.o
- .debug_info      0x009557        0x30b build/default/production/main.o
- .debug_info      0x009862        0x354 build/default/production/boot.o
- .debug_info      0x009bb6        0x129 build/default/production/boot_can_config.o
- .debug_info      0x009cdf        0x58d build/default/production/com_adaptor_can.o
- .debug_info      0x00a26c        0x9e0 build/default/production/boot_can_process.o
- .debug_info      0x00ac4c       0x1a20 build/default/production/misc.o
+ .debug_info      0x009557        0x16b build/default/production/main.o
+ .debug_info      0x0096c2        0x354 build/default/production/boot.o
+ .debug_info      0x009a16        0x129 build/default/production/boot_can_config.o
+ .debug_info      0x009b3f        0x80a build/default/production/com_adaptor_can.o
+ .debug_info      0x00a349        0x942 build/default/production/boot_can_process.o
+ .debug_info      0x00ac8b       0x1a20 build/default/production/misc.o
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev     0x000000        0xfc8
+.debug_abbrev     0x000000        0xf92
  *(.debug_abbrev)
  .debug_abbrev    0x000000         0x14 build/default/production/mcc_generated_files/boot/hardware_interrupt_table.o
  .debug_abbrev    0x000014         0x58 build/default/production/mcc_generated_files/boot/boot_demo.o
@@ -569,14 +572,14 @@ __FUID3
  .debug_abbrev    0x0005ed         0xf6 build/default/production/mcc_generated_files/reset.o
  .debug_abbrev    0x0006e3         0xda build/default/production/mcc_generated_files/dma.o
  .debug_abbrev    0x0007bd        0x29f build/default/production/mcc_generated_files/can1.o
- .debug_abbrev    0x000a5c         0x9d build/default/production/main.o
- .debug_abbrev    0x000af9         0xce build/default/production/boot.o
- .debug_abbrev    0x000bc7         0x1f build/default/production/boot_can_config.o
- .debug_abbrev    0x000be6        0x156 build/default/production/com_adaptor_can.o
- .debug_abbrev    0x000d3c        0x19e build/default/production/boot_can_process.o
- .debug_abbrev    0x000eda         0xee build/default/production/misc.o
+ .debug_abbrev    0x000a5c         0x5b build/default/production/main.o
+ .debug_abbrev    0x000ab7         0xce build/default/production/boot.o
+ .debug_abbrev    0x000b85         0x1f build/default/production/boot_can_config.o
+ .debug_abbrev    0x000ba4        0x15b build/default/production/com_adaptor_can.o
+ .debug_abbrev    0x000cff        0x1a5 build/default/production/boot_can_process.o
+ .debug_abbrev    0x000ea4         0xee build/default/production/misc.o
 
-.debug_line       0x000000       0x1967
+.debug_line       0x000000       0x19a0
  *(.debug_line)
  .debug_line      0x000000         0x61 build/default/production/mcc_generated_files/boot/hardware_interrupt_table.o
  .debug_line      0x000061         0x7b build/default/production/mcc_generated_files/boot/boot_demo.o
@@ -594,12 +597,12 @@ __FUID3
  .debug_line      0x000a05        0x1f8 build/default/production/mcc_generated_files/reset.o
  .debug_line      0x000bfd        0x1db build/default/production/mcc_generated_files/dma.o
  .debug_line      0x000dd8        0x4c7 build/default/production/mcc_generated_files/can1.o
- .debug_line      0x00129f        0x114 build/default/production/main.o
- .debug_line      0x0013b3        0x146 build/default/production/boot.o
- .debug_line      0x0014f9         0x1a build/default/production/boot_can_config.o
- .debug_line      0x001513         0xfd build/default/production/com_adaptor_can.o
- .debug_line      0x001610        0x1ec build/default/production/boot_can_process.o
- .debug_line      0x0017fc        0x16b build/default/production/misc.o
+ .debug_line      0x00129f        0x113 build/default/production/main.o
+ .debug_line      0x0013b2        0x146 build/default/production/boot.o
+ .debug_line      0x0014f8         0x1a build/default/production/boot_can_config.o
+ .debug_line      0x001512        0x141 build/default/production/com_adaptor_can.o
+ .debug_line      0x001653        0x1e2 build/default/production/boot_can_process.o
+ .debug_line      0x001835        0x16b build/default/production/misc.o
 
 .debug_frame      0x000000        0xc3a
  *(.debug_frame)
@@ -620,7 +623,7 @@ __FUID3
  .debug_frame     0x000b0e         0xfe build/default/production/boot_can_process.o
  .debug_frame     0x000c0c         0x2e build/default/production/misc.o
 
-.debug_str        0x000000        0x890
+.debug_str        0x000000        0x893
  *(.debug_str)
  .debug_str       0x000000         0x15 build/default/production/mcc_generated_files/uart1.o
  .debug_str       0x000015         0x2c build/default/production/mcc_generated_files/pin_manager.o
@@ -630,11 +633,10 @@ __FUID3
  .debug_str       0x000215         0x17 build/default/production/mcc_generated_files/reset.o
  .debug_str       0x00022c        0x199 build/default/production/mcc_generated_files/dma.o
  .debug_str       0x0003c5        0x33a build/default/production/mcc_generated_files/can1.o
- .debug_str       0x0006ff          0xa build/default/production/main.o
- .debug_str       0x000709         0x15 build/default/production/boot.o
- .debug_str       0x00071e          0xb build/default/production/com_adaptor_can.o
- .debug_str       0x000729         0x51 build/default/production/boot_can_process.o
- .debug_str       0x00077a        0x116 build/default/production/misc.o
+ .debug_str       0x0006ff         0x15 build/default/production/boot.o
+ .debug_str       0x000714         0x24 build/default/production/com_adaptor_can.o
+ .debug_str       0x000738         0x45 build/default/production/boot_can_process.o
+ .debug_str       0x00077d        0x116 build/default/production/misc.o
 
 .debug_loc
  *(.debug_loc)
@@ -643,7 +645,7 @@ __FUID3
  *(.debug_macinfo)
 
 .debug_pubnames
-                  0x000000        0x7c3
+                  0x000000        0x7c7
  *(.debug_pubnames)
  .debug_pubnames
                   0x000000         0x3f build/default/production/mcc_generated_files/boot/boot_demo.o
@@ -672,11 +674,11 @@ __FUID3
  .debug_pubnames
                   0x000648         0x4c build/default/production/boot.o
  .debug_pubnames
-                  0x000694         0x81 build/default/production/com_adaptor_can.o
+                  0x000694         0xab build/default/production/com_adaptor_can.o
  .debug_pubnames
-                  0x000715         0x8b build/default/production/boot_can_process.o
+                  0x00073f         0x65 build/default/production/boot_can_process.o
  .debug_pubnames
-                  0x0007a0         0x23 build/default/production/misc.o
+                  0x0007a4         0x23 build/default/production/misc.o
 
 .debug_ranges
  *(.debug_ranges)
@@ -2015,13 +2017,13 @@ LOAD c:/program files/microchip/xc16/v1.61/bin/bin/../../lib\libm-elf.a
 LOAD c:/program files/microchip/xc16/v1.61/bin/bin/../../lib\liblega-c-elf.a
 END GROUP
 OUTPUT(dist/default/production/Bootloader_CAN.X.production.elf elf32-pic30)
-LOAD /CW/_FGSÐ54
+LOAD /CW/_FGS@p7
 LOAD jump_table
 LOAD default_isr
 LOAD data_init
 
 .debug_pubtypes
-                  0x0004b8        0xf43
+                  0x0004b8        0xf57
  .debug_pubtypes
                   0x0004b8         0x12 build/default/production/mcc_generated_files/boot/boot_demo.o
  .debug_pubtypes
@@ -2045,84 +2047,84 @@ LOAD data_init
  .debug_pubtypes
                   0x000b3b        0x4e8 build/default/production/mcc_generated_files/can1.o
  .debug_pubtypes
-                  0x001023         0x3e build/default/production/main.o
+                  0x001023         0x1f build/default/production/main.o
  .debug_pubtypes
-                  0x001061         0x4a build/default/production/boot.o
+                  0x001042         0x4a build/default/production/boot.o
  .debug_pubtypes
-                  0x0010ab         0x12 build/default/production/boot_can_config.o
+                  0x00108c         0x12 build/default/production/boot_can_config.o
  .debug_pubtypes
-                  0x0010bd         0x8c build/default/production/com_adaptor_can.o
+                  0x00109e         0xbf build/default/production/com_adaptor_can.o
  .debug_pubtypes
-                  0x001149         0x9e build/default/production/boot_can_process.o
+                  0x00115d         0x9e build/default/production/boot_can_process.o
  .debug_pubtypes
-                  0x0011e7        0x214 build/default/production/misc.o
+                  0x0011fb        0x214 build/default/production/misc.o
 
 __c30_signature
-                  0x0013fb         0xc0
+                  0x00140f         0xc0
  __c30_signature
-                  0x0013fb          0x6 build/default/production/mcc_generated_files/boot/boot_demo.o
+                  0x00140f          0x6 build/default/production/mcc_generated_files/boot/boot_demo.o
  __c30_signature
-                  0x001401          0x6 build/default/production/mcc_generated_files/boot/boot_verify_not_blank.o
+                  0x001415          0x6 build/default/production/mcc_generated_files/boot/boot_verify_not_blank.o
  __c30_signature
-                  0x001407          0x6 build/default/production/mcc_generated_files/uart1.o
+                  0x00141b          0x6 build/default/production/mcc_generated_files/uart1.o
  __c30_signature
-                  0x00140d          0x6 build/default/production/mcc_generated_files/pin_manager.o
+                  0x001421          0x6 build/default/production/mcc_generated_files/pin_manager.o
  __c30_signature
-                  0x001413          0x6 build/default/production/mcc_generated_files/traps.o
+                  0x001427          0x6 build/default/production/mcc_generated_files/traps.o
  __c30_signature
-                  0x001419          0x6 build/default/production/mcc_generated_files/mcc.o
+                  0x00142d          0x6 build/default/production/mcc_generated_files/mcc.o
  __c30_signature
-                  0x00141f          0x6 build/default/production/mcc_generated_files/interrupt_manager.o
+                  0x001433          0x6 build/default/production/mcc_generated_files/interrupt_manager.o
  __c30_signature
-                  0x001425          0x6 build/default/production/mcc_generated_files/system.o
+                  0x001439          0x6 build/default/production/mcc_generated_files/system.o
  __c30_signature
-                  0x00142b          0x6 build/default/production/mcc_generated_files/clock.o
+                  0x00143f          0x6 build/default/production/mcc_generated_files/clock.o
  __c30_signature
-                  0x001431          0x6 build/default/production/mcc_generated_files/reset.o
+                  0x001445          0x6 build/default/production/mcc_generated_files/reset.o
  __c30_signature
-                  0x001437          0x6 build/default/production/mcc_generated_files/dma.o
+                  0x00144b          0x6 build/default/production/mcc_generated_files/dma.o
  __c30_signature
-                  0x00143d          0x6 build/default/production/mcc_generated_files/can1.o
+                  0x001451          0x6 build/default/production/mcc_generated_files/can1.o
  __c30_signature
-                  0x001443          0x6 build/default/production/main.o
+                  0x001457          0x6 build/default/production/main.o
  __c30_signature
-                  0x001449          0x6 build/default/production/boot.o
+                  0x00145d          0x6 build/default/production/boot.o
  __c30_signature
-                  0x00144f          0x6 build/default/production/boot_can_config.o
+                  0x001463          0x6 build/default/production/boot_can_config.o
  __c30_signature
-                  0x001455          0x6 build/default/production/com_adaptor_can.o
+                  0x001469          0x6 build/default/production/com_adaptor_can.o
  __c30_signature
-                  0x00145b          0x6 build/default/production/boot_can_process.o
+                  0x00146f          0x6 build/default/production/boot_can_process.o
  __c30_signature
-                  0x001461          0x6 build/default/production/misc.o
+                  0x001475          0x6 build/default/production/misc.o
  __c30_signature
-                  0x001467          0x6 c:/program files/microchip/xc16/v1.61/bin/bin/../../lib\liblega-pic30-elf.a(crt0_extendedep.o)
+                  0x00147b          0x6 c:/program files/microchip/xc16/v1.61/bin/bin/../../lib\liblega-pic30-elf.a(crt0_extendedep.o)
  __c30_signature
-                  0x00146d          0x6 c:/program files/microchip/xc16/v1.61/bin/bin/../../lib\liblega-pic30-elf.a(data_init_extended.o)
+                  0x001481          0x6 c:/program files/microchip/xc16/v1.61/bin/bin/../../lib\liblega-pic30-elf.a(data_init_extended.o)
  __c30_signature
-                  0x001473          0x6 c:/program files/microchip/xc16/v1.61/bin/bin/../../lib\libm-elf.a(ceilf.epeo)
+                  0x001487          0x6 c:/program files/microchip/xc16/v1.61/bin/bin/../../lib\libm-elf.a(ceilf.epeo)
  __c30_signature
-                  0x001479          0x6 c:/program files/microchip/xc16/v1.61/bin/bin/../../lib\libm-elf.a(fchop.epeo)
+                  0x00148d          0x6 c:/program files/microchip/xc16/v1.61/bin/bin/../../lib\libm-elf.a(fchop.epeo)
  __c30_signature
-                  0x00147f          0x6 c:/program files/microchip/xc16/v1.61/bin/bin/../../lib\libm-elf.a(fixunssfsi.epeo)
+                  0x001493          0x6 c:/program files/microchip/xc16/v1.61/bin/bin/../../lib\libm-elf.a(fixunssfsi.epeo)
  __c30_signature
-                  0x001485          0x6 c:/program files/microchip/xc16/v1.61/bin/bin/../../lib\libm-elf.a(floatunsisf.epeo)
+                  0x001499          0x6 c:/program files/microchip/xc16/v1.61/bin/bin/../../lib\libm-elf.a(floatunsisf.epeo)
  __c30_signature
-                  0x00148b          0x6 c:/program files/microchip/xc16/v1.61/bin/bin/../../lib\libm-elf.a(fpack.epeo)
+                  0x00149f          0x6 c:/program files/microchip/xc16/v1.61/bin/bin/../../lib\libm-elf.a(fpack.epeo)
  __c30_signature
-                  0x001491          0x6 c:/program files/microchip/xc16/v1.61/bin/bin/../../lib\libm-elf.a(funpack.epeo)
+                  0x0014a5          0x6 c:/program files/microchip/xc16/v1.61/bin/bin/../../lib\libm-elf.a(funpack.epeo)
  __c30_signature
-                  0x001497          0x6 c:/program files/microchip/xc16/v1.61/bin/bin/../../lib\libm-elf.a(addsf3.epeo)
+                  0x0014ab          0x6 c:/program files/microchip/xc16/v1.61/bin/bin/../../lib\libm-elf.a(addsf3.epeo)
  __c30_signature
-                  0x00149d          0x6 c:/program files/microchip/xc16/v1.61/bin/bin/../../lib\libm-elf.a(floatundisf.epeo)
+                  0x0014b1          0x6 c:/program files/microchip/xc16/v1.61/bin/bin/../../lib\libm-elf.a(floatundisf.epeo)
  __c30_signature
-                  0x0014a3          0x6 c:/program files/microchip/xc16/v1.61/bin/bin/../../lib\libm-elf.a(funpack2.epeo)
+                  0x0014b7          0x6 c:/program files/microchip/xc16/v1.61/bin/bin/../../lib\libm-elf.a(funpack2.epeo)
  __c30_signature
-                  0x0014a9          0x6 c:/program files/microchip/xc16/v1.61/bin/bin/../../lib\libm-elf.a(futil.epeo)
+                  0x0014bd          0x6 c:/program files/microchip/xc16/v1.61/bin/bin/../../lib\libm-elf.a(futil.epeo)
  __c30_signature
-                  0x0014af          0x6 c:/program files/microchip/xc16/v1.61/bin/bin/../../lib\liblega-c-elf.a(memcpy.EP_eo)
+                  0x0014c3          0x6 c:/program files/microchip/xc16/v1.61/bin/bin/../../lib\liblega-c-elf.a(memcpy.EP_eo)
  __c30_signature
-                  0x0014b5          0x6 c:/program files/microchip/xc16/v1.61/bin/bin/../../lib\liblega-c-elf.a(memset.EP_eo)
+                  0x0014c9          0x6 c:/program files/microchip/xc16/v1.61/bin/bin/../../lib\liblega-c-elf.a(memset.EP_eo)
 
 .nbss               0x1000          0xa
  .nbss              0x1000          0xa build/default/production/com_adaptor_can.o
@@ -2137,13 +2139,13 @@ __c30_signature
                     0x100f                  _canAddress
 
 .ndata              0x1010          0x2
- .ndata             0x1010          0x2 build/default/production/boot_can_process.o
+ .ndata             0x1010          0x2 build/default/production/com_adaptor_can.o
                     0x1010                  _NO_DATA_FIELD
                     0x1011                  _FULL_DATA_FIELD
 
-_000000000613D3205fb6536c
+_000000000585E3205fb69a59
                     0x1200        0x200
- _000000000613D3205fb6536c
+ _000000000585E3205fb69a59
                     0x1200        0x200 build/default/production/mcc_generated_files/can1.o
 
 .bss                0x1012        0x128
@@ -2226,236 +2228,242 @@ mcc_generated_files/boot/memory_partition.S.scn1
  .text.CAN1_DMACopy
                   0x000698        0x23c build/default/production/mcc_generated_files/can1.o
 
-.text.ReadFlash
-                  0x0008d4        0x1a2
- .text.ReadFlash
-                  0x0008d4        0x1a2 build/default/production/boot_can_process.o
-
 .text.WriteFlash
-                  0x000a76        0x178
+                  0x0008d4        0x17a
  .text.WriteFlash
-                  0x000a76        0x178 build/default/production/boot_can_process.o
+                  0x0008d4        0x17a build/default/production/boot_can_process.o
+
+.text.ReadFlash
+                  0x000a4e        0x146
+ .text.ReadFlash
+                  0x000a4e        0x146 build/default/production/boot_can_process.o
 
 .text.CAN1_Initialize
-                  0x000bee        0x108
+                  0x000b94        0x108
  .text.CAN1_Initialize
-                  0x000bee        0x108 build/default/production/mcc_generated_files/can1.o
-                  0x000bee                  _CAN1_Initialize
+                  0x000b94        0x108 build/default/production/mcc_generated_files/can1.o
+                  0x000b94                  _CAN1_Initialize
 
 .text.CAN1_MessageToBuffer
-                  0x000cf6        0x106
+                  0x000c9c        0x106
  .text.CAN1_MessageToBuffer
-                  0x000cf6        0x106 build/default/production/mcc_generated_files/can1.o
+                  0x000c9c        0x106 build/default/production/mcc_generated_files/can1.o
 
-.NVM_flash        0x000dfc         0xf4
- .NVM_flash       0x000dfc         0xf4 build/default/production/mcc_generated_files/memory/flash.o
-                  0x000dfe                  _FLASH_Unlock
-                  0x000e08                  _FLASH_Lock
-                  0x000e16                  _FLASH_SendNvmKey
-                  0x000e42                  _FLASH_ReadWord24
-                  0x000e50                  _FLASH_ReadWord16
-                  0x000e5c                  _FLASH_ErasePage
-                  0x000e78                  _FLASH_WriteDoubleWord24
-                  0x000eac                  _FLASH_WriteDoubleWord16
-                  0x000ee0                  _FLASH_GetErasePageOffset
-                  0x000ee6                  _FLASH_GetErasePageAddress
+.NVM_flash        0x000da2         0xf4
+ .NVM_flash       0x000da2         0xf4 build/default/production/mcc_generated_files/memory/flash.o
+                  0x000da4                  _FLASH_Unlock
+                  0x000dae                  _FLASH_Lock
+                  0x000dbc                  _FLASH_SendNvmKey
+                  0x000de8                  _FLASH_ReadWord24
+                  0x000df6                  _FLASH_ReadWord16
+                  0x000e02                  _FLASH_ErasePage
+                  0x000e1e                  _FLASH_WriteDoubleWord24
+                  0x000e52                  _FLASH_WriteDoubleWord16
+                  0x000e86                  _FLASH_GetErasePageOffset
+                  0x000e8c                  _FLASH_GetErasePageAddress
 
 .text.setCanFilter
-                  0x000ef0         0xe8
+                  0x000e96         0xe8
  .text.setCanFilter
-                  0x000ef0         0xe8 build/default/production/misc.o
-                  0x000ef0                  _setCanFilter
+                  0x000e96         0xe8 build/default/production/misc.o
+                  0x000e96                  _setCanFilter
+
+.text.BOOT_COM_Response
+                  0x000f7e         0xa0
+ .text.BOOT_COM_Response
+                  0x000f7e         0xa0 build/default/production/com_adaptor_can.o
+                  0x000f7e                  _BOOT_COM_Response
 
 .text.CAN1_Transmit
-                  0x000fd8         0x90
+                  0x00101e         0x90
  .text.CAN1_Transmit
-                  0x000fd8         0x90 build/default/production/mcc_generated_files/can1.o
-                  0x000fd8                  _CAN1_Transmit
+                  0x00101e         0x90 build/default/production/mcc_generated_files/can1.o
+                  0x00101e                  _CAN1_Transmit
 
 .text.CAN1_Receive
-                  0x001068         0x8c
+                  0x0010ae         0x8c
  .text.CAN1_Receive
-                  0x001068         0x8c build/default/production/mcc_generated_files/can1.o
-                  0x001068                  _CAN1_Receive
+                  0x0010ae         0x8c build/default/production/mcc_generated_files/can1.o
+                  0x0010ae                  _CAN1_Receive
 
 .text.PIN_MANAGER_Initialize
-                  0x0010f4         0x7a
+                  0x00113a         0x7a
  .text.PIN_MANAGER_Initialize
-                  0x0010f4         0x7a build/default/production/mcc_generated_files/pin_manager.o
-                  0x0010f4                  _PIN_MANAGER_Initialize
+                  0x00113a         0x7a build/default/production/mcc_generated_files/pin_manager.o
+                  0x00113a                  _PIN_MANAGER_Initialize
 
 .text.CAN1_ReceivedMessageCountGet
-                  0x00116e         0x66
+                  0x0011b4         0x66
  .text.CAN1_ReceivedMessageCountGet
-                  0x00116e         0x66 build/default/production/mcc_generated_files/can1.o
-                  0x00116e                  _CAN1_ReceivedMessageCountGet
+                  0x0011b4         0x66 build/default/production/mcc_generated_files/can1.o
+                  0x0011b4                  _CAN1_ReceivedMessageCountGet
 
 .text.DMA_Initialize
-                  0x0011d4         0x62
+                  0x00121a         0x62
  .text.DMA_Initialize
-                  0x0011d4         0x62 build/default/production/mcc_generated_files/dma.o
-                  0x0011d4                  _DMA_Initialize
+                  0x00121a         0x62 build/default/production/mcc_generated_files/dma.o
+                  0x00121a                  _DMA_Initialize
 
 .text.BOOT_ProcessCommand
-                  0x001236         0x58
+                  0x00127c         0x58
  .text.BOOT_ProcessCommand
-                  0x001236         0x58 build/default/production/boot_can_process.o
-                  0x001236                  _BOOT_ProcessCommand
+                  0x00127c         0x58 build/default/production/boot_can_process.o
+                  0x00127c                  _BOOT_ProcessCommand
 
 .text.CLOCK_Initialize
-                  0x00128e         0x50
+                  0x0012d4         0x50
  .text.CLOCK_Initialize
-                  0x00128e         0x50 build/default/production/mcc_generated_files/clock.o
-                  0x00128e                  _CLOCK_Initialize
+                  0x0012d4         0x50 build/default/production/mcc_generated_files/clock.o
+                  0x0012d4                  _CLOCK_Initialize
 
 .text.BOOT_COM_Write
-                  0x0012de         0x50
+                  0x001324         0x50
  .text.BOOT_COM_Write
-                  0x0012de         0x50 build/default/production/com_adaptor_can.o
-                  0x0012de                  _BOOT_COM_Write
+                  0x001324         0x50 build/default/production/com_adaptor_can.o
+                  0x001324                  _BOOT_COM_Write
 
 .text.ReadVersion
-                  0x00132e         0x4a
+                  0x001374         0x4a
  .text.ReadVersion
-                  0x00132e         0x4a build/default/production/boot_can_process.o
+                  0x001374         0x4a build/default/production/boot_can_process.o
 
 .text.BOOT_CAN_Initialize
-                  0x001378         0x42
+                  0x0013be         0x42
  .text.BOOT_CAN_Initialize
-                  0x001378         0x42 build/default/production/boot.o
-                  0x001378                  _BOOT_CAN_Initialize
+                  0x0013be         0x42 build/default/production/boot.o
+                  0x0013be                  _BOOT_CAN_Initialize
 
-.dinit            0x0013ba         0x40
- .dinit           0x0013ba         0x40 data_init
+.dinit            0x001400         0x40
+ .dinit           0x001400         0x40 data_init
 
 .text.DMA_StartAddressASet
-                  0x0013fa         0x3e
+                  0x001440         0x3e
  .text.DMA_StartAddressASet
-                  0x0013fa         0x3e build/default/production/mcc_generated_files/can1.o
+                  0x001440         0x3e build/default/production/mcc_generated_files/can1.o
 
 .text.DMA_PeripheralAddressSet
-                  0x001438         0x36
+                  0x00147e         0x36
  .text.DMA_PeripheralAddressSet
-                  0x001438         0x36 build/default/production/mcc_generated_files/can1.o
+                  0x00147e         0x36 build/default/production/mcc_generated_files/can1.o
 
 .text.DMA_ChannelEnable
-                  0x00146e         0x2c
+                  0x0014b4         0x2c
  .text.DMA_ChannelEnable
-                  0x00146e         0x2c build/default/production/mcc_generated_files/can1.o
+                  0x0014b4         0x2c build/default/production/mcc_generated_files/can1.o
 
 .text.IsLegalAddress
-                  0x00149a         0x2c
+                  0x0014e0         0x2c
  .text.IsLegalAddress
-                  0x00149a         0x2c build/default/production/boot_can_process.o
+                  0x0014e0         0x2c build/default/production/boot_can_process.o
 
 .text.BOOT_CAN_Tasks
-                  0x0014c6         0x26
+                  0x00150c         0x26
  .text.BOOT_CAN_Tasks
-                  0x0014c6         0x26 build/default/production/boot.o
-                  0x0014c6                  _BOOT_CAN_Tasks
+                  0x00150c         0x26 build/default/production/boot.o
+                  0x00150c                  _BOOT_CAN_Tasks
 
 .text.CommandError
-                  0x0014ec         0x26
+                  0x001532         0x26
  .text.CommandError
-                  0x0014ec         0x26 build/default/production/boot_can_process.o
+                  0x001532         0x26 build/default/production/boot_can_process.o
 
 .text.BOOT_Verify
-                  0x001512         0x22
+                  0x001558         0x22
  .text.BOOT_Verify
-                  0x001512         0x22 build/default/production/mcc_generated_files/boot/boot_verify_not_blank.o
-                  0x001512                  _BOOT_Verify
+                  0x001558         0x22 build/default/production/mcc_generated_files/boot/boot_verify_not_blank.o
+                  0x001558                  _BOOT_Verify
 
 .text.BOOT_COM_GetMessagesReady
-                  0x001534         0x1e
+                  0x00157a         0x1e
  .text.BOOT_COM_GetMessagesReady
-                  0x001534         0x1e build/default/production/com_adaptor_can.o
-                  0x001534                  _BOOT_COM_GetMessagesReady
+                  0x00157a         0x1e build/default/production/com_adaptor_can.o
+                  0x00157a                  _BOOT_COM_GetMessagesReady
 
 .text.SYSTEM_Initialize
-                  0x001552         0x1a
+                  0x001598         0x1a
  .text.SYSTEM_Initialize
-                  0x001552         0x1a build/default/production/mcc_generated_files/system.o
-                  0x001552                  _SYSTEM_Initialize
+                  0x001598         0x1a build/default/production/mcc_generated_files/system.o
+                  0x001598                  _SYSTEM_Initialize
 
 .text.CAN1_TransmitEnable
-                  0x00156c         0x1a
+                  0x0015b2         0x1a
  .text.CAN1_TransmitEnable
-                  0x00156c         0x1a build/default/production/mcc_generated_files/can1.o
-                  0x00156c                  _CAN1_TransmitEnable
+                  0x0015b2         0x1a build/default/production/mcc_generated_files/can1.o
+                  0x0015b2                  _CAN1_TransmitEnable
 
 .text.CAN1_ReceiveEnable
-                  0x001586         0x1a
+                  0x0015cc         0x1a
  .text.CAN1_ReceiveEnable
-                  0x001586         0x1a build/default/production/mcc_generated_files/can1.o
-                  0x001586                  _CAN1_ReceiveEnable
+                  0x0015cc         0x1a build/default/production/mcc_generated_files/can1.o
+                  0x0015cc                  _CAN1_ReceiveEnable
 
 .text.UART1_Initialize
-                  0x0015a0         0x14
+                  0x0015e6         0x14
  .text.UART1_Initialize
-                  0x0015a0         0x14 build/default/production/mcc_generated_files/uart1.o
-                  0x0015a0                  _UART1_Initialize
+                  0x0015e6         0x14 build/default/production/mcc_generated_files/uart1.o
+                  0x0015e6                  _UART1_Initialize
 
 .text.SYSTEM_CORCONModeOperatingSet
-                  0x0015b4         0x12
+                  0x0015fa         0x12
  .text.SYSTEM_CORCONModeOperatingSet
-                  0x0015b4         0x12 build/default/production/mcc_generated_files/system.o
+                  0x0015fa         0x12 build/default/production/mcc_generated_files/system.o
 
-.text.getCmdId    0x0015c6         0x12
+.text.getCmdId    0x00160c         0x12
  .text.getCmdId
-                  0x0015c6         0x12 build/default/production/boot_can_process.o
-                  0x0015c6                  _getCmdId
+                  0x00160c         0x12 build/default/production/boot_can_process.o
+                  0x00160c                  _getCmdId
 
 .text.use_failsafe_stack
-                  0x0015d8          0xe
+                  0x00161e          0xe
  .text.use_failsafe_stack
-                  0x0015d8          0xe build/default/production/mcc_generated_files/traps.o
+                  0x00161e          0xe build/default/production/mcc_generated_files/traps.o
 
 .text.BOOT_StartApplication
-                  0x0015e6          0xe
+                  0x00162c          0xe
  .text.BOOT_StartApplication
-                  0x0015e6          0xe build/default/production/boot_can_process.o
-                  0x0015e6                  _BOOT_StartApplication
+                  0x00162c          0xe build/default/production/boot_can_process.o
+                  0x00162c                  _BOOT_StartApplication
 
 .text.INTERRUPT_GlobalEnable
-                  0x0015f4          0xc
+                  0x00163a          0xc
  .text.INTERRUPT_GlobalEnable
-                  0x0015f4          0xc build/default/production/mcc_generated_files/system.o
+                  0x00163a          0xc build/default/production/mcc_generated_files/system.o
 
 .text.CAN1_SetBusWakeUpActivityInterruptHandler
-                  0x001600          0xc
+                  0x001646          0xc
  .text.CAN1_SetBusWakeUpActivityInterruptHandler
-                  0x001600          0xc build/default/production/mcc_generated_files/can1.o
-                  0x001600                  _CAN1_SetBusWakeUpActivityInterruptHandler
-
-.text.main        0x00160c          0xc
- .text.main       0x00160c          0xc build/default/production/main.o
-                  0x00160c                  _main
+                  0x001646          0xc build/default/production/mcc_generated_files/can1.o
+                  0x001646                  _CAN1_SetBusWakeUpActivityInterruptHandler
 
 .text.TRAPS_halt_on_error
-                  0x001618          0xa
+                  0x001652          0xa
  .text.TRAPS_halt_on_error
-                  0x001618          0xa build/default/production/mcc_generated_files/traps.o
-                  0x001618                  _TRAPS_halt_on_error
+                  0x001652          0xa build/default/production/mcc_generated_files/traps.o
+                  0x001652                  _TRAPS_halt_on_error
+
+.text.main        0x00165c          0xa
+ .text.main       0x00165c          0xa build/default/production/main.o
+                  0x00165c                  _main
 
 .text.EnterBootloadMode
-                  0x001622          0x8
+                  0x001666          0x8
  .text.EnterBootloadMode
-                  0x001622          0x8 build/default/production/boot.o
+                  0x001666          0x8 build/default/production/boot.o
 
 .text.INTERRUPT_Initialize
-                  0x00162a          0x6
+                  0x00166e          0x6
  .text.INTERRUPT_Initialize
-                  0x00162a          0x6 build/default/production/mcc_generated_files/interrupt_manager.o
-                  0x00162a                  _INTERRUPT_Initialize
+                  0x00166e          0x6 build/default/production/mcc_generated_files/interrupt_manager.o
+                  0x00166e                  _INTERRUPT_Initialize
 
 .text.CAN1_DefaultBusWakeUpActivityHandler
-                  0x001630          0x6
+                  0x001674          0x6
  .text.CAN1_DefaultBusWakeUpActivityHandler
-                  0x001630          0x6 build/default/production/mcc_generated_files/can1.o
-                  0x001630                  _CAN1_DefaultBusWakeUpActivityHandler
+                  0x001674          0x6 build/default/production/mcc_generated_files/can1.o
+                  0x001674                  _CAN1_DefaultBusWakeUpActivityHandler
 
 .text.BOOT_Initialize
-                  0x001636          0x6
+                  0x00167a          0x6
  .text.BOOT_Initialize
-                  0x001636          0x6 build/default/production/boot_can_process.o
-                  0x001636                  _BOOT_Initialize
+                  0x00167a          0x6 build/default/production/boot_can_process.o
+                  0x00167a                  _BOOT_Initialize

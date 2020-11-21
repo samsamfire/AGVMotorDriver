@@ -58,7 +58,6 @@ int main(void)
     SYSTEM_Initialize();
     BOOT_CAN_Initialize();
     
-    TRISBbits.TRISB0 = 0;
     while (1)
     {
         // Add your application code

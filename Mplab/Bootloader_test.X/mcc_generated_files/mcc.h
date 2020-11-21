@@ -53,8 +53,12 @@
 #include "system_types.h"
 #include "reset.h"
 
-#include "reset.h"
+#include "dma.h"
+#include "can1.h"
+#include "uart1.h"
 #include "watchdog.h"
+#include "memory/flash.h"
+#include "reset.h"
 #include "interrupt_manager.h"
 #include "traps.h"
 

@@ -1,4 +1,5 @@
 #include "boot_can_process.h"
+#include "boot_can_messages.h"
 #include "mcc_generated_files/boot/boot_config.h"
 #include "mcc_generated_files/memory/flash.h" 
 #include "mcc_generated_files/can_types.h"
@@ -9,19 +10,8 @@
 #include <math.h>
 #include <string.h>
 
-CAN_MSG_FIELD NO_DATA_FIELD = {
-    .idType = CAN_FRAME_STD,
-    .frameType = CAN_FRAME_RTR,
-    .dlc = CAN_DLC_0,
-    
-};
 
-CAN_MSG_FIELD FULL_DATA_FIELD = {
-    .idType = CAN_FRAME_STD,
-    .frameType = CAN_FRAME_DATA,
-    .dlc = CAN_DLC_8,
-    
-};
+
 
 void BOOT_Initialize() 
 {
@@ -29,12 +19,7 @@ void BOOT_Initialize()
 }
 
 
-void BOOT_StartApplication()
-{
-    int (*user_application)(void);
-    user_application = (int(*)(void))BOOT_CONFIG_APPLICATION_RESET_ADDRESS;
-    user_application();       
-}  
+
 
 uint8_t getCmdId(CAN_MSG_OBJ * msgRx){
 
@@ -80,11 +65,7 @@ enum BOOT_COMMAND_RESULT BOOT_ProcessCommand(void)
     
     
     msgId = getCmdId(&msgRx);
-    //msgId_resp = (canAddress << 7) | 17;
-    //UART1_Write(msgId);
-    
    
-
     switch (msgId)
     {
   
@@ -109,6 +90,13 @@ enum BOOT_COMMAND_RESULT BOOT_ProcessCommand(void)
 }
 
 
+
+void BOOT_StartApplication()
+{
+    int (*user_application)(void);
+    user_application = (int(*)(void))BOOT_CONFIG_APPLICATION_RESET_ADDRESS;
+    user_application();       
+}  
 
 
 static enum BOOT_COMMAND_RESULT ReadVersion(void)
@@ -153,21 +141,15 @@ static enum BOOT_COMMAND_RESULT ReadFlash(const CAN_MSG_OBJ msg)
     uint16_t count;
     uint8_t data[BOOT_CONFIG_MAX_PACKET_SIZE];
     CAN_MSG_OBJ msgData[BOOT_CONFIG_MAX_PACKET_SIZE/8];
-    uint8_t dataError[8];
-    CAN_MSG_OBJ msgError;
     
-
     
     address = ((uint32_t)msg.data[0]<<24) | ((uint32_t)msg.data[1]<<16) | ((uint32_t)msg.data[2]<<8) | ((uint32_t)msg.data[3]);
     nbBytes = ((uint16_t)msg.data[4]<<8) | ((uint16_t)msg.data[5]);
     nbMessages = ceil(nbBytes/8);
     
     if(msg.field.dlc != 6){
-        msgError.data = dataError;
-        msgError.field = NO_DATA_FIELD;
-        msgError.msgId = canAddress << 7 | BAD_DLC;
-        BOOT_COM_Write(&msgError,1);
         
+        BOOT_COM_Response(BAD_DLC);
         return BOOT_COMMAND_ERROR;
     }
     
@@ -195,10 +177,7 @@ static enum BOOT_COMMAND_RESULT ReadFlash(const CAN_MSG_OBJ msg)
     } 
     else
     {
-        msgError.data = dataError;
-        msgError.field = NO_DATA_FIELD;
-        msgError.msgId = canAddress << 7 | BAD_ADDRESS;
-        BOOT_COM_Write(&msgError,1);
+        BOOT_COM_Response(BAD_ADDRESS);
         
         return BOOT_COMMAND_ERROR;        
     }
@@ -221,23 +200,20 @@ static enum BOOT_COMMAND_RESULT ReadFlash(const CAN_MSG_OBJ msg)
 
 static enum BOOT_COMMAND_RESULT WriteFlash(const CAN_MSG_OBJ msg)
 {
-    
-    uint32_t flashData;
+ 
     uint32_t unlockKey;
     uint32_t address;
     uint16_t nbBytes;
-    uint16_t nbMessages;
     uint16_t count;
     uint8_t cmdId;
     
     CAN_MSG_OBJ msgUnlock;
-    CAN_MSG_OBJ msgError;
     CAN_MSG_OBJ msgData;
-    int a;
+
     
     uint8_t dataUnlock[8];
-    uint8_t dataError[8];
     uint8_t dataData[8];
+
     
     msgUnlock.data = dataUnlock;
     msgData.data = dataData;
@@ -251,16 +227,16 @@ static enum BOOT_COMMAND_RESULT WriteFlash(const CAN_MSG_OBJ msg)
     
     CAN1_Receive(&msgUnlock);
     cmdId = getCmdId(&msgUnlock);
+    
     if(cmdId == UNLOCK_FLASH){
         unlockKey = ((uint32_t)msgUnlock.data[0]<<24) | ((uint32_t)msgUnlock.data[1]<<16) | ((uint32_t)msgUnlock.data[2]<<8) | ((uint32_t)msgUnlock.data[3]);
     }
     else{
-        a = 1000;
         return BOOT_COMMAND_ERROR;
     }
     
             
-    if ( IsLegalAddress(address) && IsLegalAddress(address+nbBytes-1) && ((nbBytes%4)==0) && nbBytes <= BOOT_CONFIG_MAX_PACKET_SIZE ){
+    if ( IsLegalAddress(address) && IsLegalAddress(address+nbBytes-1) && ((nbBytes%4)==0) && nbBytes <= BOOT_CONFIG_MAX_PACKET_SIZE){
         
         FLASH_Unlock(unlockKey);
 
@@ -275,32 +251,35 @@ static enum BOOT_COMMAND_RESULT WriteFlash(const CAN_MSG_OBJ msg)
             
             if(cmdId == FLASH_DATA){
                 memcpy(&flashData[0], msgData.data, 8);
+                
             }
             
             else{
                 
+                BOOT_COM_Response(FLASH_CMD_ERROR); 
                 return BOOT_COMMAND_ERROR;
             }
-            
-            
 
             if (FLASH_WriteDoubleWord24(address+count/2, flashData[0],flashData[1] ) == false)
             {
-                
             }
         }
+        
+        BOOT_COM_Response(FLASH_WRITE_SUCCESS);
 
         FLASH_Lock();
+        
+        return BOOT_COMMAND_SUCCESS;
     }   
     
     else
     {
+        
+        BOOT_COM_Response(BAD_ADDRESS);
+        
         return BOOT_COMMAND_ERROR;
     }
     
-
-    
-    return BOOT_COMMAND_ERROR;
 }
 
 

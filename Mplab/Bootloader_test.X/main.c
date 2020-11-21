@@ -56,6 +56,7 @@ int main(void)
 {
     // initialize the device
     SYSTEM_Initialize();
+    TRISBbits.TRISB0 = 0;
     while (1)
     {
         
